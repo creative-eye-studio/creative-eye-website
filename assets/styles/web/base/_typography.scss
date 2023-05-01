@@ -1,0 +1,23 @@
+@include typography(200, 'raleway-extralight');
+@include typography(200, 'raleway-extralightitalic', true);
+
+@include typography(300, 'raleway-light');
+@include typography(300, 'raleway-lightitalic', true);
+
+@include typography(400, 'raleway-regular');
+@include typography(400, 'raleway-italic', true);
+
+@include typography(500, 'raleway-medium');
+@include typography(500, 'raleway-mediumitalic', true);
+
+@include typography(600, 'raleway-semibold');
+@include typography(600, 'raleway-semibolditalic', true);
+
+@include typography(700, 'raleway-bold');
+@include typography(700, 'raleway-bolditalic', true);
+
+@include typography(800, 'raleway-extrabold');
+@include typography(800, 'raleway-extrabolditalic', true);
+
+@include typography(900, 'raleway-black');
+@include typography(900, 'raleway-blackitalic', true);

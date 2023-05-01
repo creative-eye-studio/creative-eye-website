@@ -1,0 +1,12 @@
+// Typographie
+// ----------------------------------------------------------
+@mixin typography($fontWeight, $fontFile, $fontStyle: false){
+    @font-face {
+        font-family: $fontFamily;
+        font-weight: $fontWeight;
+        @if $fontStyle{
+            font-style: italic;
+        }
+        src: url('../../../fonts/raleway/' + $fontFile + '.ttf');
+    }
+}
