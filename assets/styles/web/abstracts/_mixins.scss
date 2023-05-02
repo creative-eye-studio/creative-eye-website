@@ -10,3 +10,7 @@
         src: url('../../../fonts/raleway/' + $fontFile + '.ttf');
     }
 }
+
+@mixin font($weight, $size, $lineHeight){
+    font: $weight #{$size}/#{$lineHeight} $fontFamily;
+}
