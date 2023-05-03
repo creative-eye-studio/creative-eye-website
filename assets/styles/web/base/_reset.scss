@@ -6,8 +6,30 @@ body{
     margin: 0;
 }
 
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+#website{
+    min-height: 100vh;
+}
+
+.fixed{
+    &-mobile{
+        @media screen and (max-width: 1199px) {
+            position: fixed;
+        }
+    }
+}
+
 .scroll-content{
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 1199px) {
         height: 100vh;
     }
 }

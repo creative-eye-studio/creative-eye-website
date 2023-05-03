@@ -7,6 +7,7 @@ export class ScrollWeb {
     }
 
     get init(){
+        var fixedElems = document.querySelectorAll('.fixed');
         const scrollbar = Scrollbar.init(document.querySelector('#content'), {
             damping: (this.damping / 100),
             renderByPixels: true,
@@ -15,6 +16,15 @@ export class ScrollWeb {
             thumbMinSize: 15
             // alwaysShowTracks: true,
         });
+
+        scrollbar.addListener(function(status) {
+            fixedElems.forEach(fixedElem => {
+                var offset = status.offset;
+                fixedElem.style.top = offset.y + 'px';
+                fixedElem.style.left = offset.x + 'px';
+            })
+        });
+
         return scrollbar;
     }
 }
