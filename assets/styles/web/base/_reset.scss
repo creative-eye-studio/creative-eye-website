@@ -10,6 +10,10 @@ a{
     text-decoration: none;
 }
 
+figure{
+    margin: 0;
+}
+
 ul{
     list-style-type: none;
     margin: 0;
@@ -20,11 +24,9 @@ ul{
     min-height: 100vh;
 }
 
-.fixed{
-    &-mobile{
-        @media screen and (max-width: 1199px) {
-            position: fixed;
-        }
+.fixed-scroll{
+    @media screen and (min-width: 1199px) {
+        position: fixed;
     }
 }
 

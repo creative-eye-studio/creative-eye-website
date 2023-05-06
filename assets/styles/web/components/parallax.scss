@@ -1,9 +1,10 @@
 .parallax-section {
     position: relative;
-    padding-top: 35%;
+    padding-top: 75%;
     overflow: hidden;
-	margin-bottom: 15vh;
-	background-color: lightcoral;
+	@media screen and (min-width: $lg) {
+		padding-top: 35%;
+	}
 }
 
 .parallax-element{

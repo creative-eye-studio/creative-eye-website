@@ -1,5 +1,4 @@
-// Typographie
-// ----------------------------------------------------------
+/* #region Typographie */
 @mixin typography($fontWeight, $fontFile, $fontStyle: false){
     @font-face {
         font-family: $fontFamily;
@@ -13,4 +12,298 @@
 
 @mixin font($weight, $size, $lineHeight){
     font: $weight #{$size}/#{$lineHeight} $fontFamily;
+    margin-top: 0;
 }
+/* #endregion Typographie */
+
+
+/* #region Grid */
+@mixin flexColSize($size){
+    padding: $padding-col;
+    width: calc(100% / $grid-size) * $size
+}
+
+@mixin flexBlockInit(){
+    @for $i from 1 through $grid-size{
+        &-#{$i}{
+             @include flexColSize($i);
+        }
+    }
+}
+/* #endregion Grid */
+
+
+/* #region Position */
+@mixin positionRespInit($status, $size){
+    position: $status;
+    @media screen and (max-width: $size) {
+        position: inherit;
+    }
+}
+
+@mixin positionInit($status){
+    position: $status;
+    &-no-lg{
+        @include positionRespInit($status, $lg);
+    }
+    &-no-md{
+        @include positionRespInit($status, $md);
+    }
+    &-no-sm{
+        @include positionRespInit($status, $sm);
+    }
+    &-no-xs{
+        @include positionRespInit($status, $xs);
+    }
+}
+/* #endregion Position */
+
+
+/* #region Width */
+@mixin widthInit($ht, $size){
+    width: $ht;
+    @media screen and (max-width: $size) {
+        width: inherit;
+    }
+}
+
+@mixin width($ht){
+    width: $ht;
+    &-no-lg{
+        @include widthInit($ht, $lg);
+    }
+    &-no-md{
+        @include widthInit($ht, $md);
+    }
+    &-no-sm{
+        @include widthInit($ht, $sm);
+    }
+    &-no-xs{
+        @include widthInit($ht, $xs);
+    }
+}
+/* #endregion Width */
+
+
+/* #region Height */
+@mixin heightInit($ht, $size){
+    height: $ht;
+    @media screen and (max-width: $size) {
+        height: inherit;
+    }
+}
+
+@mixin height($ht){
+    height: $ht;
+    &-no-lg{
+        @include heightInit($ht, $lg);
+    }
+    &-no-md{
+        @include heightInit($ht, $md);
+    }
+    &-no-sm{
+        @include heightInit($ht, $sm);
+    }
+    &-no-xs{
+        @include heightInit($ht, $xs);
+    }
+}
+/* #endregion Height */
+
+
+/* #region Borders */
+@mixin border-resp($size){
+    border: 1px solid grey;
+    @media screen and (max-width: $size) {
+        border: inherit;
+    }
+}
+
+@mixin border-right-resp($size){
+    border-right: 1px solid grey;
+    @media screen and (max-width: $size) {
+        border-right: inherit;
+    }
+}
+
+@mixin border-left-resp($size){
+    border-left: 1px solid grey;
+    @media screen and (max-width: $size) {
+        border-left: inherit;
+    }
+}
+
+@mixin border-top-resp($size){
+    border-top: 1px solid grey;
+    @media screen and (max-width: $size) {
+        border-top: inherit;
+    }
+}
+
+@mixin border-bottom-resp($size){
+    border-bottom: 1px solid grey;
+    @media screen and (max-width: $size) {
+        border-bottom: inherit;
+    }
+}
+/* #endregion Borders */
+
+
+/* #region Marges */
+@mixin margeInit($type, $side){
+    @if $side == 'null' {
+        #{type}: $marge-d-y $marge-d-x;
+    }
+    @if $side == 'top' {
+        #{type}-top: $marge-d-y;
+    }
+    @if $side == 'bottom' {
+        #{type}-bottom: $marge-d-y;
+    }
+    @if $side == 'left' {
+        #{type}-left: $marge-d-x;
+    }
+    @if $side == 'right' {
+        #{type}-right: $marge-d-x;
+    }
+}
+
+@mixin margeResp($type, $side, $size){
+    @media screen and (max-width: $size) {
+        @if $side == 'null' {
+            #{type}: $marge-m;
+        }
+        @if $side == 'top' {
+            #{type}-top: $marge-m;
+        }
+        @if $side == 'bottom' {
+            #{type}-bottom: $marge-m;
+        }
+        @if $side == 'left' {
+            #{type}-left: $marge-m;
+        }
+        @if $side == 'right' {
+            #{type}-right: $marge-m;
+        }
+    }
+    
+}
+
+@mixin margeType($type){
+    &-all{
+        @include margeInit($type, 'null');
+        &-no-lg{
+            @include margeResp($type, 'null', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'null', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'null', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'null', $xs);
+        }
+    }
+    &-vertical{
+        @include margeInit($type, 'top');
+        @include margeInit($type, 'bottom');
+        &-no-lg{
+            @include margeResp($type, 'top', $lg);
+            @include margeResp($type, 'bottom', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'top', $md);
+            @include margeResp($type, 'bottom', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'top', $sm);
+            @include margeResp($type, 'bottom', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'top', $xs);
+            @include margeResp($type, 'bottom', $xs);
+        }
+    }
+    &-horizontal{
+        @include margeInit($type, 'left');
+        @include margeInit($type, 'right');
+        &-no-lg{
+            @include margeResp($type, 'left', $lg);
+            @include margeResp($type, 'right', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'left', $md);
+            @include margeResp($type, 'right', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'left', $sm);
+            @include margeResp($type, 'right', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'left', $xs);
+            @include margeResp($type, 'right', $xs);
+        }
+    }
+    &-top{
+        @include margeInit($type, 'top');
+        &-no-lg{
+            @include margeResp($type, 'top', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'top', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'top', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'top', $xs);
+        }
+    }
+    &-bottom{
+        @include margeInit($type, 'bottom');
+        &-no-lg{
+            @include margeResp($type, 'bottom', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'bottom', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'bottom', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'bottom', $xs);
+        }
+    }
+    &-left{
+        @include margeInit($type, 'left');
+        &-no-lg{
+            @include margeResp($type, 'left', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'left', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'left', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'left', $xs);
+        }
+    }
+    &-right{
+        @include margeInit($type, 'right');
+        &-no-lg{
+            @include margeResp($type, 'right', $lg);
+        }
+        &-no-md{
+            @include margeResp($type, 'right', $md);
+        }
+        &-no-sm{
+            @include margeResp($type, 'right', $sm);
+        }
+        &-no-xs{
+            @include margeResp($type, 'right', $xs);
+        }
+    }
+}
+/* #endregion Marges */

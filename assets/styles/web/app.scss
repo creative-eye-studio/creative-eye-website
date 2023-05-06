@@ -7,8 +7,13 @@
 @import './base/typography';
 
 // COMPONENTS
+@import './components/grid';
 @import './components/parallax';
+@import './components/utils';
 
 // LAYOUT
 @import './layouts/header';
 @import './layouts/navigation';
+
+// PAGES
+@import './pages/home';

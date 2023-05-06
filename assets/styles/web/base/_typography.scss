@@ -37,3 +37,11 @@ h2{
 h3{
     @include font(400, 1.25em, 1.2em);
 }
+
+p{
+    margin-top: 0;
+    margin-bottom: 1.5em;
+    &:last-child{
+        margin-bottom: 0;
+    }
+}
