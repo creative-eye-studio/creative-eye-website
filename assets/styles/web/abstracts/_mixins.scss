@@ -59,56 +59,30 @@
 /* #endregion Position */
 
 
-/* #region Width */
-@mixin widthInit($ht, $size){
-    width: $ht;
-    @media screen and (max-width: $size) {
-        width: inherit;
+/* #region Width / Height */
+@mixin sizeInit($type, $size, $screen){
+    #{$type}: $size;
+    @media screen and (max-width: $screen) {
+        #{$type}: inherit;
     }
 }
 
-@mixin width($ht){
-    width: $ht;
+@mixin sizeType($type, $size){
+    #{$type}: $size;
     &-no-lg{
-        @include widthInit($ht, $lg);
+        @include sizeInit($type, $size, $lg);
     }
     &-no-md{
-        @include widthInit($ht, $md);
+        @include sizeInit($type, $size, $md);
     }
     &-no-sm{
-        @include widthInit($ht, $sm);
+        @include sizeInit($type, $size, $sm);
     }
     &-no-xs{
-        @include widthInit($ht, $xs);
+        @include sizeInit($type, $size, $xs);
     }
 }
-/* #endregion Width */
-
-
-/* #region Height */
-@mixin heightInit($ht, $size){
-    height: $ht;
-    @media screen and (max-width: $size) {
-        height: inherit;
-    }
-}
-
-@mixin height($ht){
-    height: $ht;
-    &-no-lg{
-        @include heightInit($ht, $lg);
-    }
-    &-no-md{
-        @include heightInit($ht, $md);
-    }
-    &-no-sm{
-        @include heightInit($ht, $sm);
-    }
-    &-no-xs{
-        @include heightInit($ht, $xs);
-    }
-}
-/* #endregion Height */
+/* #endregion Width / Height */
 
 
 /* #region Borders */

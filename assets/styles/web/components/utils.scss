@@ -1,16 +1,16 @@
 /* #region Width */
 .wd{
     &-100{
-        @include width(100%);
+        @include sizeType('width', 100%);
     }
     &-75{
-        @include width(75%);
+        @include sizeType('width', 75%);
     }
     &-50{
-        @include width(50%);
+        @include sizeType('width', 50%);
     }
     &-25{
-        @include width(25%);
+        @include sizeType('width', 25%);
     }
 }
 /* #endregion Width */
@@ -19,28 +19,28 @@
 /* #region Height */
 .ht{
     &-100{
-        @include height(100%);
+        @include sizeType('height', 100%);
     }
     &-75{
-        @include height(75%);
+        @include sizeType('height', 75%);
     }
     &-50{
-        @include height(50%);
+        @include sizeType('height', 50%);
     }
     &-25{
-        @include height(25%);
+        @include sizeType('height', 25%);
     }
     &-100vh{
-        @include height(100vh);
+        @include sizeType('height', 100vh);
     }
     &-75vh{
-        @include height(75vh);
+        @include sizeType('height', 75vh);
     }
     &-50vh{
-        @include height(50vh);
+        @include sizeType('height', 50vh);
     }
     &-25vh{
-        @include height(25vh);
+        @include sizeType('height', 25vh);
     }
 }
 /* #endregion Height */
