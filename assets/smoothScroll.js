@@ -7,7 +7,7 @@ export class ScrollWeb {
     }
 
     get init(){
-        var fixedElems = document.querySelectorAll('.position-fixed');
+        var fixedElems = document.querySelectorAll('.fixed-scroll');
         const scrollbar = Scrollbar.init(document.querySelector('#content'), {
             damping: (this.damping / 100),
             renderByPixels: true,

@@ -1,52 +1,50 @@
-.parallax-text{
-    .text{
-        padding: $marge-m;
-    }
-}
-
-.panel1,
-.panel3,
-.panel4,
-.panel5,
-.panel6,
-.panel7{
-    @extend .container-fluid;
-    padding: $marge-m;
-}
-
 .panel1{
-    @extend .ht-100vh-no-sm;
-    background: linear-gradient(177.56deg, #05495A 2.04%, #002131 97.96%);
-    color: rgba($color: #fff, $alpha: 1.0);
     .text{
+        background-color: $color-p-dark;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         h1{
-            font-size: 1em;
-            font-weight: 400;
             margin-bottom: 0;
         }
-        .big{
-            font-size: 1.2em;
-        }
-    }
-}
-
-.panel3{
-    background-color: $color-d;
-    .block-mission{
-        &:not(:last-child){
-            margin-bottom: $marge-m;
-        }
-        .row{
-            background-color: white;
-            padding: calc(#{$marge-m} / 2);
-        }
         h2{
-            color: white;
+            font-size: 3.19vw;
+            line-height: 4vw;
+            margin: calc(#{$marge-m} / 2) 0 $marge-d-y;
+        }
+        .big{
+            font-size: 1.415vw;
+            line-height: 1.5em;
         }
     }
 }
 
-.panel6{
-    background: linear-gradient(177.56deg, #05495A 2.04%, #002131 97.96%);
+.panel2{
+    background-color: $color-p;
+    color: $color-d;
+    hr{
+        border: 1px solid $color-s;
+    }
+    .block-mission{
+        background-color: rgba($color: #fff, $alpha: .9);
+        color: black;
+        h3{
+            color: $color-s-dark;
+            font-weight: 500;
+            line-height: 1.2em;
+            margin-bottom: $marge-d-y;
+        }
+    }
+    h2{
+        font-size: 3em;
+    }
+}
+
+.panel5{
+    background-color: $color-p-dark;
     color: white;
+    h3{
+        color: $color-s-dark;
+    }
 }

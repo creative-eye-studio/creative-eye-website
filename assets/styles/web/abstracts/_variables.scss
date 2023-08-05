@@ -1,7 +1,10 @@
 // COLORS
-$color: #05495A;
-$color-d: darken($color, 5%);
-$color-l: lighten($color, 5%);
+$color-p: #095577;
+$color-p-dark: darken($color-p, 8%);
+$color-s: #FFB875;
+$color-s-dark: darken($color-s, 18%);
+$color-d: #FFFCF5;
+$color-d-dark: darken($color-d, 15%);
 
 // FONTS
 $fontFamily: 'Raleway';
@@ -12,11 +15,11 @@ $padding-col: 1rem;
 
 // MARGES
 $marge-m: 2rem;
-$marge-d-x: 4vw;
-$marge-d-y: 3vw;
+$marge-d-x: 10vw;
+$marge-d-y: 5vw;
 
 // SCREEN SIZES
-$lg: '1200px';
+$lg: '1440px';
 $md: '1024px';
 $sm: '768px';
 $xs: '640px';

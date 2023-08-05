@@ -19,28 +19,28 @@
 /* #region Height */
 .ht{
     &-100{
-        @include sizeType('height', 100%);
+        @include sizeType('min-height', 100%);
     }
     &-75{
-        @include sizeType('height', 75%);
+        @include sizeType('min-height', 75%);
     }
     &-50{
-        @include sizeType('height', 50%);
+        @include sizeType('min-height', 50%);
     }
     &-25{
-        @include sizeType('height', 25%);
+        @include sizeType('min-height', 25%);
     }
     &-100vh{
-        @include sizeType('height', 100vh);
+        @include sizeType('min-height', 100vh);
     }
     &-75vh{
-        @include sizeType('height', 75vh);
+        @include sizeType('min-height', 75vh);
     }
     &-50vh{
-        @include sizeType('height', 50vh);
+        @include sizeType('min-height', 50vh);
     }
     &-25vh{
-        @include sizeType('height', 25vh);
+        @include sizeType('min-height', 25vh);
     }
 }
 /* #endregion Height */
@@ -119,7 +119,7 @@
         @include positionInit('static');
     }
     &-fixed{
-        @include positionInit('fixed');
+        @include positionInit(fixed);
     }
     &-absolute{
         @include positionInit('absolute');

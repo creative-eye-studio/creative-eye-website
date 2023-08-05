@@ -11,7 +11,7 @@
 }
 
 @mixin font($weight, $size, $lineHeight){
-    font: $weight #{$size}/#{$lineHeight} $fontFamily;
+    font: $weight calc((#{$size} / 16) * 1em)/calc((#{$lineHeight} / 16) * 1em) $fontFamily;
     margin-top: 0;
 }
 /* #endregion Typographie */
@@ -19,14 +19,25 @@
 
 /* #region Grid */
 @mixin flexColSize($size){
-    padding: $padding-col;
-    width: calc(100% / $grid-size) * $size
+    padding: 0 $padding-col;
+    width: calc(100% / $grid-size) * $size;
+    &-no-marge{
+        padding: 0;
+        width: calc(100% / $grid-size) * $size;
+    }
+}
+
+@mixin pushColSize($size){
+    margin-left: calc(100% / $grid-size) * $size;
 }
 
 @mixin flexBlockInit(){
-    @for $i from 1 through $grid-size{
+    @for $i from 0 through $grid-size{
         &-#{$i}{
-             @include flexColSize($i);
+            @include flexColSize($i);
+        }
+        &-push-#{$i}{
+            @include pushColSize($i)
         }
     }
 }
@@ -126,38 +137,45 @@
 /* #region Marges */
 @mixin margeInit($type, $side){
     @if $side == 'null' {
-        #{type}: $marge-d-y $marge-d-x;
+        #{$type}: $marge-d-y $marge-d-x;
+    }
+    @if $side == 'auto' {
+        #{$type}: auto;
+    }
+    @if $side == 'none' {
+        #{$type}: 0;
     }
     @if $side == 'top' {
-        #{type}-top: $marge-d-y;
+        #{$type}-top: $marge-d-y;
     }
     @if $side == 'bottom' {
-        #{type}-bottom: $marge-d-y;
+        #{$type}-bottom: $marge-d-y;
     }
     @if $side == 'left' {
-        #{type}-left: $marge-d-x;
+        #{$type}-left: $marge-d-x;
     }
     @if $side == 'right' {
-        #{type}-right: $marge-d-x;
+        #{$type}-right: $marge-d-x;
     }
 }
 
 @mixin margeResp($type, $side, $size){
+    @include margeInit($type, $side);
     @media screen and (max-width: $size) {
         @if $side == 'null' {
-            #{type}: $marge-m;
+            #{$type}: $marge-m;
         }
         @if $side == 'top' {
-            #{type}-top: $marge-m;
+            #{$type}-top: $marge-m;
         }
         @if $side == 'bottom' {
-            #{type}-bottom: $marge-m;
+            #{$type}-bottom: $marge-m;
         }
         @if $side == 'left' {
-            #{type}-left: $marge-m;
+            #{$type}-left: $marge-m;
         }
         @if $side == 'right' {
-            #{type}-right: $marge-m;
+            #{$type}-right: $marge-m;
         }
     }
     
@@ -178,6 +196,12 @@
         &-no-xs{
             @include margeResp($type, 'null', $xs);
         }
+    }
+    &-none{
+        @include margeInit($type, 'none');
+    }
+    &-auto{
+        @include margeInit($type, 'auto');
     }
     &-vertical{
         @include margeInit($type, 'top');
@@ -221,6 +245,9 @@
     }
     &-top{
         @include margeInit($type, 'top');
+        &-none{
+            margin-top: 0;
+        }
         &-no-lg{
             @include margeResp($type, 'top', $lg);
         }
@@ -236,6 +263,9 @@
     }
     &-bottom{
         @include margeInit($type, 'bottom');
+        &-none{
+            margin-bottom: 0;
+        }
         &-no-lg{
             @include margeResp($type, 'bottom', $lg);
         }
@@ -251,6 +281,9 @@
     }
     &-left{
         @include margeInit($type, 'left');
+        &-none{
+            margin-left: 0;
+        }
         &-no-lg{
             @include margeResp($type, 'left', $lg);
         }
@@ -266,6 +299,9 @@
     }
     &-right{
         @include margeInit($type, 'right');
+        &-none{
+            margin-right: 0;
+        }
         &-no-lg{
             @include margeResp($type, 'right', $lg);
         }
@@ -281,3 +317,4 @@
     }
 }
 /* #endregion Marges */
+

@@ -1,0 +1,18 @@
+footer{
+    padding: $marge-m;
+    width: 100%;
+    font-size: .9em;
+    color: white;
+    background-color: $color-p-dark;
+    .col-6{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    ul{
+        display: flex;
+        justify-content: center;
+        gap: $marge-m;
+    }
+}

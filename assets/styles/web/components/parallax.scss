@@ -1,9 +1,17 @@
 .parallax-section {
     position: relative;
-    padding-top: 75%;
     overflow: hidden;
-	@media screen and (min-width: $lg) {
-		padding-top: 35%;
+	&.parallax-ht-25{
+		padding-top: 25vh;
+	}
+	&.parallax-ht-50{
+		padding-top: 50vh;
+	}
+	&.parallax-ht-75{
+		padding-top: 75vh;
+	}
+	&.parallax-ht-100{
+		padding-top: 100vh;
 	}
 }
 

@@ -23,19 +23,22 @@
 @include typography(900, 'raleway-blackitalic', true);
 
 body{
-    @include font(300, 1.0em, 1.5em);
+    @include font(400, 18.5, 27);
 }
 
 h1{
-    @include font(600, 1.75em, 1.2em);
+    @include font(600, 40, 48);
+    &.small{
+        @include font(600, 18, 24);
+    }
 }
 
 h2{
-    @include font(500, 1.5em, 1.2em);
+    @include font(500, 38, 26);
 }
 
 h3{
-    @include font(400, 1.25em, 1.2em);
+    @include font(400, 32, 40);
 }
 
 p{
