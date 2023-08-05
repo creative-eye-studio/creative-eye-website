@@ -1,0 +1,24 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Gestion des services{% endblock %}
+
+{% block body %}
+    <section class="block">
+        {% if route == 'ext_services_add' or route == 'ext_services_update' %}
+            <a class="btn-link float-right" href="{{ path('ext_services') }}">Retour à la liste</a>
+        {% else %}
+            <a class="btn-link float-right" href="{{ path('ext_services_add') }}">Créer un service</a>
+        {% endif %}
+
+        <h2>{{ title }}</h2>
+
+        {% if route == 'ext_services' %}
+            {{ include('ext_services/list.html.twig') }}
+        {% endif %}
+        
+        {% if route == 'ext_services_add' or route == 'ext_services_update' %}
+            {{ include('ext_services/form.html.twig') }}
+        {% endif %}
+
+    </section>
+{% endblock %}

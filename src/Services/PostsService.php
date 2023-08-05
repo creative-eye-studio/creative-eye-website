@@ -7,7 +7,6 @@ use App\Form\PostsAdminFormType;
 use Cocur\Slugify\Slugify;
 use DateTimeImmutable;
 use Doctrine\Persistence\ManagerRegistry;
-use PhpParser\Node\Stmt\TryCatch;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;

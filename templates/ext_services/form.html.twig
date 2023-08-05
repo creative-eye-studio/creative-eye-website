@@ -1,0 +1,16 @@
+{% set titre = ftitre is empty ? null : ftitre[0] %}
+{% set soustitre = fsous_titre is empty ? null : fsous_titre[0] %}
+{% set thumb = fthumb is empty ? '' : fthumb %}
+{% set services = fservices is empty ? null : fservices[0] %}
+{% set intro = fintro_fr is empty ? null : fintro_fr %}
+{% set contenu = fcontenu_fr is empty ? null : fcontenu_fr %}
+
+{{ form_start(form) }}
+    {{ form_row(form.titre, {value: titre}) }}
+    {{ form_row(form.sous_titre, {value: soustitre}) }}
+    {{ form_row(form.thumb, {value: thumb}) }}
+    {{ form_row(form.intro, {value: intro}) }}
+    {{ form_row(form.contenu, {value: contenu}) }}
+    {{ form_row(form.services, {value: services}) }}
+    {{ form_row(form.submit) }}
+{{ form_end(form) }}

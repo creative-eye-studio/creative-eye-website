@@ -27,13 +27,17 @@ const values = {
 // Instantieur
 // -----------------------------------------------
 document.addEventListener('DOMContentLoaded', function(){
-    createApp({
-    //     Configuration de votre application Vue.js
-    }).mount('#website');
-    AOS.init();
+    createApp({}).mount('#website');
     scrollWeb();
     parallax();
+    AOS.init();
 });
+
+document.addEventListener('swup:contentReplaced', function() {
+    parallax();
+});
+
+
 
 // Smooth Scrollbar
 // -----------------------------------------------

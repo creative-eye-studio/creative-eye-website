@@ -1,0 +1,18 @@
+{% if services|length > 0 %}
+    {% for service in services %}
+    <div class="line">
+        <span>{{ service.titre[0] }}</span>
+        <ul>
+            <li>
+                <a href="{{ path('ext_services_update', {serv_id: service.id}) }}">Modifier</a>
+            </li>
+            <li>
+                <a href="">Supprimer</a>
+            </li>
+        </ul>
+    </div>
+    {% endfor %}
+{% else %}
+    <p>Aucun service n'a encore été ajouté</p>
+{% endif %}
+
