@@ -13,38 +13,40 @@ import './bootstrap';
 
 import { ScrollWeb } from './smoothScroll';
 import { Parallax } from './parallax';
-import * as Vue from 'vue';
+import { createApp } from 'vue';
 import AOS from 'aos';
 
 // Variables
 // -----------------------------------------------
-var pageDatas = document.querySelector('body')
-var values = {
+const pageDatas = document.querySelector('body');
+const values = {
     damping: pageDatas.dataset.damping,
     scrollImgSpeed: pageDatas.dataset.scrollimg
-}
+};
 
 // Instantieur
 // -----------------------------------------------
 document.addEventListener('DOMContentLoaded', function(){
-    Vue.createApp({}).mount('#website');
+    createApp({
+    //     Configuration de votre application Vue.js
+    }).mount('#website');
     AOS.init();
     scrollWeb();
     parallax();
-})
+});
 
 // Smooth Scrollbar
 // -----------------------------------------------
 function scrollWeb() {
-    let scrollWeb = new ScrollWeb(values.damping);
+    const scrollWeb = new ScrollWeb(values.damping);
     scrollWeb.init;
     return scrollWeb;
 }
 
 // Parallax
 // -----------------------------------------------
-function parallax(){
-    let parallax = new Parallax(values.damping, values.scrollImgSpeed);
+function parallax() {
+    const parallax = new Parallax(values.damping, values.scrollImgSpeed);
     parallax.initParallax();
     return parallax;
 }

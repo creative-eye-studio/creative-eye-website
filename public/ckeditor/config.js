@@ -21,7 +21,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.emailProtection = 'encode';
 	config.entities = false;
 	config.extraAllowedContent = 'i';
-	config.extraPlugins = 'codemirror,templates,video,widget';
+	config.extraPlugins = 'codemirror,templates,video,widget,responsiveimage';
+	config.removePlugins = 'image';
 	config.height = 300;
 	config.startupMode = 'source';
 };

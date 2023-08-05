@@ -25,7 +25,3 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
-
-###> symfony/webpages ###
-#/templates/webpages/
-###< symfony/webpages ###
