@@ -90,6 +90,8 @@ class ExtServicesController extends AbstractController
             // Envoi des données vers la BDD
             $em->persist($service);
             $em->flush();
+
+            return $this->redirect($request->getUri());
         }
 
         return $this->render('ext_services/index.html.twig', [

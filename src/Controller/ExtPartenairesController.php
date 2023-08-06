@@ -87,6 +87,8 @@ class ExtPartenairesController extends AbstractController
             // Envoi des données vers la BDD
             $em->persist($data);
             $em->flush();
+
+            return $this->redirect($request->getUri());
         }
 
         return $this->render('ext_partenaires/index.html.twig', [
