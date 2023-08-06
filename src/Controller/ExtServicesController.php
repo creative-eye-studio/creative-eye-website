@@ -78,7 +78,7 @@ class ExtServicesController extends AbstractController
             $service->setContenu($contenu);
 
             // Services
-            $serviceList = explode('; ' | ';', $form->get('services')->getData());
+            $serviceList = explode('; ', $form->get('services')->getData());
             $service->setServices($serviceList);
 
             // URL

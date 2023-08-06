@@ -1,8 +1,17 @@
 <div class="nav-item nav-link-{{ item.id }}" data-order="{{ item.orderlink }}" data-id="{{ item.id }}">
     <div class="line">
-        {% set postType = item.post is not null ? 'Post' %}
-        {% set itemType = item.page is not null ? 'Page' : 'Lien' %}
         {% set cusname = item.cusname[0] ?: '' %}
+        
+        {% if item.post is not null %}
+            {% set itemType = 'Post' %}
+        {% elseif item.page is not null %}
+            {% set itemType = 'Page' %}
+        {% elseif item.extservice is not null %}
+            {% set itemType = 'Service' %}
+        {% else %}
+            {% set itemType = 'Lien' %}
+        {% endif %}
+
         <span>[{{ itemType ? itemType : postType }}] - {{ cusname }}</span>
         <ul>
             <li><span class="nav-update" data-url="{{ path('app_admin_nav_manage_link', { id_link: item.id }) }}">Modifier</span></li>

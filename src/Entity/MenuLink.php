@@ -27,6 +27,9 @@ class MenuLink
     #[ORM\ManyToOne(inversedBy: 'menuLinks')]
     private ?PostsList $post = null;
 
+    #[ORM\ManyToOne(inversedBy: 'menuLinks')]
+    private ?ExtServices $ext_service = null;
+
     #[ORM\Column(nullable: true)]
     private ?array $cus_name = null;
 
@@ -223,6 +226,18 @@ class MenuLink
                 $sousMenu->setMenuLink(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getExtService(): ?ExtServices
+    {
+        return $this->ext_service;
+    }
+
+    public function setExtService(?ExtServices $ext_service): static
+    {
+        $this->ext_service = $ext_service;
 
         return $this;
     }

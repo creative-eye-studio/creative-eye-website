@@ -24,6 +24,7 @@
                     <ul class="tabs tabs-btn">
                         <li><a class="tab active">Pages</a></li>
                         <li><a class="tab">Posts</a></li>
+                        <li><a class="tab">Services</a></li>
                         <li><a class="tab">Lien</a></li>
                     </ul>
                     <div class="tab-panes mt">
@@ -37,6 +38,13 @@
                         </div>
                         <div class="tab-pane">
                             {% for item in nav_form.posts %}
+                                <div class="item">
+                                    {{ form_widget(item) }} {{ form_label(item) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="tab-pane">
+                            {% for item in nav_form.services %}
                                 <div class="item">
                                     {{ form_widget(item) }} {{ form_label(item) }}
                                 </div>

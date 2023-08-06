@@ -27,12 +27,14 @@ class AdminNavigationController extends AbstractController
 
             $pagesToInsert = [];
             $postsToInsert = [];
+            $servicesToInsert = [];
             $cusName = $nav_links_form->get('cus_name')->getData();
             $cusLink = $nav_links_form->get('cus_link')->getData();
 
             // Collect pages and posts data to be inserted
             $pages = $nav_links_form->get('pages')->getData();
             $posts = $nav_links_form->get('posts')->getData();
+            $services = $nav_links_form->get('services')->getData();
 
             foreach ($pages as $link) {
                 $oldLink = $em->getRepository(MenuLink::class)->findOneBy([
@@ -56,6 +58,17 @@ class AdminNavigationController extends AbstractController
                 }
             }
 
+            foreach ($services as $link) {
+                $oldLink = $em->getRepository(MenuLink::class)->findOneBy([
+                    'menu' => $id_menu,
+                    'ext_service' => $link
+                ]);
+
+                if (!$oldLink) {
+                    $servicesToInsert[] = $link;
+                }
+            }
+
             // Combine insertions
             $menuLinksToInsert = [];
 
@@ -73,6 +86,15 @@ class AdminNavigationController extends AbstractController
                 $menuLink->setMenu($menu);
                 $menuLink->setCusName($link->getPostName());
                 $menuLink->setPost($link);
+                $menuLink->setOrderLink(0);
+                $menuLinksToInsert[] = $menuLink;
+            }
+
+            foreach ($servicesToInsert as $link) {
+                $menuLink = new MenuLink();
+                $menuLink->setMenu($menu);
+                $menuLink->setCusName($link->getTitre());
+                $menuLink->setExtService($link);
                 $menuLink->setOrderLink(0);
                 $menuLinksToInsert[] = $menuLink;
             }

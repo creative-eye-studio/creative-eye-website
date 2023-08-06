@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\ExtServices;
 use App\Entity\PagesList;
 use App\Entity\PostsList;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,6 +27,13 @@ class NavLinksFormType extends AbstractType
             ->add('posts', EntityType::class, [
                 'class' => PostsList::class,
                 'choice_label' => 'post_name[0]',
+                'label' => false,
+                'multiple' => true,
+                'expanded' => true
+            ])
+            ->add('services', EntityType::class, [
+                'class' => ExtServices::class,
+                'choice_label' => 'titre[0]',
                 'label' => false,
                 'multiple' => true,
                 'expanded' => true

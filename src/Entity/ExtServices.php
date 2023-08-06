@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ExtServicesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExtServicesRepository::class)]
@@ -33,6 +35,14 @@ class ExtServices
 
     #[ORM\Column(length: 255)]
     private ?string $url = null;
+
+    #[ORM\OneToMany(mappedBy: 'ext_service', targetEntity: MenuLink::class)]
+    private Collection $menuLinks;
+
+    public function __construct()
+    {
+        $this->menuLinks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -119,6 +129,36 @@ class ExtServices
     public function setUrl(string $url): static
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MenuLink>
+     */
+    public function getMenuLinks(): Collection
+    {
+        return $this->menuLinks;
+    }
+
+    public function addMenuLink(MenuLink $menuLink): static
+    {
+        if (!$this->menuLinks->contains($menuLink)) {
+            $this->menuLinks->add($menuLink);
+            $menuLink->setExtService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMenuLink(MenuLink $menuLink): static
+    {
+        if ($this->menuLinks->removeElement($menuLink)) {
+            // set the owning side to null (unless already changed)
+            if ($menuLink->getExtService() === $this) {
+                $menuLink->setExtService(null);
+            }
+        }
 
         return $this;
     }
