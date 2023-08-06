@@ -57,7 +57,7 @@ class ExtServicesController extends AbstractController
                 $newFileName = $safeFileName . '.' . $thumb->guessExtension();
                 try {
                     $thumb->move(
-                        '/uploads/images/services',
+                        'uploads/images/services',
                         $newFileName
                     );
                     $service->setThumb($newFileName);

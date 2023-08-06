@@ -48,7 +48,7 @@ class ExtPartenairesController extends AbstractController
                 $newFileName = $safeFileName . '.' . $logo->guessExtension();
                 try {
                     $logo->move(
-                        '/uploads/images/services',
+                        'uploads/images/partners/logos',
                         $newFileName
                     );
                     $data->setLogo($newFileName);
@@ -68,7 +68,7 @@ class ExtPartenairesController extends AbstractController
                 $newFileName = $safeFileName . '.' . $photo->guessExtension();
                 try {
                     $photo->move(
-                        '/uploads/images/services',
+                        'uploads/images/partners/photos',
                         $newFileName
                     );
                     $data->setPhoto($newFileName);
