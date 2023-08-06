@@ -23,8 +23,11 @@ class ExtServicesController extends AbstractController
 
         if ($route_name == 'ext_services_update') {
             $service = $services_ent->findOneBy(['id' => $serv_id]);
+            $serv_list = implode(',', $service->getServices());
+            $serv_list = str_replace(',', '; ', $serv_list);
         } else {
             $service = new ExtServices();
+            $serv_list = '';
         }
 
         $form = $this->createForm(ExtServicesType::class, $service);
@@ -75,7 +78,7 @@ class ExtServicesController extends AbstractController
             $service->setContenu($contenu);
 
             // Services
-            $serviceList = explode(';', $form->get('services')->getData());
+            $serviceList = explode('; ' | ';', $form->get('services')->getData());
             $service->setServices($serviceList);
 
             // URL
@@ -97,9 +100,9 @@ class ExtServicesController extends AbstractController
             'ftitre' => $service->getTitre(),
             'fsous_titre' => $service->getSousTitre(),
             'fthumb' => $service->getThumb(),
-            'fservices' => $service->getServices(),
-            'fintro_fr' => htmlspecialchars_decode($intro[0]),
-            'fcontenu_fr' => html_entity_decode($contenu[0])
+            'fservices' => $serv_list,
+            'fintro_fr' => $intro ? htmlspecialchars_decode($intro[0]) : '',
+            'fcontenu_fr' => $contenu ? htmlspecialchars_decode($contenu[0]) : ''
         ]);
     }
 
