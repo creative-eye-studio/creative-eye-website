@@ -1,0 +1,14 @@
+{% if partners %}
+    {% for partner in partners %}
+        <div class="line">
+            <span>{{ partner.nom }}</span>
+            <ul>
+                <li><a href="{{ path('app_ext_partenaires_update', { data_id: partner.id }) }}">Modifier</a></li>
+                <li><a href="{{ path('app_ext_partenaires_delete', { data_id: partner.id }) }}">Supprimer</a></li>
+            </ul>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>Aucun partenaire n'a encore été ajouté</p>
+{% endif %}
+

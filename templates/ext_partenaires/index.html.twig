@@ -1,0 +1,23 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}{{ titre_page }}{% endblock %}
+
+{% block body %}
+    <section class="block">
+
+        {% if route == 'app_ext_partenaires' %}
+            <a href="{{ path('app_ext_partenaires_add') }}" class="btn-link float-right">Ajouter un partenaire</a>
+        {% else %}
+            <a href="{{ path('app_ext_partenaires') }}" class="btn-link float-right">Retour à la liste</a>
+        {% endif %}
+
+        <h2>{{ titre_page }}</h2>
+        {% if route == 'app_ext_partenaires' %}
+            {{ include('ext_partenaires/list.html.twig') }}
+        {% endif %}
+
+        {% if route == 'app_ext_partenaires_add' or  route == 'app_ext_partenaires_update' %}
+            {{ include('ext_partenaires/form.html.twig') }}
+        {% endif %}
+    </section>
+{% endblock %}
