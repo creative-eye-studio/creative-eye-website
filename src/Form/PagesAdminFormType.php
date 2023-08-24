@@ -22,41 +22,62 @@ class PagesAdminFormType extends AbstractType
             ->add('page_name_fr', TextType::class, [
                 'label' => 'Nom de la page',
                 'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('page_content_fr', CKEditorType::class, [
                 'label' => 'Contenu de la page (FR)',
                 'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ],
                 'attr' => [
                     // Ajoutez une classe CSS pour identifier le champ de texte
                     'class' => 'grapesjs-editor',
-                ],
+                ]
             ])
             ->add('page_meta_title_fr', TextType::class, [
                 'label' => 'Balise Meta Title (FR)',
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('page_meta_desc_fr', TextareaType::class, [
                 'label' => 'Balise Meta Description (FR)',
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
 
             // Global
             ->add('page_url', TextType::class, [
                 'label' => 'URL de la page',
                 'required' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('status', ChoiceType::class, [
                 'label' => "Visibilité de la page",
                 'choices' => [
                     "En brouillon" => false,
                     "Publié" => true
+                ],
+                'row_attr' => [
+                    'class' => "form-row"
                 ]
             ])
             ->add('blocked_page', CheckboxType::class, [
                 'label' => 'Page fixe',
-                'required' => false, 
+                'required' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
 
             ->add('page_submit', SubmitType::class, [

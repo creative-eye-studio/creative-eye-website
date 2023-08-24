@@ -15,6 +15,7 @@ import { ScrollWeb } from './smoothScroll';
 import { Parallax } from './parallax';
 import { createApp } from 'vue';
 import AOS from 'aos';
+import LastPosts from './vue/controllers/LastPosts';
 
 // Variables
 // -----------------------------------------------
@@ -27,10 +28,12 @@ const values = {
 // Instantieur
 // -----------------------------------------------
 document.addEventListener('DOMContentLoaded', function(){
-    createApp({}).mount('#website');
+    AOS.init();
     scrollWeb();
     parallax();
-    AOS.init();
+    createApp({
+        components: { LastPosts }
+    }).mount('#website');
 });
 
 document.addEventListener('swup:contentReplaced', function() {

@@ -63,6 +63,12 @@ a{
     float: right;
 }
 
+.form-row{
+    &:not(:last-child){
+        margin-bottom: 1rem;
+    }
+}
+
 .mt{
     margin-top: 1.75rem;
 }

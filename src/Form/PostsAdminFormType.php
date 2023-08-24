@@ -22,38 +22,59 @@ class PostsAdminFormType extends AbstractType
             // FR
             ->add('post_name_fr', TextType::class, [
                 'label' => "Nom de l'article (FR)",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('post_content_fr', CKEditorType::class, [
                 'label' => "Contenu de l'article (FR)",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('post_meta_title_fr', TextType::class, [
                 'label' => "Meta Title de l'article (FR)",
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('post_meta_desc_fr', TextareaType::class, [
                 'label' => "Meta Description de l'article (FR)",
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
 
             // GLOBAL
             ->add('post_thumb', DropzoneType::class, [
                 'label' => "Image de l'article",
                 'required' => false,
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('post_url', HiddenType::class, [
                 'label' => "URL de l'article (Optionnel)",
-                'required' => false
+                'required' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('online', ChoiceType::class, [
                 'label' => "Visibilité de l'article",
                 'choices' => [
                     "En brouillon" => false,
                     "Publié" => true
+                ],
+                'row_attr' => [
+                    'class' => "form-row"
                 ]
             ])
             ->add('submit', SubmitType::class, [

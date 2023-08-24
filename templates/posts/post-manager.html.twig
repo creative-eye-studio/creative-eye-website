@@ -17,26 +17,29 @@
             <fieldset class="tab-pane {% if loop.index == 1 %}active{% endif %}">
                 <legend>Contenu en {{ language }}</legend>
                 {% set postNameField = attribute(form, 'post_name_' ~ prefix) %}
-                <p>{{ form_row(postNameField, { 'value': attribute(_context, 'postName_' ~ prefix)|default }) }}</p>
+                {{ form_row(postNameField, { 'value': attribute(_context, 'postName_' ~ prefix)|default }) }}
 
                 {% set postContentField = attribute(form, 'post_content_' ~ prefix) %}
-                <p>{{ form_row(postContentField, { 'value': attribute(_context, 'postContent_' ~ prefix)|default }) }}</p>
+                {{ form_row(postContentField, { 'value': attribute(_context, 'postContent_' ~ prefix)|default }) }}
                 
                 {% set postMetaTitleField = attribute(form, 'post_meta_title_' ~ prefix) %}
-                <p>{{ form_row(postMetaTitleField, { 'value': attribute(_context, 'metaTitle_' ~ prefix)|default }) }}</p>
+                {{ form_row(postMetaTitleField, { 'value': attribute(_context, 'metaTitle_' ~ prefix)|default }) }}
 
                 {% set postMetaDescField = attribute(form, 'post_meta_desc_' ~ prefix) %}
-                <p>{{ form_row(postMetaDescField, { 'value': attribute(_context, 'metaDesc_' ~ prefix)|default }) }}</p>
+                {{ form_row(postMetaDescField, { 'value': attribute(_context, 'metaDesc_' ~ prefix)|default }) }}
             </fieldset>
             {% endfor %}
             <hr />
             <fieldset>
                 <legend>Autres informations</legend>
-                <p>{{ form_row(form.online) }}</p>
-                <p>{{ form_row(form.post_thumb) }}</p>
-                <p>{{ form_row(form.post_url) }}</p>
+                <div class="form-row">
+                    {{ form_label(form.online) }}<br />
+                    {{ form_widget(form.online) }}
+                </div>
+                {{ form_row(form.post_thumb) }}
+                {{ form_row(form.post_url) }}
             </fieldset>
-            <p>{{ form_row(form.submit) }}</p>
+            {{ form_row(form.submit) }}
         {{ form_end(form) }}
     </section>
 {% endblock %}

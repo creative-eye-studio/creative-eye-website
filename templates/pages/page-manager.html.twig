@@ -21,35 +21,33 @@
                     <legend>Contenu en {{ language }}</legend>
 
                     {% set metaNameField = attribute(form, 'page_name_' ~ prefix) %}
-                    <p>{{ form_row(metaNameField, { 'value': attribute(_context, 'name_' ~ prefix)|default }) }}</p>
+                    {{ form_row(metaNameField, { 'value': attribute(_context, 'name_' ~ prefix)|default }) }}
 
                     {% set contentField = attribute(form, 'page_content_' ~ prefix) %}
-                    <p>
-                        {{ form_label(contentField) }}<br />
-                        {{ form_widget(contentField, { 'value': attribute(_context, 'pageContent_' ~ prefix)|default }) }}
-                    </p>
+                    {{ form_row(contentField, { 'value': attribute(_context, 'pageContent_' ~ prefix)|default }) }}
 
                     {% set metaTitleField = attribute(form, 'page_meta_title_' ~ prefix) %}
-                    <p>{{ form_row(metaTitleField, { 'value': attribute(_context, 'metaTitle_' ~ prefix)|default }) }}</p>
+                    {{ form_row(metaTitleField, { 'value': attribute(_context, 'metaTitle_' ~ prefix)|default }) }}
 
                     {% set metaDescField = attribute(form, 'page_meta_desc_' ~ prefix) %}
-                    <p>{{ form_row(metaDescField, { 'value': attribute(_context, 'metaDesc_' ~ prefix)|default }) }}</p>
+                    {{ form_row(metaDescField, { 'value': attribute(_context, 'metaDesc_' ~ prefix)|default }) }}
+                    
                 </fieldset>
             {% endfor %}
         </div>
 
         <hr />
         
-        <p>{{ form_row(form.page_url) }}</p>
+        {{ form_row(form.page_url) }}
 
-        <p {% if is_granted('ROLE_EDITOR') == false %} class="d-none" {% endif %} >
+        <div  class="form-row{% if is_granted('ROLE_EDITOR') == false %} d-none{% endif %}"  >
             {{ form_label(form.status) }}<br />
             {{ form_widget(form.status) }}
-        </p>
+        </div>
 
-        <p {% if is_granted('ROLE_ADMIN') == false %} class="d-none" {% endif %} >
+        <div class="form-row{% if is_granted('ROLE_ADMIN') == false %} d-none{% endif %}">
             {{ form_widget(form.blocked_page) }} {{ form_label(form.blocked_page) }}
-        </p>
+        </div>
 
         <!-- Submit -->
         <div class="btn-list">

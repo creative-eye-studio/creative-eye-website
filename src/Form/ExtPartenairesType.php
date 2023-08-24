@@ -17,26 +17,41 @@ class ExtPartenairesType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'label' => "Nom"
+                'label' => "Nom",
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('societe', TextType::class, [
-                'label' => "Société"
+                'label' => "Société",
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('logo', DropzoneType::class, [
                 'label' => "Logo",
                 'required' => false,
                 'mapped' => false,
-                'data_class' => null
+                'data_class' => null,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('photo', DropzoneType::class, [
                 'label' => "Image du gérant",
                 'required' => false,
                 'mapped' => false,
-                'data_class' => null
+                'data_class' => null,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('texte', CKEditorType::class, [
                 'label' => "Texte de présentation",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => "Envoyer"

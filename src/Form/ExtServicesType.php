@@ -18,32 +18,50 @@ class ExtServicesType extends AbstractType
         $builder
             ->add('titre', TextType::class, [
                 'label' => "Titre du service",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('sous_titre', TextType::class, [
                 'label' => "Sous-titre du service",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('thumb', DropzoneType::class, [
                 'label' => "Image du service",
                 'required' => false,
                 'data_class' => null,
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('intro', CKEditorType::class, [
                 'label' => "Introduction",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('contenu', CKEditorType::class, [
                 'label' => "Présentation du service",
-                'mapped' => false
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('services', TextType::class, [
                 'label' => "Liste des services",
+                'mapped' => false,
                 'attr' => [
                     'placeholder' => "Ex : Service 1; Service 2"
                 ],
-                'mapped' => false
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('submit', SubmitType::class, [
                 'label' => "Envoyer"
