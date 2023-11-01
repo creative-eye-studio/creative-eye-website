@@ -1,0 +1,96 @@
+fieldset{
+    border: none;
+    padding: 0;
+    margin-bottom: 2rem;
+    &.row{
+        margin: 0 -1rem 2rem;
+    }
+    &.services{
+        margin: 0 0 4.5rem;
+    }
+}
+
+.contact-form{
+    background: #F1F1F1;
+    border-radius: 0 0 0 10rem;
+}
+
+.services-list-form{
+    columns: 3;
+}
+
+.input-field{
+    position: relative;
+    margin-bottom: 1.5rem;
+    label{
+        font-size: .9em;
+        position: absolute;
+        top: 50%;
+        left: 1rem;
+        transform: translateY(-50%);
+        transition: .5s;
+        &.top{
+            top: 0;
+            left: 0;
+        }
+    }
+    input, textarea, select{
+        font-size: .9em;
+        font-family: $fontFamily;
+        background-color: transparent;
+        border: none;
+        border-bottom: .0625rem solid rgba($color: #000000, $alpha: 1);
+        padding: 1rem 0;
+        width: 100%;
+        &:focus  ~ label,
+        &:valid  ~ label {
+            top: 0;
+            font-size: .7em;
+        }
+    }
+    textarea{
+        min-height: 150px;
+    }
+}
+
+.checkbox-field{
+    input[type="checkbox"] { 
+        display: none; 
+        + label {
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 20px;
+            user-select: none;
+            cursor: pointer;
+            &:last-child{
+                margin-bottom: 0; 
+            }
+            &:before{
+                content: '';
+                width: 20px;
+                height: 20px;
+                border: 1px solid rgba($color: #000000, $alpha: .7);
+                border-radius: .25em;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: .6;
+                transition: all .12s, border-color .08s;
+            }
+        }
+        &:checked{
+            + label{
+                &::before{
+                    width: 10px;
+                    top: -3px;
+                    left: 5px;
+                    border-radius: 0;
+                    opacity: 1;
+                    border-top-color: transparent;
+                    border-left-color: transparent;
+                    transform: rotate(45deg);
+                }
+            }
+        }
+    }
+}

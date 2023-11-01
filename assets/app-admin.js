@@ -26,10 +26,10 @@ if (container != null) {
 /* SORTABLE JS
 --------------------------------------------*/
 const dragDropList = document.querySelector('#drag-drop-list');
-let subItems = dragDropList.querySelectorAll('.subitems');
-let navItems = dragDropList.querySelectorAll('.nav-item');
 
 if (dragDropList) {
+    let subItems = dragDropList.querySelectorAll('.subitems');
+    let navItems = dragDropList.querySelectorAll('.nav-item');
     document.addEventListener('DOMContentLoaded', () => {
         // Items racines
         const sortable = new Sortable(dragDropList, {

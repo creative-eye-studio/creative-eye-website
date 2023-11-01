@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Form\ContactFormType;
 use App\Services\PagesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;

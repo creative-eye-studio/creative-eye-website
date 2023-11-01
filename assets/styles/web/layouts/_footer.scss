@@ -4,15 +4,12 @@ footer{
     font-size: .9em;
     color: white;
     background-color: $color-p-dark;
-    .col-6{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
     ul{
         display: flex;
         justify-content: center;
         gap: $marge-m;
+    }
+    hr{
+        margin: 3rem 0;
     }
 }

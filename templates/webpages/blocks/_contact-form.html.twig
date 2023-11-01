@@ -1,0 +1,65 @@
+<section class="contact-form margin-left padding-all">
+    <h2>
+        <span class="small">Nous contacter</span>
+        <span class="title">Vous avez un projet ? Nous avons les solutions !</span>
+    </h2>
+    <p><em>Tous les champs sont obligatoires</em></p>
+    {{ form_start(contact_form) }}
+        <fieldset class="row">
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.nom) }}
+                {{ form_label(contact_form.nom) }}
+            </div>
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.prenom) }}
+                {{ form_label(contact_form.prenom) }}
+            </div>
+            
+            <div class="input-field col-6 col-md-12">
+                {{ form_row(contact_form.client_type) }}
+            </div>
+            
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.secteur) }}
+                {{ form_label(contact_form.secteur) }}
+            </div>
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.code_postal) }}
+                {{ form_label(contact_form.code_postal) }}
+            </div>
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.ville) }}
+                {{ form_label(contact_form.ville) }}
+            </div>
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.telephone) }}
+                {{ form_label(contact_form.telephone) }}
+            </div>
+            <div class="input-field col-6 col-md-12">
+                {{ form_widget(contact_form.email) }}
+                {{ form_label(contact_form.email) }}
+            </div>
+        </fieldset>
+
+        <fieldset class="services">
+            <p>Je suis intéressé par :</p>
+            <div class="services-list-form">
+                {% for choice in contact_form.services %}
+                <div class="service-select checkbox-field">
+                    {{ form_widget(choice) }} {{ form_label(choice) }}
+                </div>    
+                {% endfor %}
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <div class="input-field">
+                {{ form_widget(contact_form.message) }}
+                {{ form_label(contact_form.message, null, {'label_attr': {'class': 'top'}}) }}
+            </div>
+            
+        </fieldset>
+        {{ form_row(contact_form.submit) }}
+
+    {{ form_end(contact_form) }}
+</section>

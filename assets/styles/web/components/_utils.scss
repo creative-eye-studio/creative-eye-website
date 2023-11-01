@@ -116,16 +116,16 @@
 /* #region Position */
 .position{
     &-static{
-        @include positionInit('static');
+        @include positionInit(static);
     }
     &-fixed{
         @include positionInit(fixed);
     }
     &-absolute{
-        @include positionInit('absolute');
+        @include positionInit(absolute);
     }
     &-relative{
-        @include positionInit('relative');
+        @include positionInit(relative);
     }
 }
 /* #endregion Position */

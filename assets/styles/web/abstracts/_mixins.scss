@@ -1,4 +1,17 @@
 /* #region Typographie */
+@mixin title($size) {
+    font-size: 1em;
+    margin: 0 0 3rem;
+    .small{
+        font: 500 1em/1.2em $fontFamily;
+        margin-bottom: 1em;
+        display: block;
+    }
+    .title{
+        font: 700 #{$size}/1.2em $fontFamily;
+    }
+}
+
 @mixin typography($fontWeight, $fontFile, $fontStyle: false){
     @font-face {
         font-family: $fontFamily;
