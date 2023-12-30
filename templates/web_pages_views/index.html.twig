@@ -8,17 +8,16 @@
 {# Settings #}
 {% block damping %}{{ settings.damping }}{% endblock %}
 {% block scrollimg %}{{ settings.scrollimg }}{% endblock %}
+{# CSS #}
+{% block css %}{{ css }}{% endblock %}
+{# JS #}
+{% block js %}{{ js }}{% endblock %}
+
+
+{% block socialList %}
+    {{ include('webpages/blocks/_social-links.html.twig', { social: social }) }}
+{% endblock %}
 
 {% block body %}
     {{ page_content | raw }}
-{% endblock %}
-
-{% block javascripts %}
-    {{ parent() }}
-    <script type="text/javascript">
-        window.appData = {
-            lastPosts: {{ last_posts | json_encode | raw }}
-        };
-        console.log(window.appData.lastPosts);
-    </script>
 {% endblock %}

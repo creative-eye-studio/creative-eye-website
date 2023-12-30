@@ -21,8 +21,26 @@ CKEDITOR.editorConfig = function( config ) {
 	config.emailProtection = 'encode';
 	config.entities = false;
 	config.extraAllowedContent = 'i';
-	config.extraPlugins = 'codemirror,templates,video,widget,responsiveimage';
-	config.removePlugins = 'image';
+	config.extraPlugins = 'codemirror,templates,video,widget';
 	config.height = 300;
-	config.startupMode = 'source';
+	config.startupMode = 'source'
 };
+
+CKEDITOR.on( 'dialogDefinition', function( ev ) {
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+
+    if ( dialogName == 'image' || dialogName == 'image2' ) {
+        var infoTab = dialogDefinition.getContents( 'info' );
+        if( dialogName == 'image' ){
+            infoTab.remove('txtWidth');
+            infoTab.remove('txtHeight');
+            infoTab.remove('ratioLock');
+        }
+        else{
+            infoTab.remove('width');
+            infoTab.remove('height');
+            infoTab.remove('lock');
+        }
+    }
+});

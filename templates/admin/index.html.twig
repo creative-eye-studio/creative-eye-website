@@ -4,7 +4,13 @@
 
 {% block body %}
 <!-- Col Contenu du CMS -->
-<section class="row col-3">
+<section 
+    {% if is_granted('ROLE_EDITOR') %}
+        class="row col-3"
+    {% else %}
+        class="row col-2"
+    {% endif %}
+>
     <div class="block">
         <h2>Dernières pages</h2>
         {% for page in pagesList %}
@@ -19,13 +25,14 @@
             <a class="btn-link mt" href="{{ path('admin_pages') }}">Voir toutes les pages</a>
         </p>
     </div>
+
     <div class="block">
         <h2>Derniers articles</h2>
         {% for post in postsList %}
             <div class="line">
                 <p>{{ post.postname[0] }}</p>
                 <ul>
-                    <li><a href="{{ path('web_post', {post_url: post.posturl}) }}" target="_blank" rel="noopener">Voir</a></li>
+                    <li><a href="{{ path('web_post', {post_slug: post.posturl}) }}" target="_blank" rel="noopener">Voir</a></li>
                 </ul>
             </div>
         {% endfor %}
@@ -33,6 +40,7 @@
             <a class="btn-link mt" href="{{ path('admin_posts') }}">Voir tous les articles</a>
         </p>
     </div>
+    {% if is_granted('ROLE_EDITOR') %}
     <div class="block">
         <h2>Utilisateurs</h2>
         {% for user in usersList %}
@@ -50,10 +58,38 @@
             <a class="btn-link mt" href="{{ path('admin_users') }}">Gérer les utilisateurs</a>
         </p>
     </div>
+    {% endif %}
 </section>
 
-<!-- Col Infos versions -->
-<section class="row col-1">
+<!-- Col Infos versions et Nouveautés du CMS -->
+<section class="row col-2">
+    <div class="block">
+        <h2>Nouveautés de la version 2.10</h2>
+        <ul>
+            <li>Optimisation de la gestion des fichiers multimédia du site Internet</li>
+            <li>Sélection de la page principale du site Internet</li>
+            <li>Ajout d'un commentaire à un article de blog</li>
+            <li>
+                <span>Extention SEOptimizer</span>
+                <ul>
+                    <li><em>Permet la simulation du résultat de Google d'une page ou d'un post</em></li>
+                </ul>
+            </li>
+            <li>
+                <span>Extention Social Manager pour les éditeurs</span>
+                <ul>
+                    <li><em>Permet la gestion des liens de réseaux sociaux</em></li>
+                </ul>
+            </li>
+            <li>
+                <span>Extention CodeWeave pour les admins</span>
+                <ul>
+                    <li><em>Permet la gestion des fichiers CSS et JS du site Internet</em></li>
+                </ul>
+            </li>
+            <li>Mise à jour de Symfony vers 6.4</li>
+        </ul>
+    </div>
     <div class="block">
         <h2>Informations du CMS</h2>
         <p>
@@ -69,4 +105,6 @@
         </p>
     </div>
 </section>
+
+<!-- Col Nouveautés du CMS -->
 {% endblock %}

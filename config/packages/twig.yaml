@@ -1,9 +1,9 @@
 twig:
     default_path: '%kernel.project_dir%/templates'
     globals:
-        site_name: "Creative Eye Studio"
-        version: "2.1"
-        date_update: "24/08/2023"
+        site_name: '%env(SITE_NAME)%'
+        version: "2.10"
+        date_update: "30/12/2023"
         google_maps: ""
         recaptcha_public: ''
         recaptcha_private: ''

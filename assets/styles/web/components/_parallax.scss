@@ -1,5 +1,6 @@
 .parallax-section {
-    position: relative;
+	@extend .position-relative;
+    padding-top: 35%;
     overflow: hidden;
 	&.parallax-ht-25{
 		padding-top: 25vh;
@@ -16,18 +17,18 @@
 }
 
 .parallax-element{
-	position: absolute;
-	width: 100%;
+	@extend .wd-100;
+	@extend .position-absolute;
 	height: calc(100% * 1.5);
 	top: 0;
 	left: 0;
 	img{
-		position: absolute;
+		@extend .position-absolute;
+		@extend .wd-100;
+		@extend .ht-100;
 		top: 0;
 		left: 0;
-		// z-index: -1;
-		width: 100%;
-		height: 100%;
 		object-fit: cover;
+		// z-index: -1;
 	}
 }

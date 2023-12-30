@@ -22,35 +22,17 @@
 @include typography(900, 'raleway-black');
 @include typography(900, 'raleway-blackitalic', true);
 
-body{
-    @include font(400, 18.5, 27);
-}
+$headings: (h1, $fsTitle1), (h2, $fsTitle2), (h3, $fsTitle3), (h4, $fsTitle4), (h5, $fsTitle5);
 
-h1{
+@each $heading, $fontSize in $headings {
+  #{$heading} {
+    @include font(400, $fontSize, false, $ff-title);
     @media screen and (min-width: $md) {
-        @include title(2em);
+      @include font(400, $fontSize, false, $ff-title);
     }
-    @media screen and (min-width: $lg) {
-        @include title(3vw);
-    }
+  }
 }
 
-h2{
-    @include title(2.5em);
-}
-
-h3{
-    @include title(2em);
-    &.small-title{
-        font: 500 1.5em/1.2em $fontFamily;
-        margin-bottom: 1.5rem;
-    }
-}
-
-p{
-    margin-top: 0;
-    margin-bottom: 1.5em;
-    &:last-child{
-        margin-bottom: 0;
-    }
+p {
+  @include font(400, $fsBody, false, $ff-body);
 }

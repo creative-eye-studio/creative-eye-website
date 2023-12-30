@@ -8,10 +8,25 @@
 {# Settings #}
 {% block damping %}{{ settings.damping }}{% endblock %}
 {% block scrollimg %}{{ settings.scrollimg }}{% endblock %}
+{# CSS #}
+{% block css %}{{ css }}{% endblock %}
+{# JS #}
+{% block js %}{{ js }}{% endblock %}
+
+{% block socialList %}
+    {{ include('webpages/blocks/_social-links.html.twig', { social: social }) }}
+{% endblock %}
 
 {% block body %}
     {% if post_thumb %}
-        <img src="{{ posts_img_directory }}/{{ post_thumb }}" />
+        <img src="{{ posts_img_directory }}/{{ post_thumb }}" alt="{{ post_name }}" />
     {% endif %}
     {{ post_content | raw }}
+    {{ form(form) }}
+    {% for comment in comments %}
+        <p>
+            Posté par {{ comment.pseudo }}
+        </p>
+        <p>{{ comment.content }}</p>
+    {% endfor %}
 {% endblock %}

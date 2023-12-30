@@ -6,43 +6,39 @@ use App\Entity\PostsList;
 use App\Form\PostsAdminFormType;
 use Cocur\Slugify\Slugify;
 use DateTimeImmutable;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 
-class PostsService extends AbstractController{
-
-    private $doctrine;
-    private $posts_repo;
+class PostsService extends AbstractController
+{
     private $em;
+    private $posts_repo;
+    private $request;
 
-    function __construct(ManagerRegistry $doctrine) {
-        $this->doctrine = $doctrine;
-        $this->em = $this->doctrine->getManager();
+    function __construct(EntityManagerInterface $em, RequestStack $request) {
+        $this->em = $em;
         $this->posts_repo = $this->em->getRepository(PostsList::class);
+        $this->request = $request->getCurrentRequest();
     }
 
     #region Création / Modification d'un post
-    function PostManager(Request $request, Security $security, bool $newPost, string $postId = null)
+    function PostManager(Security $security, bool $newPost, string $postId = null)
     {
         $slugify = new Slugify();
 
         // CREATION / RECUPERATION D'UN POST
         // --------------------------------------------------------
-        if ($newPost) {
-            $post = new PostsList();
-        } else {
-            $post = $this->posts_repo->find($postId);
-            if (!$post) {
-                throw $this->createNotFoundException("Aucune post n'a été trouvé");
-            }
+        $post = ($newPost) ? new PostsList() : $this->posts_repo->find($postId);
+        if (!$post) {
+            throw $this->createNotFoundException("Aucune post n'a été trouvé");
         }
 
         // INITIALISATION DU FORMULAIRE
         // --------------------------------------------------------
         $form = $this->createForm(PostsAdminFormType::class, $post);
-        $form->handleRequest($request);
+        $form->handleRequest($this->request);
 
         // ENVOI DU FORMULAIRE
         // --------------------------------------------------------
@@ -116,36 +112,37 @@ class PostsService extends AbstractController{
     #endregion
 
     #region Affichage des posts
-    public function getAllPosts(){
+    public function getAllPosts()
+    {
         $posts = $this->posts_repo->findAll();
-        $post_array = [];
-        foreach ($posts as $post) {
-            $last_post_array[] = [
-                'id' => $post->getId(),
+    
+        return array_map(function ($post) {
+            return [
+                'id'   => $post->getId(),
                 'name' => $post->getPostName(),
-                'url' => $post->getPostUrl(),
+                'url'  => $post->getPostUrl(),
                 'date' => $post->getCreatedAt(),
             ];
-        };
-        return $post_array;
+        }, $posts);
     }
+      
     #endregion
 
     #region Affichage des derniers posts
     public function getLastPosts()
     {
-        $last_posts = $this->posts_repo->findBy([], ['created_at' => 'DESC'], 3);
-        $last_post_array = [];
-        foreach ($last_posts as $post) {
-            $last_post_array[] = [
+        $lastPosts = $this->posts_repo->findBy([], ['created_at' => 'DESC'], 3);
+    
+        return array_map(function ($post) {
+            return [
                 'id' => $post->getId(),
                 'name' => $post->getPostName(),
                 'url' => $post->getPostUrl(),
                 'date' => $post->getCreatedAt(),
             ];
-        };
-        return $last_post_array;
+        }, $lastPosts);
     }
+    
     #endregion
 
     #region Affichage d'un post

@@ -5,10 +5,9 @@ namespace App\Controller;
 use App\Form\ContactFormType;
 use App\Services\PagesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 
 class WebPagesIndexController extends AbstractController
 {
@@ -18,35 +17,44 @@ class WebPagesIndexController extends AbstractController
     {
         $this->pages_services = $pages_services;
     }
-    
+
+
     // Index Page
-    // -----------------------------------------------------------------------------------------------------------------
-    #[Route('/{_locale}', name: 'web_index', requirements: ['_locale' => 'fr'])]
-    public function index(Request $request): Response
+    // -------------------------------------------------------------------------------------------
+    #[Route('/{_locale}', name: 'web_index', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]
+    public function index(): Response
     {
-        return $this->pages_services->getPage($request, 'index');
+        return $this->pages_services->getPageStatus();
     }
+
 
     // Other Page
-    // -----------------------------------------------------------------------------------------------------------------
-    #[Route('/{_locale}/{page_slug}', name: 'web_page', requirements: ['_locale' => 'fr'])]
-    public function page(Request $request, string $page_slug): Response
+    // -------------------------------------------------------------------------------------------
+    #[Route('/{_locale}/{page_slug}', name: 'web_page', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]
+    public function page(string $page_slug): Response
     {
-        return ($page_slug === 'index') ? $this->redirectBase() : $this->pages_services->getPage($request, $page_slug);
-    }
-    
-    // Post Page
-    // -----------------------------------------------------------------------------------------------------------------
-    #[Route('/{_locale}/blog/{post_url}', name: 'web_post', requirements: ['_locale' => 'fr|en'])]
-    public function post(string $post_url, Request $request): Response
-    {
-        return $this->pages_services->getPost($request, $post_url);
+        return $this->pages_services->getPageStatus($page_slug);
     }
 
+
+    // Post Page
+    // -------------------------------------------------------------------------------------------
+    #[Route('/{_locale}/blog/{post_slug}', name: 'web_post', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]
+    public function post(string $post_slug): Response
+    {
+        return $this->pages_services->getPost($post_slug);
+    }
+
+
     // Redirections
-    // -----------------------------------------------------------------------------------------------------------------
+    // -------------------------------------------------------------------------------------------
     #[Route('/', name: 'web_redirect')]
     public function redirectBase(){
         return $this->redirectToRoute('web_index');
     }
+}
+
+class LocaleConstraint
+{
+    const LOCALE_PATTERN = 'fr|en';
 }

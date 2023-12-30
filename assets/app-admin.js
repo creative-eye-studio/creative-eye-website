@@ -11,6 +11,7 @@ import './styles/admin/app.scss';
 // start the Stimulus application
 import './bootstrap';
 import Sortable from 'sortablejs';
+import { EditorView, basicSetup, minimalSetup } from 'codemirror';
 
 
 /* TABS
@@ -29,7 +30,6 @@ const dragDropList = document.querySelector('#drag-drop-list');
 
 if (dragDropList) {
     let subItems = dragDropList.querySelectorAll('.subitems');
-    let navItems = dragDropList.querySelectorAll('.nav-item');
     document.addEventListener('DOMContentLoaded', () => {
         // Items racines
         const sortable = new Sortable(dragDropList, {
