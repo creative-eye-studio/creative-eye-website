@@ -29,8 +29,8 @@ class ExtCodeWeaveController extends AbstractController
     #[Route('/admin/codeweave', name: 'codeweave')]
     public function index(): Response
     {
-        $cssList = $this->repo->findBy(['type' => 0]);
-        $jsList = $this->repo->findBy(['type' => 1]);
+        $cssList = $this->repo->findBy(['type' => 0], ['nom' => 'ASC']);
+        $jsList = $this->repo->findBy(['type' => 1], ['nom' => 'ASC']);
 
         return $this->render('ext_codeweave/index.html.twig', [
             'title' => "CodeWeave - Gestion des fichiers CSS et JS",
@@ -84,7 +84,7 @@ class ExtCodeWeaveController extends AbstractController
 
             $this->compileSCSS();
             $this->compileJS();
-
+            
             return $this->redirectToRoute('codeweave');
         }
 

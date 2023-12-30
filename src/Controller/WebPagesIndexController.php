@@ -28,6 +28,15 @@ class WebPagesIndexController extends AbstractController
     }
 
 
+    // Service Page
+    // -------------------------------------------------------------------------------------------
+    #[Route('/{_locale}/expertise/{service_slug}', name: 'web_service', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]
+    public function service(string $service_slug): Response
+    {
+        return $this->pages_services->getServiceStatus($service_slug);
+    }
+
+
     // Other Page
     // -------------------------------------------------------------------------------------------
     #[Route('/{_locale}/{page_slug}', name: 'web_page', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]

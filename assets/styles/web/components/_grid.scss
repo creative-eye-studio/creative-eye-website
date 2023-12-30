@@ -11,6 +11,7 @@
     flex-wrap: wrap;
     padding: 0 calc($marge-d-x / 2);
     &-no-marge{
+        @extend .row;
         padding: 0;  
     } 
     @media screen and (max-width: $md) {

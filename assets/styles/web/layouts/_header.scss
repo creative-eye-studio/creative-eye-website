@@ -6,8 +6,8 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding: $marge-m 0;
+    background: #1F1F1F;
 
     .nav-btn-desktop{
         width: 50px;
@@ -30,6 +30,21 @@ header{
             .bar-2{
                 transform: scaleX(.75);
             }
+        }
+    }
+
+    @media screen and (min-width: $lg) {
+        padding: calc(#{$marge-d-y} / 2.2) $marge-d-x;
+        background: inherit;
+        transition-duration: .5s;
+    }
+}
+
+.onScroll{
+    header{
+        @media screen and (min-width: $lg) {
+            padding: calc(#{$marge-d-y} / 4) $marge-d-x;
+            background: #1F1F1F;
         }
     }
 }

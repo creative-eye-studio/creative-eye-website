@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entity\Comments;
+use App\Entity\ExtServices;
 use App\Entity\GlobalSettings;
 use App\Entity\Menu;
 use App\Entity\PagesList;
@@ -200,7 +201,51 @@ class PagesService extends AbstractController
     }
     #endregion
 
+    #region Affichage d'un service
+    public function getServiceStatus(string $url)
+    {
+        // Récupération des données du service
+        $service = $this->em->getRepository(ExtServices::class)->findOneBy(['url' => $url]);
+
+        // Détection de la langue à partir de la requête HTTP
+        $lang = $this->lang_web($this->request);
+
+        // Vérification de la disponibilité de la page service
+        if (!$service) {
+            // Lancer une exception si la page n'est pas disponible
+            throw $this->createNotFoundException("Cette page n'est pas disponible");
+        }
+
+        return $this->render('web_pages_views/service.html.twig', [
+            'titre' => $service->getTitre()[$lang],
+            'sous_titre' => $service->getSousTitre()[$lang],
+            'intro' => htmlspecialchars_decode($service->getIntro()[$lang]),
+            'thumb' => $service->getThumb(),
+            'contenu' => htmlspecialchars_decode($service->getContenu()[$lang]),
+            'services' => $service->getServices(),
+            'meta_title' => $service->getTitre()[$lang],
+            'meta_desc' => $service->getTitre()[$lang],
+            'lang' => $this->lang_web($this->request),
+            'lang_page' => $this->locales_web()[$lang],
+            'css' => $this->css_file,
+            'js' => $this->js_file,
+            'social' => $this->social,
+            'settings' => $this->settings,
+            'menus' => $this->menus,
+        ]);
+    }
+    #endregion
+
     #region Sélection de la langue
+    private function lang_web()
+    {
+        $lang = array_search(
+            $this->request->getLocale(),
+            $this->locales_web()
+        );
+        return $lang;
+    }
+
     private function locales_web()
     {
         $locales = Locales::getLocales();
@@ -209,15 +254,6 @@ class PagesService extends AbstractController
             // $locales[96] // EN
         ];
         return $localesSite;
-    }
-
-    private function lang_web()
-    {
-        $lang = array_search(
-            $this->request->getLocale(),
-            $this->locales_web()
-        );
-        return $lang;
     }
     #endregion   
 }

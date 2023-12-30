@@ -24,6 +24,13 @@ export class ScrollWeb {
             delay: 200,
             disable: window.innerWidth < 1200,
         });
+
+        // Détection du Scroll
+        scrollbar.addListener(() => {
+            const scrollY = scrollbar.offset.y;
+            const htmlElement = document.querySelector('html');
+            htmlElement.classList.toggle('onScroll', scrollY > 50);
+        });
       
         [].forEach.call(document.querySelectorAll('[data-aos]'), (el) => {
           scrollbar.addListener(() => {
