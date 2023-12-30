@@ -5,33 +5,41 @@ namespace App\Controller;
 use App\Entity\ExtServices;
 use App\Form\ExtServicesType;
 use Cocur\Slugify\Slugify;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ExtServicesController extends AbstractController
 {
-    public function initPage(ManagerRegistry $doctrine, Request $request, string $title, string $serv_id = null) {
-        
-        $em = $doctrine->getManager();
-        $services_ent = $em->getRepository(ExtServices::class);
+    private $em;
+    private $request;
+
+    function __construct(EntityManagerInterface $em, RequestStack $request)
+    {
+        $this->em = $em;
+        $this->request = $request->getCurrentRequest();
+    }
+
+    private function initPage(string $title, string $serv_id = null) 
+    {
+        $services_ent = $this->em->getRepository(ExtServices::class);
         $services = $services_ent->findAll();
 
-        $route_name = $request->attributes->get('_route');
+        $route_name = $this->request->attributes->get('_route');
 
-        if ($route_name == 'ext_services_update') {
-            $service = $services_ent->findOneBy(['id' => $serv_id]);
-            $serv_list = implode(',', $service->getServices());
-            $serv_list = str_replace(',', '; ', $serv_list);
-        } else {
-            $service = new ExtServices();
-            $serv_list = '';
-        }
+        $service = ($route_name == 'ext_services_update') 
+            ? $services_ent->find($serv_id) 
+            : new ExtServices();
+
+        $serv_list = ($route_name == 'ext_services_update') 
+            ? str_replace(',', '; ', implode(',', $service->getServices())) 
+            : '';
+
 
         $form = $this->createForm(ExtServicesType::class, $service);
-        $form->handleRequest($request);
+        $form->handleRequest($this->request);
 
         $contenu = $service->getContenu();
         $intro = $service->getIntro();
@@ -88,10 +96,10 @@ class ExtServicesController extends AbstractController
             }
 
             // Envoi des données vers la BDD
-            $em->persist($service);
-            $em->flush();
+            $this->em->persist($service);
+            $this->em->flush();
 
-            return $this->redirect($request->getUri());
+            return $this->redirect($this->request->getUri());
         }
 
         return $this->render('ext_services/index.html.twig', [
@@ -109,23 +117,20 @@ class ExtServicesController extends AbstractController
     }
 
     #[Route('/ext/services', name: 'ext_services')]
-    public function index(ManagerRegistry $doctrine, Request $request): Response
+    public function index(): Response
     {
-        $initPage = $this->initPage($doctrine, $request, 'Liste des services');
-        return $initPage;
+        return $this->initPage('Liste des services');
     }
 
     #[Route('/ext/services/ajouter', name: 'ext_services_add')]
-    public function addMenu(ManagerRegistry $doctrine, Request $request)
+    public function addService(): Response
     {
-        $initPage = $this->initPage($doctrine, $request, 'Créer un nouveau service');
-        return $initPage;
+        return $this->initPage('Créer un nouveau service');
     }
 
     #[Route('/ext/services/modifier/{serv_id}', name: 'ext_services_update')]
-    public function updateMenu(ManagerRegistry $doctrine, Request $request, int $serv_id)
+    public function updateService(int $serv_id): Response
     {
-        $initPage = $this->initPage($doctrine, $request, 'Modifier un service', $serv_id);
-        return $initPage;
+        return $this->initPage('Modifier un service', $serv_id);
     }
 }

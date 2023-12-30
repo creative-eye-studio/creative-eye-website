@@ -5,34 +5,69 @@ namespace App\Controller;
 use App\Entity\ExtPartenaires;
 use App\Form\ExtPartenairesType;
 use Cocur\Slugify\Slugify;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ExtPartenairesController extends AbstractController
 {
-    
-    public function initPage(Request $request, ManagerRegistry $doctrine, string $titrePage, int $data_id = null)
-    {
-        $route_name = $request->attributes->get('_route');
+    private $em;
+    private $request;
 
-        $em = $doctrine->getManager();
-        $db = $em->getRepository(ExtPartenaires::class);
+    function __construct(EntityManagerInterface $em, RequestStack $request)
+    {
+        $this->em = $em;
+        $this->request = $request->getCurrentRequest();
+    }
+
+    #[Route('/ext/partenaires', name: 'app_ext_partenaires')]
+    public function index(): Response
+    {
+        return $this->initPage("Liste des partenaires");
+    }
+
+    #[Route('/ext/partenaires/ajouter', name: 'app_ext_partenaires_add')]
+    public function addPartner(): Response
+    {
+        return $this->initPage("Ajouter un partenaire");
+    }
+
+    #[Route('/ext/partenaires/modifier/{data_id}', name: 'app_ext_partenaires_update')]
+    public function updatePartner(int $data_id): Response
+    {
+        return $this->initPage("Modifier un partenaire", $data_id);
+    }
+
+    #[Route('/ext/partenaires/suppr/{data_id}', name: 'app_ext_partenaires_delete')]
+    public function deletePartner(int $data_id)
+    {
+        $partner = $this->em->getRepository(ExtPartenaires::class)->find($data_id);
+
+        // Envoi des données vers la BDD
+        $this->em->remove($partner);
+        $this->em->flush();
+        
+        return $this->redirectToRoute('app_ext_partenaires');
+    }
+    
+    private function initPage(string $titrePage, int $data_id = null)
+    {
+        $route_name = $this->request->attributes->get('_route');
+
+        $db = $this->em->getRepository(ExtPartenaires::class);
         $partners = $db->findAll();
 
-        if ($route_name == 'app_ext_partenaires' or $route_name == 'app_ext_partenaires_add') {
-            $data = new ExtPartenaires();
-        } else {
-            $data = $db->findOneBy(['id' => $data_id]);
-        }
+        $data = ($route_name == 'app_ext_partenaires' || $route_name == 'app_ext_partenaires_add') 
+            ? new ExtPartenaires() 
+            : $db->find($data_id);
+
 
         $textFr = ($data->getTexte() != null) ? htmlspecialchars_decode($data->getTexte()[0]) : '';
 
-        
         $form = $this->createForm(ExtPartenairesType::class, $data);
-        $form->handleRequest($request);
+        $form->handleRequest($this->request);
         
         if ($form->isSubmitted() && $form->isValid()) { 
             $slugify = new Slugify();
@@ -85,10 +120,10 @@ class ExtPartenairesController extends AbstractController
             $data->setTexte([$textFr]);
 
             // Envoi des données vers la BDD
-            $em->persist($data);
-            $em->flush();
+            $this->em->persist($data);
+            $this->em->flush();
 
-            return $this->redirect($request->getUri());
+            return $this->redirect($this->request->getUri());
         }
 
         return $this->render('ext_partenaires/index.html.twig', [
@@ -99,41 +134,5 @@ class ExtPartenairesController extends AbstractController
             'form' => $form->createView(),
             'textFr' => $textFr
         ]);
-    }
-
-
-    #[Route('/ext/partenaires', name: 'app_ext_partenaires')]
-    public function index(Request $request, ManagerRegistry $doctrine): Response
-    {
-        $initPage = $this->initPage($request, $doctrine, "Liste des partenaires");
-        return $initPage;
-    }
-
-    #[Route('/ext/partenaires/ajouter', name: 'app_ext_partenaires_add')]
-    public function addPartner(Request $request, ManagerRegistry $doctrine)
-    {
-        $initPage = $this->initPage($request, $doctrine, "Ajouter un partenaire");
-        return $initPage;
-    }
-
-    #[Route('/ext/partenaires/modifier/{data_id}', name: 'app_ext_partenaires_update')]
-    public function updatePartner(Request $request, ManagerRegistry $doctrine, int $data_id)
-    {
-        $initPage = $this->initPage($request, $doctrine, "Modifier un partenaire", $data_id);
-        return $initPage;
-    }
-
-    #[Route('/ext/partenaires/suppr/{data_id}', name: 'app_ext_partenaires_delete')]
-    public function deletePartner(Request $request, ManagerRegistry $doctrine, int $data_id)
-    {
-        $em = $doctrine->getManager();
-        $db = $em->getRepository(ExtPartenaires::class);
-        $partner = $db->findOneBy(['id' => $data_id]);
-
-        // Envoi des données vers la BDD
-        $em->remove($partner);
-        $em->flush();
-        
-        return $this->redirectToRoute('app_ext_partenaires');
     }
 }
