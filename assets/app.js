@@ -48,8 +48,8 @@ const commonCalls = () => {
   parallax();
 };
 
-document.addEventListener('swup:contentReplaced', commonCalls);
 document.addEventListener('DOMContentLoaded', commonCalls);
+document.addEventListener('swup:contentReplaced', commonCalls);
 
 
 

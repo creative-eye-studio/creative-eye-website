@@ -43,8 +43,8 @@ export class ScrollWeb {
         });
 
         // Scroll au click d'une ancre
-        const navLinks = document.querySelectorAll('a[href^="#"]');
-        navLinks.forEach(btn => {
+        const navAnchors = document.querySelectorAll('a[href^="#"]');
+        navAnchors.forEach(btn => {
             btn.addEventListener('click', function(){
                 const margin = 0;
                 const target = btn.getAttribute('href') || btn.getAttribute('data-link');
@@ -56,6 +56,12 @@ export class ScrollWeb {
                 });
                 return false;
             })
+        })
+
+        // Retour en haut de page
+        const navLinks = document.querySelectorAll('a:not([href^="#"])');
+        navLinks.forEach(btn => {
+            scrollbar.scrollTo(0, 0, 0); 
         })
 
         return scrollbar;
