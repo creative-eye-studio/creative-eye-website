@@ -11,14 +11,15 @@ import './styles/web/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
+import AOS from 'aos';
 import { ScrollWeb } from './smoothScroll';
 import { Parallax } from './parallax';
 import { createApp } from 'vue';
-import AOS from 'aos';
 import ContactForm from './vue/controllers/ContactForm';
 import LastPosts from './vue/controllers/LastPosts';
 import LastReal from './vue/controllers/LastReal';
 import SliderServices from './vue/controllers/SliderServices';
+
 
 // Variables
 // -----------------------------------------------
@@ -30,27 +31,26 @@ const values = {
 
 // Instantieur
 // -----------------------------------------------
-const commonCalls = () => {
-    // Initialisation de AOS pour les animations au défilement
-    AOS.init();
 
-    // Création de l'application avec des composants spécifiques et montage dans l'élément avec l'ID 'website'
-    createApp({
+function initVueComponents() {
+    // Créez une référence à l'application Vue
+    const app = createApp({
         components: { LastPosts, LastReal, SliderServices, ContactForm },
     }).mount('#website');
-    
-    // Appel à la fonction parallax pour des effets visuels au défilement
-    parallax();
 
-    // Appel à la fonction scrollWeb pour gérer les événements de défilement
-    scrollWeb();
+    // const mountedApp = app;
 }
 
-// Écouteur d'événement pour s'assurer que le DOM est entièrement chargé avant d'exécuter commonCalls
+const commonCalls = () => {
+  initVueComponents();
+  AOS.init();
+  scrollWeb();
+  parallax();
+};
+
+document.addEventListener('swup:contentReplaced', commonCalls);
 document.addEventListener('DOMContentLoaded', commonCalls);
 
-// Écouteur d'événement pour swup, déclenché après chaque remplacement du contenu (nouvelle page chargée)
-document.addEventListener('swup:contentReplaced', commonCalls);
 
 
 // Smooth Scrollbar

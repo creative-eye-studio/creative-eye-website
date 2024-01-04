@@ -32,36 +32,27 @@
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <select name="profil" id="profil" required>
-                    <option value="">Choisissez votre secteur *</option>
-                    <option value="Commerce de gros">Commerce de gros</option>
-                    <optgroup label="Communication">
-                        <option value="Agence de publicité">Agence de publicité</option>
-                        <option value="Imprimerie">Imprimerie</option>
-                        <option value="Signalétique">Signalétique</option>
-                    </optgroup>
-                    <optgroup label="Évenementiel">
-                        <option value="Évenementiel">Organisateur d'évenements</option>
-                        <option value="Évenementiel">Régisseur</option>
-                        <option value="Évenementiel">Disc Jockey</option>
-                    </optgroup>
-                    <optgroup label="Artisanat">
-                        <option value="Hotellerie / Restauration">Hotellerie / Restauration</option>
-                        <option value="Métiers de bouche">Métiers de bouche</option>
-                        <option value="Métiers de la construction">Métiers de la construction</option>  
-                        <option value="Art floral">Art floral</option>
-                        <option value="Viticulteurs">Viticulteurs</option>
-                    </optgroup>
-                    <option value="Autre">Autre</option>
+                <select v-model="selectedOption" name="secteur" id="secteur" required>
+                    <option value=""></option>
+                    <template v-for="option in secteurs" :key="option.label">
+                        <option v-if="!option.options.length" :value="option.label">{{ option.label }}</option>
+                        <optgroup v-if="option.options && option.options.length" :label="option.label">
+                            <option v-for="subOption in option.options" :key="subOption.label" :value="subOption.label">
+                                {{ subOption.label }}
+                            </option>
+                        </optgroup>
+                    </template>
                 </select>
+                <label for="secteur" class="label-select">Choisissez votre secteur d'activité *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
                 <select name="profil" id="profil" required>
-                    <option value="">Particulier / Professionnel *</option>
+                    <option value=""></option>
                     <option value="Particulier">Particulier</option>
                     <option value="Professionnel">Professionnel</option>
                 </select>
+                <label for="profil" class="label-select">Êtes vous un particulier ou un professionnel *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
@@ -130,6 +121,10 @@
                 <textarea name="message" id="message" class="wd-100" required></textarea>
                 <label for="">Message *</label>
             </div>
+
+            <div class="col-12">
+                <input type="submit" value="Envoyer" />
+            </div>
             
 
         </form>
@@ -137,5 +132,46 @@
 </template>
 
 <script>
-    export default {}
+    export default {
+        data() {
+            return {
+                secteurs: [
+                    { 
+                        label: 'Commerce de gros', 
+                        options: [
+                            { label: 'Revendeurs' },
+                            { label: 'Grossistes' },
+                        ] 
+                    },
+                    {
+                        label: 'Communication',
+                        options: [
+                            { label: 'Agence de publicité' },
+                            { label: 'Imprimerie' },
+                            { label: 'Signalétique' },
+                        ],
+                    },
+                    {
+                        label: 'Évenementiel',
+                        options: [
+                            { label: 'Organisateur d\'événements' },
+                            { label: 'Régisseur' },
+                            { label: 'Disc Jockey' },
+                        ],
+                    },
+                    {
+                        label: 'Artisanat',
+                        options: [
+                            { label: 'Hotellerie / Restauration' },
+                            { label: 'Métiers de bouche' },
+                            { label: 'Métiers de la construction' },
+                            { label: 'Art floral' },
+                            { label: 'Viticulteurs' },
+                        ],
+                    },
+                    { label: 'Autre', options: [] },
+                ],
+            }
+        },
+    }
 </script>

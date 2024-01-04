@@ -1,3 +1,22 @@
+/* #region Forms */
+@mixin form-design() {
+    display: block;
+    border: none;
+    border-bottom: .00625rem solid #757575;
+    background-color: rgba($color: #000000, $alpha: 0);
+    margin: 1rem 0;
+    padding: .5rem .25rem;
+    width: 100%;
+    &:hover{
+        border-bottom: .0125rem solid #757575;
+    }
+    &:focus{
+        outline: none;
+    }   
+}
+/* #endregion Forms */
+
+
 /* #region Typographie */
 @mixin title($size) {
     font-size: 1em;
@@ -102,6 +121,7 @@
     padding: 0 calc($marge-d-x / 2);
 
     &-no-marge {
+        width: calc(100% / $grid-size) * $size;
         padding: 0;
     }
 
@@ -109,6 +129,7 @@
         padding: 0 calc($marge-m / 2);
 
         &-no-marge {
+            padding: 0 calc($marge-m / 2);
             padding: 0;
         }
     }
@@ -560,7 +581,7 @@
 
     &::before {
         content: "";
-        background-color: $colorP;
+        background-color: $color-p;
         position: absolute;
         top: 0;
         z-index: 3;

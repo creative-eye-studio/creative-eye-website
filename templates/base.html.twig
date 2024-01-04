@@ -20,12 +20,12 @@
     </head>
     <body
         {{ stimulus_controller('symfony/ux-swup/swup', {
-            containers: ['#main'],
+            containers: ['#website'],
             animateHistoryBrowsing: true,
             animationSelector: '[class*="transition-"]',
-            cache: true,
+            cache: false,
             theme: 'fade',
-            debug: true
+            debug: false
         }) }}
         data-damping='{% block damping %}{% endblock %}'
         data-scrollimg='{% block scrollimg %}{% endblock %}'>
@@ -65,13 +65,7 @@
                 <contact-form></contact-form>
             </div>
 
-            <footer>
-                <p>Conception et développement : Creative Eye Studio</p>
-                <ul id="nav" class="margin-none padding-none">
-                    {{ include('webpages/blocks/_navigation.html.twig', { pos: 1 }) }}
-                    <li><span onclick="tarteaucitron.userInterface.openPanel();">Cookies</span></li>
-                </ul>
-            </footer>
+            {{ include('webpages/blocks/footer.html.twig') }}
         </div>
 
         {% block javascripts %}

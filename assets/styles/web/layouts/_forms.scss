@@ -14,7 +14,6 @@ fieldset{
     background: #F1F1F1;
     border-radius: 0 0 0 10rem;
     form{
-        
         margin: 1rem 0 0;
     }
 }
@@ -27,27 +26,28 @@ input, textarea, select, label {
     @include font(200, 14, false, $ff-body);
 }
 
-input, textarea, select {
-    &:not([type="checkbox"]) {
-        display: block;
-        border: none;
-        border-bottom: 1px solid #757575;
-        background-color: rgba($color: #000000, $alpha: 0);
-        padding: .5rem .25rem;
-        margin: 1rem 0;
-        width: 100%;
-        &:focus{
-            outline: none;
-        }    
+input {
+    &[type="text"],
+    &[type="email"],
+    &[type="tel"]{
+        @include form-design();    
+    }
+    &[type="submit"] {
+        @extend .btn-primary;
+        cursor: pointer;
     }
 }
 
 textarea{
+    @include form-design();
     height: 150px;
+    margin-bottom: 3rem;
 }
 
 select{
+    @include form-design();
     margin-top: 1rem;
+    letter-spacing: 0.04rem;
 }
 
 label {
@@ -56,13 +56,20 @@ label {
         pointer-events: none;
         left: 70px;
         top: 1.5rem;
-        transition: 0.2s ease all;
+        transition: .5s ease all;
     }
-    
+    &.label-select {
+        top: .95rem;
+    }
 }
 
+input:hover ~ label:not(.label-checkbox),
 input:focus ~ label:not(.label-checkbox),
 input:valid ~ label:not(.label-checkbox),
+select:hover ~ label:not(.label-checkbox),
+select:focus ~ label:not(.label-checkbox),
+select:valid ~ label:not(.label-checkbox),
+textarea:hover ~ label,
 textarea:focus ~ label,
 textarea:valid ~ label {
   top: 0px;
@@ -88,6 +95,7 @@ textarea:valid ~ label {
             margin-bottom: 1.25rem;
             user-select: none;
             cursor: pointer;
+            transition-duration: .5s;
             &:last-child {
                 margin-bottom: 0;
             }
@@ -96,12 +104,19 @@ textarea:valid ~ label {
                 display: block;
                 width: 1rem;
                 height: 1rem;
-                border: .0625rem solid #000;
+                border: .125rem solid #000;
                 position: absolute;
                 left: 0;
                 top: .25rem;
                 opacity: .6;
-                transition: all .12s, border-color .08s;
+                transition: all .12s, border-radius .5s;
+            }
+        }
+        &:not(:checked) {
+            & + label {
+                &::before {
+                    border-radius: 0;
+                }
             }
         }
         &:checked {
@@ -110,13 +125,20 @@ textarea:valid ~ label {
                     width: .5rem;
                     top: -.0625rem;
                     left: 5px;
-                    border-radius: 0;
                     opacity: 1;
                     border-top-color: transparent;
                     border-left-color: transparent;
                     -webkit-transform: rotate(45deg);
                     transform: rotate(45deg);
                 }
+            }
+        }
+    }
+
+    &:hover {
+        input[type="checkbox"]:not(:checked) + label {
+            &::before {
+                border-radius: .8rem;
             }
         }
     }

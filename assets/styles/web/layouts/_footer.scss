@@ -1,15 +1,23 @@
 footer{
-    padding: $marge-m;
+    padding: calc(#{$marge-m} * 2) $marge-d-x;
     width: 100%;
     font-size: .9em;
     color: white;
-    background-color: $color-p-dark;
+    background-color: $colorBk;
     ul{
         display: flex;
         justify-content: center;
         gap: $marge-m;
     }
-    hr{
-        margin: 3rem 0;
+    .separe{
+        margin: calc(#{$marge-m} * 2) 0;
+    }
+    a{
+        color: white;
+        text-decoration: none;
+        transition-duration: .5s;
+        &:hover {
+            opacity: .6;
+        }
     }
 }

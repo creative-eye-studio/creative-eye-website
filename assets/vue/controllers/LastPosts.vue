@@ -12,10 +12,10 @@
                 <figure class="image">
                     <img :src="'../uploads/images/posts/' + post.thumb" :alt="post.name[0]">
                 </figure>
-                <div class="text">
+                <div class="text-content">
                     <h3 v-html="post.name[0]"></h3>
                     <div class="text" v-html="post.content"></div>
-                    <p><a href="">Voir l'article</a></p>
+                    <p><a class="btn-link" href="">Voir l'article</a></p>
                 </div>    
             </div>
         </swiper-slide>
