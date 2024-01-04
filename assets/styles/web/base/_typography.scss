@@ -26,13 +26,61 @@ $headings: (h1, $fsTitle1), (h2, $fsTitle2), (h3, $fsTitle3), (h4, $fsTitle4), (
 
 @each $heading, $fontSize in $headings {
   #{$heading} {
-    @include font(400, $fontSize, false, $ff-title);
+    @include font(400, $fontSize, true, $ff-title);
     @media screen and (min-width: $md) {
-      @include font(400, $fontSize, false, $ff-title);
+      @include font(400, $fontSize, true, $ff-title);
     }
   }
 }
 
 p {
   @include font(400, $fsBody, false, $ff-body);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Raleway:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+
+h1, h2{
+  .small {
+    text-transform: uppercase;
+    letter-spacing: 0.03rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+}
+
+h1{
+  color: #F1F1F1;
+  .small{
+    @include font(500, 5, true, $ff-title);
+  }
+  .title {
+    @include font(700, 16, true, $ff-title);
+  }
+}
+
+h2 {
+  @include font(600, 36, true, $ff-title);
+  .small {
+    @include font(600, 8, true, $ff-title);
+  }
+}
+
+h3 {
+  &.small-title{
+    @include font(500, 32, true, $ff-title);
+  }
+}
+
+p, li {
+  @include font(400, 16, false, $ff-body);
+  &.small{
+    @include font(400, 14, false, $ff-body);
+  }
+}
+
+p { 
+  margin-top: 0;
+  &:last-child{
+    margin-bottom: 0;
+  }
 }

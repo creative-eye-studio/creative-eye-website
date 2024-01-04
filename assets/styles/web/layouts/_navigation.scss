@@ -1,3 +1,131 @@
 .main-nav{
-    display: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba($color: #f8f8f8, $alpha: 1.0);
+    display: flex;
+    transition-duration: 1s;
+    z-index: 2;
+    &::after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        bottom: 0;
+        background: #1F1F1F;
+        width: 100%;
+        transition-duration: 1s;
+        transition-delay: 1s;
+    }
+    .nav-1, .nav-2, .imgs-nav{
+        width: 33.33%;
+        position: relative;
+        z-index: 3;
+        transition-duration: 1s;
+        transition-delay: 2s;
+    }
+    .nav-1, .nav-2 {
+        padding: 0 $marge-d-x;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 100%;
+        opacity: 1;
+        left: 0%;
+        a{
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+            color: transparent;
+            height: 1rem;
+            &::before, &::after{
+                content: attr(data-val);
+                position: absolute;
+                left: 0;
+                transition-duration: 1s;
+                white-space: nowrap;
+            }
+            &::before{
+                color: #141414;
+                top: 0;
+                opacity: 1;
+            }
+            &::after{
+                font-style: italic;
+                color: rgba(#141414, 0.5);
+                top: -100%;
+                opacity: 0;
+            }
+            &:hover{
+                &::before{
+                    top: 100%;
+                    opacity: 0;
+                }
+                &::after{
+                    top: 0%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .nav-1{
+        li{
+            font: 300 1.5rem/200% "Montserrat";
+            margin: 0 0 1rem;
+            li{
+                margin: 1rem 0;
+            }
+        }
+    }
+    .nav-2{
+        li{
+            font: 300 1.25rem/200% "Montserrat";
+            margin: 0 0 1rem;
+            a{
+                &::before, &::after {
+                    color: #fff;
+                }    
+            }
+            li{
+                margin: 1rem 0;
+            }
+        }
+    }
+    .imgs-nav{
+        background-color: darkgray;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        transition-duration: 1s;
+    }
+    ul{
+        &.subitem{
+            margin-left: $marge-m;
+            &:empty{
+                display: none;
+            }
+        }
+    }
+}
+
+html:not(.open-nav) {
+    .main-nav {
+        transform: translateX(-200%);
+        transition-delay: 2s;
+        &::after{
+            left: 0%;
+            transition-delay: 1s;
+        }
+        .nav-1, .nav-2, .imgs-nav{
+            transition-delay: 0s;
+        }
+        .nav-1, .nav-2{
+            opacity: 0;
+            left: -10%;
+        }
+        .imgs-nav{
+            width: 0%;
+        }
+    }
 }

@@ -20,7 +20,7 @@
     </head>
     <body
         {{ stimulus_controller('symfony/ux-swup/swup', {
-            containers: ['#main', '#nav'],
+            containers: ['#main'],
             animateHistoryBrowsing: true,
             animationSelector: '[class*="transition-"]',
             cache: true,
@@ -38,20 +38,31 @@
             </button>
         </header>
 
-        {# <nav class="main-nav">
-            <ul>
-                {{ include('webpages/blocks/_navigation.html.twig', { pos: 0 }) }}
-            </ul>
-            <ul>
-                {{ social }}
-            </ul>
-        </nav> #}
+        <nav class="main-nav padding-vertical-on-md">
+            <div class="nav-1">
+                <ul>
+                    {{ include('webpages/blocks/_navigation.html.twig', { pos: 0 }) }}
+                </ul>
+            </div>
+            <figure class="imgs-nav">
+
+            </figure>
+            <div class="nav-2">
+                <ul class="sub-menu">
+                    {{ include('webpages/blocks/_navigation.html.twig', { pos: 1 }) }}
+                </ul>
+                <div class="social">
+                    {{ social }}
+                </div>
+            </div>
+        </nav>
 
         <div id="content">
             <div id="website">
                 <main id="main">
                     {% block body %}{% endblock %}
                 </main>
+                <contact-form></contact-form>
             </div>
 
             <footer>

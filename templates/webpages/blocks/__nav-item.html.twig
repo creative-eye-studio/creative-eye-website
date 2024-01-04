@@ -1,25 +1,30 @@
 {% set targetAttr = item.blank ? 'target="_blank" rel="noopener" data-no-swup="1"' : '' %}
 {% set pageUrl = item.page.pageurl ?? null %}
 {% set postUrl = item.post.posturl ?? null %}
+{% set servUrl = item.extservice.url ?? null %}
 {% set cusname = item.cusname[lang] ?? null %}
 {% set cuslink = item.cuslink[lang] ?? null %}
 
 <li>
     {% if item.page %}
-        <a href="{{ path('web_page', {page_slug: pageUrl}) }}" {{ targetAttr }}>
+        <a href="{{ path('web_page', {page_slug: pageUrl}) }}" {{ targetAttr }} data-val="{{ cusname ?? item.page.pagename[lang] }}">
             {{ cusname ?? item.page.pagename[lang] }}
         </a>
     {% elseif item.post %}
-        <a href="{{ path('web_post', {post_slug: postUrl}) }}" {{ targetAttr }}>
+        <a href="{{ path('web_post', {post_slug: postUrl}) }}" {{ targetAttr }} data-val="{{ cusname ?? item.post.postname[lang] }}">
             {{ cusname ?? item.post.postname[lang] }}
         </a>
+    {% elseif item.extservice %}
+        <a href="{{ path('web_service', {service_slug: servUrl}) }}" {{ targetAttr }} data-val="{{ cusname ?? item.extservice.titre[lang] }}">
+            {{ cusname ?? item.extservice.titre[lang] }}
+        </a>
     {% else %}
-        <a href="{{ cuslink }}" {{ targetAttr }}>
+        <a href="{{ cuslink }}" {{ targetAttr }} data-val="{{ cusname ?? cuslink }}">
             {{ cusname ?? cuslink }}
         </a>
     {% endif %}
-    {% if item.menulinks %}
-        <ul>
+    {% if item.menulinks and item.menulinks|length > 0  %}
+        <ul class="subitem">
             {% for subitem in item.menulinks %}
                 {{ include('webpages/blocks/__nav-item.html.twig', { "pos": pos, "item": subitem }) }}
             {% endfor %}

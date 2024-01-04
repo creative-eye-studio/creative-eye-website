@@ -1,0 +1,16 @@
+.reals {
+  .item {
+    margin-bottom: $marge-m;
+
+    figure {
+      aspect-ratio: 1/1;
+      background: lightgray;
+      margin-bottom: $marge-m;
+    }
+
+    &:nth-child(even) {
+      position: relative;
+      top: $marge-d-y;
+    }
+  }
+}

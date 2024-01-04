@@ -52,10 +52,14 @@ class PostsList
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Comments::class)]
     private Collection $comments;
 
+    #[ORM\ManyToMany(targetEntity: Categories::class, inversedBy: 'postsLists')]
+    private Collection $categories;
+
     public function __construct()
     {
         $this->menuLinks = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->categories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -239,6 +243,30 @@ class PostsList
                 $comment->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categories>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categories $category): static
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories->add($category);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categories $category): static
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }

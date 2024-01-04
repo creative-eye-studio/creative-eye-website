@@ -109,6 +109,7 @@ class ExtServicesController extends AbstractController
             'form' => $form,
             'ftitre' => $service->getTitre(),
             'fsous_titre' => $service->getSousTitre(),
+            'fcat' => $service->getCategorie(),
             'fthumb' => $service->getThumb(),
             'fservices' => $serv_list,
             'fintro_fr' => $intro ? htmlspecialchars_decode($intro[0]) : '',

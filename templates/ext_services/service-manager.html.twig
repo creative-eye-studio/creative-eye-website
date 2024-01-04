@@ -1,0 +1,14 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Gestion des services{% endblock %}
+
+{% block body %}
+    <section class="block">
+        <a class="btn-link float-right" href="{{ path('ext_services') }}">Retour à la liste</a>
+
+        <h2>{{ title }}</h2>
+
+        {{ form(form) }}
+
+    </section>
+{% endblock %}

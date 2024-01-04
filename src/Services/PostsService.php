@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Entity\Categories;
 use App\Entity\PostsList;
 use App\Form\PostsAdminFormType;
 use Cocur\Slugify\Slugify;
@@ -14,12 +15,15 @@ use Symfony\Component\HttpFoundation\RequestStack;
 class PostsService extends AbstractController
 {
     private $em;
+    private $cat_repo;
     private $posts_repo;
     private $request;
 
-    function __construct(EntityManagerInterface $em, RequestStack $request) {
+    function __construct(EntityManagerInterface $em, RequestStack $request)
+    {
         $this->em = $em;
         $this->posts_repo = $this->em->getRepository(PostsList::class);
+        $this->cat_repo = $this->em->getRepository(Categories::class);
         $this->request = $request->getCurrentRequest();
     }
 
@@ -82,10 +86,7 @@ class PostsService extends AbstractController
             }
 
             // Création de l'auteur
-            if ($newPost) {
-                $author = $security->getUser();
-                $post->setAuthor($author);
-            }
+            $post->setAuthor($newPost ? $security->getUser() : null);
 
             // Création de l'image
             $imageFile = $form->get('post_thumb')->getData();
@@ -101,7 +102,7 @@ class PostsService extends AbstractController
                     throw $th;
                 }
             }
-            
+
             // Envoi des données vers la BDD
             $this->em->persist($post);
             $this->em->flush();
@@ -115,39 +116,76 @@ class PostsService extends AbstractController
     public function getAllPosts()
     {
         $posts = $this->posts_repo->findAll();
-    
+
         return array_map(function ($post) {
             return [
-                'id'   => $post->getId(),
+                'id' => $post->getId(),
+                'thumb' => $post->getPostThumb(),
                 'name' => $post->getPostName(),
-                'url'  => $post->getPostUrl(),
-                'date' => $post->getCreatedAt(),
+                'url' => $post->getPostUrl(),
+                'date' => $post->getCreatedAt()->format("d/m/Y"),
+                'online' => $post->isOnline(),
             ];
         }, $posts);
     }
-      
+
     #endregion
 
     #region Affichage des derniers posts
     public function getLastPosts()
     {
-        $lastPosts = $this->posts_repo->findBy([], ['created_at' => 'DESC'], 3);
-    
+        $lastPosts = $this->posts_repo->findBy([], ['created_at' => 'DESC'], 4);
+
         return array_map(function ($post) {
             return [
                 'id' => $post->getId(),
+                'thumb' => $post->getPostThumb(),
                 'name' => $post->getPostName(),
                 'url' => $post->getPostUrl(),
-                'date' => $post->getCreatedAt(),
+                'content' => htmlspecialchars_decode($post->getPostContent()[0]),
+                'date' => $post->getCreatedAt()->format("d/m/Y"),
+                'online' => $post->isOnline(),
             ];
         }, $lastPosts);
     }
-    
+    #endregion
+
+    #region Affichage des posts selon un service
+    public function getServicesPosts(int $servId)
+    {
+        $category = $this->cat_repo->find($servId);
+
+        if (!$category) {
+            throw $this->createNotFoundException('Catégorie non trouvée pour l\'ID ' . $servId);
+        }
+
+        return array_map(function ($post) {
+            return [
+                'id' => $post->getId(),
+                'thumb' => $post->getPostThumb(),
+                'name' => $post->getPostName(),
+                'url' => $post->getPostUrl(),
+                'date' => $post->getCreatedAt()->format("d/m/Y"),
+                'online' => $post->isOnline(),
+            ];
+        }, $category->getPostsLists()->toArray());
+    }
     #endregion
 
     #region Affichage d'un post
-    public function getPost(string $post_url){
+    public function getPost(string $post_url)
+    {
         $post = $this->posts_repo->findOneBy(["post_url" => $post_url]);
+        return [
+            'id' => $post->getId(),
+            'thumb' => $post->getPostThumb(),
+            'name' => $post->getPostName(),
+            'url' => $post->getPostUrl(),
+            'date' => $post->getCreatedAt()->format("d/m/Y"),
+            'online' => $post->isOnline(),
+        ];
     }
     #endregion
+
+    
 }

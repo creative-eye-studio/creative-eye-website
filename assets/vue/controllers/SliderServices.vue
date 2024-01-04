@@ -8,31 +8,37 @@
         @slideChange="onSlideChange"
     >
         <swiper-slide>
-            <figure class="thumb">
-                <img src="" alt="">
-            </figure>
-            <h3 class="small-title">
-                Nom du service 
-            </h3>
-            <p>Introduction</p>
+            <div class="text-img-bloc">
+                <figure class="image">
+                    <img src="">
+                </figure>
+                <div class="text">
+                    <h3 v-html="'Nom du service'"></h3>
+                    <p class="text" v-html="'Introduction'"></p>
+                </div>    
+            </div>
         </swiper-slide>
         <swiper-slide>
-            <figure class="thumb">
-                <img src="" alt="">
-            </figure>
-            <h3 class="small-title">
-                Nom du service 
-            </h3>
-            <p>Introduction</p>
+            <div class="text-img-bloc">
+                <figure class="image">
+                    <img src="">
+                </figure>
+                <div class="text">
+                    <h3 v-html="'Nom du service'"></h3>
+                    <p class="text" v-html="'Introduction'"></p>
+                </div>    
+            </div>
         </swiper-slide>
         <swiper-slide>
-            <figure class="thumb">
-                <img src="" alt="">
-            </figure>
-            <h3 class="small-title">
-                Nom du service 
-            </h3>
-            <p>Introduction</p>
+            <div class="text-img-bloc">
+                <figure class="image">
+                    <img src="">
+                </figure>
+                <div class="text">
+                    <h3 v-html="'Nom du service'"></h3>
+                    <p class="text" v-html="'Introduction'"></p>
+                </div>    
+            </div>
         </swiper-slide>
     </swiper>
 </template>

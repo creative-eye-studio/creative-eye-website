@@ -2,7 +2,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,6 +15,8 @@ header{
         background-color: rgba($color: #000000, $alpha: 0);
         border: none;
         cursor: pointer;
+        z-index: 100;
+        right: $marge-d-x;
         .bar{
             display: block;
             width: 100%;
@@ -37,14 +39,31 @@ header{
         padding: calc(#{$marge-d-y} / 2.2) $marge-d-x;
         background: inherit;
         transition-duration: .5s;
+        &::after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+        }
     }
 }
 
-.onScroll{
+.onScroll:not(.open-nav){
+    header{
+        @media screen and (min-width: $lg) {
+            background: #1F1F1F;
+            &::after{
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.onScroll, .open-nav{
     header{
         @media screen and (min-width: $lg) {
             padding: calc(#{$marge-d-y} / 4) $marge-d-x;
-            background: #1F1F1F;
         }
     }
 }

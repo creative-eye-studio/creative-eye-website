@@ -13,6 +13,9 @@
 @import './components/utils';
 @import './components/buttons';
 @import './components/custom-animate';
+@import './components/heroscreen';
+@import './components/intro-page';
+@import './components/text-img';
 
 // LAYOUT
 @import './layouts/header';
@@ -22,6 +25,7 @@
 
 // PAGES
 @import './pages/home';
+@import './pages/services';
 
 // TAILWIND
 @import 'tailwindcss/base';

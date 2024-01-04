@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Categories;
 use App\Entity\ExtServices;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -29,6 +31,11 @@ class ExtServicesType extends AbstractType
                 'row_attr' => [
                     'class' => "form-row"
                 ]
+            ])
+            ->add('categorie', EntityType::class, [
+                'label' => "Catégorie",
+                'class' => Categories::class,
+                'choice_label' => 'nom',
             ])
             ->add('thumb', DropzoneType::class, [
                 'label' => "Image du service",

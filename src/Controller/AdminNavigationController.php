@@ -69,7 +69,7 @@ class AdminNavigationController extends AbstractController
             }
 
             foreach ($services as $link) {
-                $oldLink = $em->getRepository(MenuLink::class)->findOneBy([
+                $oldLink = $this->em->getRepository(MenuLink::class)->findOneBy([
                     'menu' => $id_menu,
                     'ext_service' => $link
                 ]);
