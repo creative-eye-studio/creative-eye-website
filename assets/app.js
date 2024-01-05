@@ -16,6 +16,7 @@ import { ScrollWeb } from './smoothScroll';
 import { Parallax } from './parallax';
 import { createApp } from 'vue';
 import ContactForm from './vue/controllers/ContactForm';
+import AllPosts from './vue/controllers/AllPosts';
 import LastPosts from './vue/controllers/LastPosts';
 import LastServicePosts from './vue/controllers/LastServicePosts';
 import LastReal from './vue/controllers/LastReal';
@@ -35,7 +36,7 @@ const values = {
 function initVueComponents() {
     // Créez une référence à l'application Vue
     const app = createApp({
-        components: { LastPosts, LastServicePosts, LastReal, SliderServices, ContactForm },
+        components: { AllPosts, LastPosts, LastServicePosts, LastReal, SliderServices, ContactForm },
     }).mount('#website');
 }
 
@@ -79,6 +80,8 @@ function parallax() {
     // Retourne l'instance créée
     return parallaxInstance;
 }
+
+
 
 // Bouton menu
 // ---------------------------------------------------
