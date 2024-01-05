@@ -48,6 +48,7 @@ select{
     @include form-design();
     margin-top: 1rem;
     letter-spacing: 0.04rem;
+    cursor: pointer;
 }
 
 label {

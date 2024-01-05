@@ -2,7 +2,7 @@ footer{
     padding: calc(#{$marge-m} * 2) $marge-d-x;
     width: 100%;
     font-size: .9em;
-    color: white;
+    color: $colorWt;
     background-color: $colorBk;
     ul{
         display: flex;
@@ -13,11 +13,11 @@ footer{
         margin: calc(#{$marge-m} * 2) 0;
     }
     a{
-        color: white;
+        @include footer-link();
         text-decoration: none;
-        transition-duration: .5s;
-        &:hover {
-            opacity: .6;
-        }
+    }
+    span {
+        @include footer-link();
+        cursor: pointer;
     }
 }

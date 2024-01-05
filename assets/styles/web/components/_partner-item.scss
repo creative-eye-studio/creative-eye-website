@@ -1,0 +1,23 @@
+.partner-item {
+    &:not(:last-child){
+        @extend .margin-bottom-on-md;
+    }
+    &:nth-child(even){
+        flex-direction: row-reverse;
+    }
+    .text-block {
+        background-color: #F1F1F1;
+        padding: calc(#{$marge-m} * 2);
+        h3 {
+            margin-top: 0;
+        }
+        .logo {
+            float: right;
+            width: 200px;
+            // margin: $marge-m 0 $marge-m;
+        }
+        .text-content {
+            padding: $marge-m 0;
+        }
+    }
+}

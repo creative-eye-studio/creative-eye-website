@@ -45,23 +45,31 @@ export class ScrollWeb {
         // Scroll au click d'une ancre
         const navAnchors = document.querySelectorAll('a[href^="#"]');
         navAnchors.forEach(btn => {
-            btn.addEventListener('click', function(){
+            btn.addEventListener('click', function(event) {
+                event.preventDefault();
+        
                 const margin = 0;
                 const target = btn.getAttribute('href') || btn.getAttribute('data-link');
                 const anchor = document.querySelector(target);
                 const offset = container.getBoundingClientRect().top - anchor.getBoundingClientRect().top;
+                
                 scrollbar.scrollIntoView(anchor, { 
                     offset, 
                     offsetTop: margin
                 });
-                return false;
-            })
-        })
+        
+                // Supprimer l'ancre de l'URL sans ajouter une nouvelle entrée dans l'historique
+                history.replaceState(null, null, target);
+            });
+        });
+        
 
         // Retour en haut de page
         const navLinks = document.querySelectorAll('a:not([href^="#"])');
         navLinks.forEach(btn => {
-            scrollbar.scrollTo(0, 0, 0); 
+            btn.addEventListener('click', function() {
+                scrollbar.scrollTo(0, 0, 0); 
+            })
         })
 
         return scrollbar;

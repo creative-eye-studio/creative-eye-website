@@ -612,5 +612,15 @@
         }
     }
 }
-
 /* #endregion Custom Animate */
+
+
+/* #region Footer */
+@mixin footer-link() {
+    color: white;
+    transition-duration: .5s;
+    &:hover {
+        opacity: .6;
+    }
+}
+/* #endregion Footer */

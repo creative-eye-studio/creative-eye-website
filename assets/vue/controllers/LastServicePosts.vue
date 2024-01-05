@@ -15,7 +15,7 @@
                 <div class="text-content">
                     <h3 v-html="post.name[0]"></h3>
                     <div class="text" v-html="post.content"></div>
-                    <p><a class="btn-link" :href="'/fr/blog/' + post.url">Voir l'article</a></p>
+                    <p><a class="btn-link" :href="'/fr/blog/' + post.url">Lire l'article</a></p>
                 </div>    
             </article>
         </swiper-slide>

@@ -28,6 +28,9 @@ class ExtPartenaires
     #[ORM\Column]
     private array $texte = [];
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $website = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -89,6 +92,18 @@ class ExtPartenaires
     public function setTexte(array $texte): static
     {
         $this->texte = $texte;
+
+        return $this;
+    }
+
+    public function getWebsite(): ?string
+    {
+        return $this->website;
+    }
+
+    public function setWebsite(?string $website): static
+    {
+        $this->website = $website;
 
         return $this;
     }

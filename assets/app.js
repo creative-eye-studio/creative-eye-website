@@ -21,6 +21,7 @@ import LastPosts from './vue/controllers/LastPosts';
 import LastServicePosts from './vue/controllers/LastServicePosts';
 import LastReal from './vue/controllers/LastReal';
 import SliderServices from './vue/controllers/SliderServices';
+import Partners from './vue/controllers/Partners';
 
 
 // Variables
@@ -36,7 +37,7 @@ const values = {
 function initVueComponents() {
     // Créez une référence à l'application Vue
     const app = createApp({
-        components: { AllPosts, LastPosts, LastServicePosts, LastReal, SliderServices, ContactForm },
+        components: { AllPosts, LastPosts, LastServicePosts, LastReal, SliderServices, ContactForm, Partners },
     }).mount('#website');
 }
 
@@ -61,7 +62,7 @@ document.addEventListener('swup:contentReplaced', commonCalls);
 // -----------------------------------------------
 function scrollWeb() {
     // Retourne l'instance créée
-    return new ScrollWeb(values.damping).init();
+    return new ScrollWeb(values.damping).init;
 }
 
 

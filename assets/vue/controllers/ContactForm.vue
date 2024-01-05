@@ -66,12 +66,12 @@
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="tel" name="telephone" id="telephone" title="Veuillez indiquer votre numéro de teléphone pour être recontacté" required>
+                <input type="tel" name="telephone" id="telephone" title="Veuillez indiquer votre numéro de teléphone pour être recontacté(e)" required>
                 <label for="telephone">Téléphone *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="email" name="mail" id="mail" title="Veuillez indiquer votre adresse e-mail pour être recontacté" required>
+                <input type="email" name="mail" id="mail" title="Veuillez indiquer votre adresse e-mail pour être recontacté(e)" required>
                 <label for="mail">E-Mail *</label>
             </div>
 
