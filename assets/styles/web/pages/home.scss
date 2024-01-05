@@ -13,13 +13,14 @@
                 object-fit: cover;
             }
         }
+        .text, .arrow {
+            bottom: 0;
+        }
         .text{
             left: 0;
-            bottom: 0;
         }
         .arrow{
             right: 0;
-            bottom: 0;
         }
     }
 }

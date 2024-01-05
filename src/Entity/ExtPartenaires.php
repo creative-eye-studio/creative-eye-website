@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ExtPartenairesRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ExtPartenairesRepository::class)]
@@ -30,6 +32,14 @@ class ExtPartenaires
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $website = null;
+
+    #[ORM\ManyToMany(targetEntity: ExtRealisations::class, mappedBy: 'partenaires')]
+    private Collection $extRealisations;
+
+    public function __construct()
+    {
+        $this->extRealisations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -104,6 +114,33 @@ class ExtPartenaires
     public function setWebsite(?string $website): static
     {
         $this->website = $website;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ExtRealisations>
+     */
+    public function getExtRealisations(): Collection
+    {
+        return $this->extRealisations;
+    }
+
+    public function addExtRealisation(ExtRealisations $extRealisation): static
+    {
+        if (!$this->extRealisations->contains($extRealisation)) {
+            $this->extRealisations->add($extRealisation);
+            $extRealisation->addPartenaire($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExtRealisation(ExtRealisations $extRealisation): static
+    {
+        if ($this->extRealisations->removeElement($extRealisation)) {
+            $extRealisation->removePartenaire($this);
+        }
 
         return $this;
     }

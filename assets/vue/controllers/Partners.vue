@@ -13,7 +13,7 @@
                     <img :src="'../../uploads/images/partners/logos/' + item.logo" :alt="item.societe">
                 </figure>
                 <p v-if="item.website != '' || item.website != null">
-                    <a class="btn-link" :href="item.website" v-html="'Voir le site de ' + item.societe" target="_blank" rel="noopener"></a>
+                    <a :title='"Site internet de " + item.societe + " (Lien externe)"' class="btn-link" :href="item.website" v-html="'Voir le site de ' + item.societe" target="_blank" rel="noopener"></a>
                 </p> 
             </div>
         </div>

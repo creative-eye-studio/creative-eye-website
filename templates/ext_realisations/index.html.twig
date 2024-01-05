@@ -1,0 +1,19 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Gestion des réalisations{% endblock %}
+
+{% block body %}
+    <section class="block">
+        <a class="btn-link float-right" href="{{ path('ext_realisations_add') }}">Ajouter une réalisation</a>
+        <h2>Liste des réalisations</h2>
+        {% for real in reals %}
+            <div class="line">
+                <span>{{ real.nom }}</span>
+                <ul>
+                    <li><a href="{{ path('ext_realisations_update', {id: real.id}) }}">Modifier</a></li>
+                    <li><a href="{{ path('ext_realisations_delete', {id: real.id}) }}">Supprimer</a></li>
+                </ul>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}

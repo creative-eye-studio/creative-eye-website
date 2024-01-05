@@ -9,7 +9,7 @@ xhr.open('GET', jsonStyles, false);
 xhr.send();
 
 var baseFile = JSON.parse(xhr.responseText);
-var cssFile = baseFile.entrypoints.app.css[0];
+var cssFile = baseFile.entrypoints.app.css[1];
 
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:

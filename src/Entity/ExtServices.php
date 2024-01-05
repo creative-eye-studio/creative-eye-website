@@ -42,9 +42,13 @@ class ExtServices
     #[ORM\ManyToOne(inversedBy: 'extServices')]
     private ?Categories $categorie = null;
 
+    #[ORM\ManyToMany(targetEntity: ExtRealisations::class, mappedBy: 'services')]
+    private Collection $extRealisations;
+
     public function __construct()
     {
         $this->menuLinks = new ArrayCollection();
+        $this->extRealisations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -174,6 +178,33 @@ class ExtServices
     public function setCategorie(?Categories $categorie): static
     {
         $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ExtRealisations>
+     */
+    public function getExtRealisations(): Collection
+    {
+        return $this->extRealisations;
+    }
+
+    public function addExtRealisation(ExtRealisations $extRealisation): static
+    {
+        if (!$this->extRealisations->contains($extRealisation)) {
+            $this->extRealisations->add($extRealisation);
+            $extRealisation->addService($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExtRealisation(ExtRealisations $extRealisation): static
+    {
+        if ($this->extRealisations->removeElement($extRealisation)) {
+            $extRealisation->removeService($this);
+        }
 
         return $this;
     }

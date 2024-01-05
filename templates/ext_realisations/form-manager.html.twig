@@ -1,0 +1,22 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <section class="block">
+        <h2>{{ title }}</h2>
+        {{ form_start(form) }}
+            {{ form_row(form.main_image) }}
+            {{ form_row(form.nom) }}
+            {{ form_row(form.website) }}
+            {{ form_row(form.annee) }}
+            {{ form_row(form.youtube) }}
+            {{ form_row(form.services) }}
+            {{ form_row(form.partenaires) }}
+            {{ form_row(form.intro, {value: intro}) }}
+            {{ form_row(form.demande, {value: demande}) }}
+            {{ form_row(form.approche, {value: approche}) }}
+            {{ form_row(form.submit) }}
+        {{ form_end(form) }}
+    </section>
+{% endblock %}

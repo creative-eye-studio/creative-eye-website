@@ -43,9 +43,9 @@ function initVueComponents() {
 
 const commonCalls = () => {
     initVueComponents();
+    scrollWeb();
     if (!commonCalls.isInitialized) {
         AOS.init();
-        scrollWeb();
         parallax();
         commonCalls.isInitialized = true; // Marquez les fonctions comme étant appelées
     }
