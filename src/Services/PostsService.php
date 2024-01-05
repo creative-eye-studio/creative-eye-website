@@ -123,6 +123,7 @@ class PostsService extends AbstractController
                 'thumb' => $post->getPostThumb(),
                 'name' => $post->getPostName(),
                 'url' => $post->getPostUrl(),
+                'content' => htmlspecialchars_decode($post->getPostContent()[0]),
                 'date' => $post->getCreatedAt()->format("d/m/Y"),
                 'online' => $post->isOnline(),
             ];
@@ -165,6 +166,7 @@ class PostsService extends AbstractController
                 'thumb' => $post->getPostThumb(),
                 'name' => $post->getPostName(),
                 'url' => $post->getPostUrl(),
+                'content' => htmlspecialchars_decode($post->getPostContent()[0]),
                 'date' => $post->getCreatedAt()->format("d/m/Y"),
                 'online' => $post->isOnline(),
             ];

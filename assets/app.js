@@ -60,12 +60,8 @@ document.addEventListener('swup:contentReplaced', commonCalls);
 // Smooth Scrollbar
 // -----------------------------------------------
 function scrollWeb() {
-    // Crée une instance de ScrollWeb en utilisant la valeur de damping de l'objet 'values'
-    const scrollWebInstance = new ScrollWeb(values.damping);
-    // Appelle la méthode init pour initialiser l'instance
-    scrollWebInstance.init();
     // Retourne l'instance créée
-    return scrollWebInstance;
+    return new ScrollWeb(values.damping).init();
 }
 
 
@@ -73,12 +69,8 @@ function scrollWeb() {
 // Parallax
 // -----------------------------------------------
 function parallax() {
-    // Crée une instance de la classe Parallax avec les valeurs de damping et scrollImgSpeed
-    const parallaxInstance = new Parallax(values.damping, values.scrollImgSpeed);
-    // Appelle la méthode initParallax pour initialiser l'instance
-    parallaxInstance.initParallax();
     // Retourne l'instance créée
-    return parallaxInstance;
+    return new Parallax(values.damping, values.scrollImgSpeed).initParallax();
 }
 
 

@@ -12,27 +12,27 @@
         
         <form method="post" class="row-no-marge">
             <div class="col-6 col-sm-12 input-group">
-                <input type="text" name="nom" id="nom" required>
+                <input type="text" name="nom" id="nom" title="Veuillez entrer votre nom de famille" required>
                 <label for="nom">Nom *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="text" name="prenom" id="prenom" required>
+                <input type="text" name="prenom" id="prenom" title="Veuillez entrer votre prénom" required>
                 <label for="prenom">Prénom *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="text" name="fonction" id="fonction" required>
-                <label for="fonction">Fonction *</label>
-            </div>
-
-            <div class="col-6 col-sm-12 input-group">
-                <input type="text" name="societe" id="societe" required>
+                <input type="text" name="societe" id="societe" title="Veuillez indiquer le nom de votre entreprise" required>
                 <label for="societe">Société *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <select v-model="selectedOption" name="secteur" id="secteur" required>
+                <input type="text" name="fonction" id="fonction" title="Veuillez indiquer votre fonction au sein de l'entreprise" required>
+                <label for="fonction">Fonction *</label>
+            </div>
+
+            <div class="col-6 col-sm-12 input-group">
+                <select v-model="selectedOption" name="secteur" id="secteur" title="Quel est le secteur d'activité de votre entrprise ?" required>
                     <option value=""></option>
                     <template v-for="option in secteurs" :key="option.label">
                         <option v-if="!option.options.length" :value="option.label">{{ option.label }}</option>
@@ -47,7 +47,7 @@
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <select name="profil" id="profil" required>
+                <select name="profil" id="profil" title="Veuillez indiquer si vous êtes un particulier ou un professionnel" required>
                     <option value=""></option>
                     <option value="Particulier">Particulier</option>
                     <option value="Professionnel">Professionnel</option>
@@ -56,22 +56,22 @@
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="text" name="codepostal" id="codepostal" required>
+                <input type="text" name="codepostal" id="codepostal" title="Veuillez indiquer le code postal de votre entreprise" required>
                 <label for="codepostal">Code postal *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="text" name="ville" id="ville" required>
+                <input type="text" name="ville" id="ville" title="Veuillez indiquer la ville de votre entreprise" required>
                 <label for="ville">Ville *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="tel" name="telephone" id="telephone" required>
+                <input type="tel" name="telephone" id="telephone" title="Veuillez indiquer votre numéro de teléphone pour être recontacté" required>
                 <label for="telephone">Téléphone *</label>
             </div>
 
             <div class="col-6 col-sm-12 input-group">
-                <input type="email" name="mail" id="mail" required>
+                <input type="email" name="mail" id="mail" title="Veuillez indiquer votre adresse e-mail pour être recontacté" required>
                 <label for="mail">E-Mail *</label>
             </div>
 
@@ -118,8 +118,8 @@
             </div>
 
             <div class="col-12 input-group">
-                <textarea name="message" id="message" class="wd-100" required></textarea>
-                <label for="">Message *</label>
+                <textarea name="message" id="message" class="wd-100" title="Veuillez décrire précisément votre projet" required></textarea>
+                <label for="message">Message *</label>
             </div>
 
             <div class="col-12">

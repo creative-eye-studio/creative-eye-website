@@ -31,7 +31,7 @@ export default {
     methods: {
         async fetchData() {
                 try {
-                    const response = await fetch('/api/lasts-posts');
+                    const response = await fetch('/api/posts');
                     const data = await response.json();
                     this.posts = data;
                 } catch (error) {
