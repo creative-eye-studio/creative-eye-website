@@ -10,7 +10,7 @@
         <swiper-slide v-for="post in this.posts" :key="post.id">
             <div class="text-img-bloc">
                 <figure class="image">
-                    <img :src="'../../../uploads/images/posts/' + post.thumb" :alt="post.name[0]">
+                    <img :src="'/uploads/images/posts/' + post.thumb" :alt="post.name[0]">
                 </figure>
                 <div class="text-content">
                     <h3 v-html="post.name[0]"></h3>
@@ -38,6 +38,9 @@
             Swiper,
             SwiperSlide,
         },
+        props: {
+            servId: String,
+        },
         setup() {
             const onSwiper = (swiper) => {
                 console.log(swiper);
@@ -56,13 +59,14 @@
                 posts: null,
             }
         },
+
         mounted() {
-            this.fetchData();
+            this.fetchData(this.servId);
         },
         methods: {
-            async fetchData() {
+            async fetchData(id) {
                 try {
-                    const response = await fetch('/api/lasts-posts');
+                    const response = await fetch(`/api/posts-service/${id}`);
                     const data = await response.json();
                     this.posts = data;
                 } catch (error) {

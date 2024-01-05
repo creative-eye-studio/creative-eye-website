@@ -17,6 +17,7 @@ import { Parallax } from './parallax';
 import { createApp } from 'vue';
 import ContactForm from './vue/controllers/ContactForm';
 import LastPosts from './vue/controllers/LastPosts';
+import LastServicePosts from './vue/controllers/LastServicePosts';
 import LastReal from './vue/controllers/LastReal';
 import SliderServices from './vue/controllers/SliderServices';
 
@@ -31,22 +32,24 @@ const values = {
 
 // Instantieur
 // -----------------------------------------------
-
 function initVueComponents() {
     // Créez une référence à l'application Vue
     const app = createApp({
-        components: { LastPosts, LastReal, SliderServices, ContactForm },
+        components: { LastPosts, LastServicePosts, LastReal, SliderServices, ContactForm },
     }).mount('#website');
-
-    // const mountedApp = app;
 }
 
 const commonCalls = () => {
-  initVueComponents();
-  AOS.init();
-  scrollWeb();
-  parallax();
+    initVueComponents();
+    if (!commonCalls.isInitialized) {
+        AOS.init();
+        scrollWeb();
+        parallax();
+        commonCalls.isInitialized = true; // Marquez les fonctions comme étant appelées
+    }
 };
+
+commonCalls.isInitialized = false;
 
 document.addEventListener('DOMContentLoaded', commonCalls);
 document.addEventListener('swup:contentReplaced', commonCalls);

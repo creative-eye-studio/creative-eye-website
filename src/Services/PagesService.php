@@ -217,6 +217,7 @@ class PagesService extends AbstractController
         }
 
         return $this->render('web_pages_views/service.html.twig', [
+            'id' => $service->getCategorie()->getId(),
             'titre' => $service->getTitre()[$lang],
             'sous_titre' => $service->getSousTitre()[$lang],
             'intro' => htmlspecialchars_decode($service->getIntro()[$lang]),
