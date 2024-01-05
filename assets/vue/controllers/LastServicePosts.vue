@@ -8,16 +8,16 @@
         @slideChange="onSlideChange"
     >
         <swiper-slide v-for="post in this.posts" :key="post.id">
-            <div class="text-img-bloc">
+            <article class="text-img-bloc">
                 <figure class="image">
                     <img :src="'/uploads/images/posts/' + post.thumb" :alt="post.name[0]">
                 </figure>
                 <div class="text-content">
                     <h3 v-html="post.name[0]"></h3>
                     <div class="text" v-html="post.content"></div>
-                    <p><a class="btn-link" href="">Voir l'article</a></p>
+                    <p><a class="btn-link" :href="'/fr/blog/' + post.url">Voir l'article</a></p>
                 </div>    
-            </div>
+            </article>
         </swiper-slide>
     </swiper>
 </template>

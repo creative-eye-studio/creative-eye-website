@@ -18,15 +18,35 @@
 {% endblock %}
 
 {% block body %}
-    {% if post_thumb %}
-        <img src="{{ posts_img_directory }}/{{ post_thumb }}" alt="{{ post_name }}" />
-    {% endif %}
-    {{ post_content | raw }}
-    {{ form(form) }}
+    <!-- Heroscreen -->
+    <section class="heroscreen-page position-relative padding-all-no-md">
+        <div class="text position-absolute-no-md">
+            <h1>
+                <span class="small">
+                    Article
+                </span>
+                <span class="title">
+                    {{ post_name }}
+                </span>
+            </h1>
+        </div>
+        {% if post_thumb %}
+            <figure class="image position-absolute-no-md">
+                <img src="{{ posts_img_directory }}/{{ post_thumb }}" alt="{{ post_name }}" />
+            </figure>
+        {% endif %}
+    </section>
+    
+    <section class="padding-all-on-md">
+        {{ post_content | raw }}
+    </section>
+    
+    {# Commentaires #}
+    {# {{ form(form) }}
     {% for comment in comments %}
         <p>
             Posté par {{ comment.pseudo }}
         </p>
         <p>{{ comment.content }}</p>
-    {% endfor %}
+    {% endfor %} #}
 {% endblock %}
