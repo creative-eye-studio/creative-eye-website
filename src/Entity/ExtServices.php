@@ -21,9 +21,6 @@ class ExtServices
     #[ORM\Column]
     private array $sous_titre = [];
 
-    #[ORM\Column]
-    private array $intro = [];
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $thumb = null;
 
@@ -76,18 +73,6 @@ class ExtServices
     public function setSousTitre(array $sous_titre): static
     {
         $this->sous_titre = $sous_titre;
-
-        return $this;
-    }
-
-    public function getIntro(): array
-    {
-        return $this->intro;
-    }
-
-    public function setIntro(array $intro): static
-    {
-        $this->intro = $intro;
 
         return $this;
     }

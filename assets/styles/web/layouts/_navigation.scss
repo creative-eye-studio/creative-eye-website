@@ -23,7 +23,6 @@
         position: relative;
         z-index: 3;
         transition-duration: 1s;
-        transition-delay: 2s;
     }
     .nav-1, .nav-2 {
         padding: 0 $marge-d-x;
@@ -32,7 +31,8 @@
         justify-content: center;
         height: 100%;
         opacity: 1;
-        left: 0%;
+        margin-left: 0;
+        transition-delay: 2s;
         a{
             text-decoration: none;
             position: relative;
@@ -98,6 +98,7 @@
         top: 0;
         bottom: 0;
         transition-duration: 1s;
+        transition-delay: 1s;
     }
     ul{
         &.subitem{
@@ -117,15 +118,14 @@ html:not(.open-nav) {
             left: 0%;
             transition-delay: 1s;
         }
-        .nav-1, .nav-2, .imgs-nav{
-            transition-delay: 0s;
-        }
         .nav-1, .nav-2{
             opacity: 0;
-            left: -10%;
+            margin-left: -#{$marge-m};
+            transition-delay: 0s;
         }
         .imgs-nav{
             width: 0%;
+            transition-delay: 1s;
         }
     }
 }

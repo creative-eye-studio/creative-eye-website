@@ -40,9 +40,9 @@
     .more-panel {
         max-height: 0;
         overflow: hidden;
-        transition: max-height 1s;
+        transition-duration: 1.5s;
         &.open {
-            max-height: 10rem;
+            max-height: 50rem;
         }
     }
 }

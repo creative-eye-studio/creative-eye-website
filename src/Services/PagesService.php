@@ -221,7 +221,6 @@ class PagesService extends AbstractController
             'id' => $service->getCategorie()->getId(),
             'titre' => $service->getTitre()[$lang],
             'sous_titre' => $service->getSousTitre()[$lang],
-            'intro' => htmlspecialchars_decode($service->getIntro()[$lang]),
             'thumb' => $service->getThumb(),
             'contenu' => htmlspecialchars_decode($service->getContenu()[$lang]),
             'services' => $service->getServices(),

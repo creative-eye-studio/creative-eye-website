@@ -42,7 +42,6 @@ class ExtServicesController extends AbstractController
         $form->handleRequest($this->request);
 
         $contenu = $service->getContenu();
-        $intro = $service->getIntro();
         
         if ($form->isSubmitted() && $form->isValid()) { 
             $slugify = new Slugify();
@@ -77,10 +76,6 @@ class ExtServicesController extends AbstractController
                 $service->setThumb($file);
             }
 
-            // Intro
-            $intro = [htmlspecialchars($form->get('intro')->getData())];
-            $service->setIntro($intro);
-
             // Contenu
             $contenu = [htmlspecialchars($form->get('contenu')->getData())];
             $service->setContenu($contenu);
@@ -112,7 +107,6 @@ class ExtServicesController extends AbstractController
             'fcat' => $service->getCategorie(),
             'fthumb' => $service->getThumb(),
             'fservices' => $serv_list,
-            'fintro_fr' => $intro ? htmlspecialchars_decode($intro[0]) : '',
             'fcontenu_fr' => $contenu ? htmlspecialchars_decode($contenu[0]) : ''
         ]);
     }

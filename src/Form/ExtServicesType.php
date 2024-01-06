@@ -40,6 +40,16 @@ class ExtServicesType extends AbstractType
                     'class' => "form-row"
                 ]
             ])
+            ->add('services', TextType::class, [
+                'label' => "Liste des prestations",
+                'mapped' => false,
+                'attr' => [
+                    'placeholder' => "Ex : Service 1; Service 2"
+                ],
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
+            ])
             ->add('thumb', DropzoneType::class, [
                 'label' => "Image du service",
                 'required' => false,
@@ -49,26 +59,9 @@ class ExtServicesType extends AbstractType
                     'class' => "form-row"
                 ]
             ])
-            ->add('intro', CKEditorType::class, [
-                'label' => "Introduction (A retirer)",
-                'mapped' => false,
-                'row_attr' => [
-                    'class' => "form-row"
-                ]
-            ])
             ->add('contenu', CKEditorType::class, [
                 'label' => "Présentation du service",
                 'mapped' => false,
-                'row_attr' => [
-                    'class' => "form-row"
-                ]
-            ])
-            ->add('services', TextType::class, [
-                'label' => "Liste des services",
-                'mapped' => false,
-                'attr' => [
-                    'placeholder' => "Ex : Service 1; Service 2"
-                ],
                 'row_attr' => [
                     'class' => "form-row"
                 ]
