@@ -1,4 +1,5 @@
 .btn {
+    // Bouton primaire
     &-primary {
         padding: 1rem 2rem;
         text-transform: uppercase;
@@ -12,9 +13,39 @@
             border: .0625rem solid $colorBk;
         }
     }
+
+    // Bouton lien
     &-link {
         @extend .btn-primary;
         display: inline-block;
         text-decoration: none;
+        &-wt {
+            @extend .btn-link;
+            &:hover {
+                color: $colorWt;
+                background-color: rgba($color: $color-p, $alpha: 0);
+                border: .0625rem solid $colorWt;
+            }
+        }
+    }
+
+    // Bouton arrondi
+    &-rounded {
+        color: $colorWt;
+        background-color: rgba($color: $color-p, $alpha: 1);
+        width: 4rem;
+        height: 4rem;
+        border-radius: 4rem;
+        border: .0625rem solid $color-p;
+        cursor: pointer;
+        transition-duration: .5s;
+        &-wt {
+            @extend .btn-rounded;
+            &:hover {
+                color: $colorWt;
+                background-color: rgba($color: $color-p, $alpha: 0);
+                border: .0625rem solid $colorWt;
+            }
+        }
     }
 }

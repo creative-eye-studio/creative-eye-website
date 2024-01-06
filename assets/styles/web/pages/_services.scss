@@ -3,14 +3,36 @@
     margin-bottom: $marge-m;
 
     figure {
-      aspect-ratio: 1/1;
+      @extend .cover-img;
+      aspect-ratio: 16/10;
       background: #F1F1F1;
       margin-bottom: $marge-m;
+      overflow: hidden;
+      img{
+        transition-duration: 1s;
+      }
+    }
+
+    h2 {
+      margin-bottom: 0;
     }
 
     &:nth-child(even) {
       position: relative;
       top: $marge-d-y;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    a {
+      text-decoration: none;
+      &:hover {
+        img {
+          transform: scale(1.2);
+        }  
+      }
     }
   }
 }

@@ -49,6 +49,9 @@ class ExtRealisations
     #[ORM\Column(length: 255)]
     private ?string $main_image = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $url = null;
+
     public function __construct()
     {
         $this->services = new ArrayCollection();
@@ -231,6 +234,18 @@ class ExtRealisations
     public function setMainImage(string $main_image): static
     {
         $this->main_image = $main_image;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(string $url): static
+    {
+        $this->url = $url;
 
         return $this;
     }

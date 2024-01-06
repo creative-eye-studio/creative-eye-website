@@ -58,7 +58,10 @@ class ExtRealisationsController extends AbstractController
 
         // Soumission du formulaire
         if ($form->isSubmitted() && $form->isValid()) { 
-            $formData = $form->getData();
+            // Création de l'URL
+            if ($id == null) {
+                $real->setUrl($this->slugger->slug($form->get('nom')->getData()));
+            }
 
             // Sauvegarde de l'image
             $imageData = $form->get('main_image')->getData();

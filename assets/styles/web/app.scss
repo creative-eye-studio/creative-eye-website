@@ -17,6 +17,7 @@
 @import './components/intro-page';
 @import './components/text-img';
 @import './components/partner-item';
+@import './components/real-item';
 
 // LAYOUT
 @import './layouts/header';
@@ -27,6 +28,7 @@
 // PAGES
 @import './pages/home';
 @import './pages/services';
+@import './pages/real';
 
 // TAILWIND
 @import 'tailwindcss/base';

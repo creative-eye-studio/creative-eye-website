@@ -65,7 +65,7 @@ export class ScrollWeb {
 
         // Retour en haut de page
         document.addEventListener('swup:contentReplaced', function() {
-            scrollbar.scrollTo(0, 0, 0); 
+            scrollbar.scrollTo(0, 0, 1000); 
         })
 
         return scrollbar;

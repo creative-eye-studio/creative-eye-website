@@ -48,7 +48,7 @@ class ExtRealisationsType extends AbstractType
                     'class' => "form-row"
                 ]
             ])
-            ->add('youtube', UrlType::class, [
+            ->add('youtube', TextType::class, [
                 'label' => "Vidéo Youtube (si existante)",
                 'required' => false,
                 'row_attr' => [
@@ -69,6 +69,7 @@ class ExtRealisationsType extends AbstractType
                 'label' => "Partenaires du projet",
                 'choice_label' => 'societe',
                 'multiple' => true,
+                'required' => false,
                 'row_attr' => [
                     'class' => "form-row"
                 ]

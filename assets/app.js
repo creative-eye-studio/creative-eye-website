@@ -20,6 +20,7 @@ import AllPosts from './vue/controllers/AllPosts';
 import LastPosts from './vue/controllers/LastPosts';
 import LastServicePosts from './vue/controllers/LastServicePosts';
 import LastReal from './vue/controllers/LastReal';
+import RealsList from './vue/controllers/RealsList';
 import SliderServices from './vue/controllers/SliderServices';
 import Partners from './vue/controllers/Partners';
 
@@ -37,7 +38,15 @@ const values = {
 function initVueComponents() {
     // Créez une référence à l'application Vue
     const app = createApp({
-        components: { AllPosts, LastPosts, LastServicePosts, LastReal, SliderServices, ContactForm, Partners },
+        components: { 
+            AllPosts, 
+            ContactForm, 
+            LastPosts, 
+            LastReal, 
+            LastServicePosts, 
+            Partners, 
+            RealsList, 
+            SliderServices },
     }).mount('#website');
 }
 
@@ -100,3 +109,22 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener('click', toggleNavClass);
     });
 });
+
+
+
+// Bouton More panel
+// ---------------------------------------------------
+const openMorePanel = () => {
+    const moreBtn = document.querySelector('.more-btn');
+
+    if (moreBtn != null) {
+        moreBtn.addEventListener('click', function() {
+            document.querySelector('.more-panel').classList.toggle('open');
+            moreBtn.classList.toggle('toggled');
+        })    
+    }
+    
+}
+
+document.addEventListener("DOMContentLoaded", openMorePanel);
+document.addEventListener("swup:contentReplaced", openMorePanel);

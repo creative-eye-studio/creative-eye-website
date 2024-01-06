@@ -1,0 +1,55 @@
+.heroscreen-real {
+    @extend .position-relative;
+    .content {
+        @extend .wd-100;
+        background-color: rgba($color: #000000, $alpha: .7);
+    }
+    .image {
+        @extend .cover-img;
+        height: 100vh;
+    }
+    .content {
+        @extend .position-absolute;
+        bottom: 0;
+        left: 0;
+        color: $colorWt;
+    }
+    .more-btn {
+        margin: $marge-m 0;
+        position: relative;
+        &::before, &::after {
+            content: "";
+            border: .1rem solid $colorWt;
+            width: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 50%;
+        }
+        &::before {
+            transform: translate(-50%, 0%);
+        }
+        &::after {
+            transform: translate(-50%, calc(-50% + 1px)) rotate(90deg);
+        }
+        &.toggled {
+            transform: rotate(45deg);
+        }
+    }
+
+    .more-panel {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 1s;
+        &.open {
+            max-height: 10rem;
+        }
+    }
+}
+
+.yt-container {
+    background-color: #F1F1F1;
+    .youtube_player {
+        aspect-ratio: 16/9;
+    }
+}

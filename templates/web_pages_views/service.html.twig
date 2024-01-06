@@ -57,26 +57,16 @@
 
     <!-- Realisations -->
     <section class="reals padding-vertical-on-md row">
-        <div class="item col-6">
-            <figure class="image wd-100"><img src="" alt=""></figure>
-            <h2>Nom du projet</h2>
-            <p><span></span></p>
-        </div>
-        <div class="item col-6">
-            <figure class="image wd-100"><img src="" alt=""></figure>
-            <h2>Nom du projet</h2>
-            <p><span></span></p>
-        </div>
-        <div class="item col-6">
-            <figure class="image wd-100"><img src="" alt=""></figure>
-            <h2>Nom du projet</h2>
-            <p><span></span></p>
-        </div>
-        <div class="item col-6">
-            <figure class="image wd-100"><img src="" alt=""></figure>
-            <h2>Nom du projet</h2>
-            <p><span></span></p>
-        </div>
+        {% for real in reals %}
+            <div class="item col-6">
+                <a href="{{ path('web_real', { real_slug: real.url }) }}">
+                    <figure class="image wd-100">
+                        <img src="../../../uploads/images/reals/main/{{ real.mainimage }}" alt="{{ real.nom }}">
+                    </figure>
+                    <h2>{{ real.nom }}</h2>
+                </a>
+            </div>
+        {% endfor %}
     </section>
 
     <!-- Actualités -->

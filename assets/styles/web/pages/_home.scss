@@ -1,0 +1,45 @@
+#panel-1{
+    color: white;
+    background-color: #0D0D0D;
+    @media screen and (min-width: $md) {
+        .bg-image{
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .text, .arrow {
+            bottom: 0;
+        }
+        .text{
+            left: 0;
+        }
+        .arrow{
+            right: 0;
+        }
+    }
+}
+
+
+#panel-2{
+    .swiper-slide{
+        width: 25vw;
+    }
+    .thumb{
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16/9;
+        background-color: rgba($color: #000000, $alpha: .2);
+        margin-bottom: 1.5rem;
+    }
+}
+
+
+#panel-3{
+    background: #F1F1F1;
+}

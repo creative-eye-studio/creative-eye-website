@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Services\PostsService;
 use App\Services\ExtPartenairesService;
+use App\Services\ExtRealisationsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,11 +13,13 @@ class ApiController extends AbstractController
 {
     private $postsService;
     private $partnersService;
+    private $realsService;
 
-    function __construct(PostsService $postsService, ExtPartenairesService $partnersService)
+    function __construct(PostsService $postsService, ExtPartenairesService $partnersService, ExtRealisationsService $realsService)
     {
         $this->postsService = $postsService;
         $this->partnersService = $partnersService;
+        $this->realsService = $realsService;
     }
 
     #[Route('/api/posts', name: 'api_posts')]
@@ -41,5 +44,17 @@ class ApiController extends AbstractController
     public function partners(): JsonResponse
     {
         return $this->json($this->partnersService->getPartners(), 200);
+    }
+
+    #[Route('/api/last-real', name: 'api_last_real')]
+    public function lastReal(): JsonResponse
+    {
+        return $this->json($this->realsService->getLastReal(), 200);
+    }
+
+    #[Route('/api/reals', name: 'api_reals')]
+    public function reals(): JsonResponse
+    {
+        return $this->json($this->realsService->getReals(), 200);
     }
 }

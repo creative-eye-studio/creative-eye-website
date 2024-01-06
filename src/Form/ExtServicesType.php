@@ -36,6 +36,9 @@ class ExtServicesType extends AbstractType
                 'label' => "Catégorie",
                 'class' => Categories::class,
                 'choice_label' => 'nom',
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
             ])
             ->add('thumb', DropzoneType::class, [
                 'label' => "Image du service",
@@ -47,7 +50,7 @@ class ExtServicesType extends AbstractType
                 ]
             ])
             ->add('intro', CKEditorType::class, [
-                'label' => "Introduction",
+                'label' => "Introduction (A retirer)",
                 'mapped' => false,
                 'row_attr' => [
                     'class' => "form-row"

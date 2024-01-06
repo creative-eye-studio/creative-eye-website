@@ -37,6 +37,15 @@ class WebPagesIndexController extends AbstractController
     }
 
 
+    // Real Page
+    // -------------------------------------------------------------------------------------------
+    #[Route('/{_locale}/realisation/{real_slug}', name: 'web_real', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]
+    public function real(string $real_slug)
+    {
+        return $this->pages_services->getRealStatus($real_slug);
+    }
+
+
     // Other Page
     // -------------------------------------------------------------------------------------------
     #[Route('/{_locale}/{page_slug}', name: 'web_page', requirements: ['_locale' => LocaleConstraint::LOCALE_PATTERN])]

@@ -1,22 +1,40 @@
 <template>
-    <figure class="last-real position-relative">
-        <img src="" alt="" class="image position-absolute">
-        <figcaption class="infos position-absolute w-100">
-            <h3>
-                <span class="title">Nom du projet</span>
-            </h3>
-            <div class="services">
-                <span>Gestion de projet</span>
-                <span>UX Design</span>
-                <span>Développement web</span>
-                <span>Marketing digital</span>
-            </div>
-        </figcaption>   
+    <figure class="real-item position-relative cover-img border-all" v-if="real && real.services">
+        <a :href='"fr/realisation/" + real.url'>
+            <img :src='"../uploads/images/reals/main/" + real.thumb' alt="" class="image position-absolute">
+            <figcaption class="infos position-absolute w-100">
+                <h3>
+                    <span class="title" v-html="real.nom"></span>
+                </h3>
+                <div class="services">
+                    <span v-for="service in real.services">{{ service.nom[0] }}</span>
+                </div>
+            </figcaption>    
+        </a>
     </figure> 
 </template>
 
 <script>
     export default {
-        
+        data() {
+            return {
+                real: {},
+            }
+        },
+        mounted() {
+            this.fetchData();
+        },
+        methods: {
+            async fetchData() {
+                try {
+                    const response = await fetch('/api/last-real');
+                    const data = await response.json();
+                    this.real = data;
+                    console.log(this.real.services);
+                } catch (error) {
+                    console.error('Erreur lors de la récupération des données:', error);
+                }
+            }
+        },
     }
 </script>

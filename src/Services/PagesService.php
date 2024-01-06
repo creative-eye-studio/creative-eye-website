@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Entity\Comments;
+use App\Entity\ExtRealisations;
 use App\Entity\ExtServices;
 use App\Entity\GlobalSettings;
 use App\Entity\Menu;
@@ -213,7 +214,7 @@ class PagesService extends AbstractController
         // Vérification de la disponibilité de la page service
         if (!$service) {
             // Lancer une exception si la page n'est pas disponible
-            throw $this->createNotFoundException("Cette page n'est pas disponible");
+            throw $this->createNotFoundException("Ce service n'est pas disponible");
         }
 
         return $this->render('web_pages_views/service.html.twig', [
@@ -224,6 +225,7 @@ class PagesService extends AbstractController
             'thumb' => $service->getThumb(),
             'contenu' => htmlspecialchars_decode($service->getContenu()[$lang]),
             'services' => $service->getServices(),
+            'reals' => $service->getExtRealisations(),
             'meta_title' => $service->getTitre()[$lang],
             'meta_desc' => $service->getTitre()[$lang],
             'lang' => $this->lang_web($this->request),
@@ -233,6 +235,44 @@ class PagesService extends AbstractController
             'social' => $this->social,
             'settings' => $this->settings,
             'menus' => $this->menus,
+        ]);
+    }
+    #endregion
+
+    #region Affichage d'une réalisation
+    public function getRealStatus(string $url)
+    {
+        // Récupération des données de la réalisation
+        $real = $this->em->getRepository(ExtRealisations::class)->findOneBy(['url' => $url]);
+
+        // Détection de la langue à partir de la requête HTTP
+        $lang = $this->lang_web($this->request);
+
+        // Vérification de la disponibilité de la réalisation
+        if (!$real) {
+            // Lancer une exception si la page n'est pas disponible
+            throw $this->createNotFoundException("Cette réalisation n'est pas disponible");
+        }
+
+        return $this->render('web_pages_views/real.html.twig', [
+            'lang' => $this->lang_web($this->request),
+            'lang_page' => $this->locales_web()[$lang],
+            'titre' => $real->getNom(),
+            'settings' => $this->settings,
+            'css' => $this->css_file,
+            'js' => $this->js_file,
+            'main_img' => $real->getMainImage(),
+            'website' => $real->getWebsite(),
+            'intro' => htmlspecialchars_decode($real->getIntro()[$lang]),
+            'services' => $real->getServices(),
+            'partners' => $real->getPartenaires(),
+            'annee' => $real->getAnnee(),
+            'youtube' => $real->getYoutube(),
+            'demande' => htmlspecialchars_decode($real->getDemande()[$lang]),
+            'approche' => htmlspecialchars_decode($real->getApproche()[$lang]),
+            'settings' => $this->settings,
+            'menus' => $this->menus,
+            'social' => $this->social,
         ]);
     }
     #endregion
