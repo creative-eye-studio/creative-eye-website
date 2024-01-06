@@ -62,14 +62,10 @@ export class ScrollWeb {
                 history.replaceState(null, null, target);
             });
         });
-        
 
         // Retour en haut de page
-        const navLinks = document.querySelectorAll('a:not([href^="#"])');
-        navLinks.forEach(btn => {
-            btn.addEventListener('click', function() {
-                scrollbar.scrollTo(0, 0, 0); 
-            })
+        document.addEventListener('swup:contentReplaced', function() {
+            scrollbar.scrollTo(0, 0, 0); 
         })
 
         return scrollbar;
