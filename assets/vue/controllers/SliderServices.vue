@@ -7,39 +7,20 @@
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >
-        <swiper-slide>
+        <swiper-slide v-for="service in services" :key="service.id">
             <div class="text-img-bloc">
-                <figure class="image">
-                    <img src="">
-                </figure>
-                <div class="text">
-                    <h3 v-html="'Nom du service'"></h3>
-                    <p class="text" v-html="'Introduction'"></p>
-                </div>    
+                <a :href='"fr/expertise/" + service.url'>
+                    <figure class="image">
+                        <img :src='"../uploads/images/services/" + service.thumb'>
+                    </figure>
+                    <div class="text">
+                        <h3 v-html='service.titre[0]'></h3>
+                        <p class="text" v-html='service.intro'></p>
+                    </div>      
+                </a>
             </div>
         </swiper-slide>
-        <swiper-slide>
-            <div class="text-img-bloc">
-                <figure class="image">
-                    <img src="">
-                </figure>
-                <div class="text">
-                    <h3 v-html="'Nom du service'"></h3>
-                    <p class="text" v-html="'Introduction'"></p>
-                </div>    
-            </div>
-        </swiper-slide>
-        <swiper-slide>
-            <div class="text-img-bloc">
-                <figure class="image">
-                    <img src="">
-                </figure>
-                <div class="text">
-                    <h3 v-html="'Nom du service'"></h3>
-                    <p class="text" v-html="'Introduction'"></p>
-                </div>    
-            </div>
-        </swiper-slide>
+
     </swiper>
 </template>
 
@@ -60,6 +41,11 @@
             Swiper,
             SwiperSlide,
         },
+        data() {
+            return {
+                services: null
+            }
+        },
         setup() {
             const onSwiper = (swiper) => {
                 console.log(swiper);
@@ -72,6 +58,19 @@
                 onSlideChange,
                 modules: [Navigation, Pagination, A11y],
             };
+        },
+        mounted() {
+            this.fetchData();
+        },
+        methods: {
+            async fetchData() {
+                try {
+                    const response = await fetch('/api/services');
+                    this.services = await response.json();
+                } catch (error) {
+                    console.error('Erreur lors de la récupération des données:', error);
+                }
+            }
         },
     };
 </script>

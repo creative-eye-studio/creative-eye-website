@@ -26,9 +26,9 @@
 		@extend .position-absolute;
 		@extend .wd-100;
 		@extend .ht-100;
+		object-fit: cover;
 		top: 0;
 		left: 0;
-		object-fit: cover;
 		// z-index: -1;
 	}
 }

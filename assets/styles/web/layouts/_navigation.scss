@@ -31,7 +31,6 @@
         justify-content: center;
         height: 100%;
         opacity: 1;
-        margin-left: 0;
         transition-delay: 2s;
         a{
             text-decoration: none;
@@ -136,7 +135,7 @@ html:not(.open-nav) {
         }
         .nav-1, .nav-2{
             opacity: 0;
-            margin-left: -#{$marge-m};
+            padding: 0 3.5vw;
             transition-delay: 0s;
         }
         .imgs-nav{

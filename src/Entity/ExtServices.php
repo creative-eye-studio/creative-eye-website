@@ -42,6 +42,9 @@ class ExtServices
     #[ORM\ManyToMany(targetEntity: ExtRealisations::class, mappedBy: 'services')]
     private Collection $extRealisations;
 
+    #[ORM\Column]
+    private array $intro = [];
+
     public function __construct()
     {
         $this->menuLinks = new ArrayCollection();
@@ -190,6 +193,18 @@ class ExtServices
         if ($this->extRealisations->removeElement($extRealisation)) {
             $extRealisation->removeService($this);
         }
+
+        return $this;
+    }
+
+    public function getIntro(): array
+    {
+        return $this->intro;
+    }
+
+    public function setIntro(array $intro): static
+    {
+        $this->intro = $intro;
 
         return $this;
     }

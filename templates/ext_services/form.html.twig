@@ -3,6 +3,7 @@
 {% set cat = fcat is empty ? null : fcat.id %}
 {% set thumb = fthumb is empty ? '' : fthumb %}
 {% set services = fservices is empty ? null : fservices %}
+{% set intro = fintro_fr is empty ? null : fintro_fr %}
 {% set contenu = fcontenu_fr is empty ? null : fcontenu_fr %}
 
 {{ form_start(form) }}
@@ -11,6 +12,7 @@
     {{ form_row(form.services, {value: services}) }}
     {{ form_row(form.categorie, {value: cat}) }}
     {{ form_row(form.thumb, {value: thumb}) }}
+    {{ form_row(form.intro, {value: intro}) }}
     {{ form_row(form.contenu, {value: contenu}) }}
     {{ form_row(form.submit) }}
 {{ form_end(form) }}

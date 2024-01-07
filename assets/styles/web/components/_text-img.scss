@@ -1,15 +1,34 @@
 .text-img-bloc{
     width: 25vw;
+
     // Image
     .image{
         @extend .cover-img;
-        aspect-ratio: 16/10;
+        aspect-ratio: 16/9;
         background-color: lightgray;
+        overflow: hidden;
+        img {
+            transition-duration: 1s;
+        }
     }
+
+    // Conteneur du texte
     .text-content {
         margin-bottom: 2px;
     }
+    
+    // Texte
     .text {
-        margin: 2rem 0;
+        margin: $marge-m 0;
+    }
+
+    // Lien
+    a {
+        text-decoration: none;
+        &:hover {
+            img {
+                transform: scale(1.2);
+            }
+        }
     }
 }

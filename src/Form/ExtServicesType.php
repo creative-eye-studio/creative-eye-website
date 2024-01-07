@@ -59,6 +59,13 @@ class ExtServicesType extends AbstractType
                     'class' => "form-row"
                 ]
             ])
+            ->add('intro', CKEditorType::class, [
+                'label' => "Introduction (Page d'accueil)",
+                'mapped' => false,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
+            ])
             ->add('contenu', CKEditorType::class, [
                 'label' => "Présentation du service",
                 'mapped' => false,
