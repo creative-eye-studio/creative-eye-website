@@ -37,8 +37,9 @@
             text-decoration: none;
             position: relative;
             overflow: hidden;
-            color: transparent;
             height: 1rem;
+            color: transparent;
+            display: ruby;
             &::before, &::after{
                 content: attr(data-val);
                 position: absolute;
@@ -79,13 +80,28 @@
         }
     }
     .nav-2{
+        .social-block {
+            margin-top: calc(#{$marge-m} * 2);
+            ul {
+                list-style-type: none;
+                display: flex;
+                gap: $marge-m;
+                margin-left: 0;
+            }
+        }
         li{
             font: 300 1.25rem/200% "Montserrat";
             margin: 0 0 1rem;
             a{
-                &::before, &::after {
+                &.social-link, &::before, &::after {
                     color: #fff;
-                }    
+                }
+                &.social-link {
+                    transition-duration: 1s;
+                    &:hover {
+                        opacity: .5;
+                    }
+                }
             }
             li{
                 margin: 1rem 0;

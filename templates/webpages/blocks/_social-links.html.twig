@@ -1,5 +1,5 @@
 {% set socialNetworks = {
-    'Facebook': 'fa-facebook',
+    'Facebook': 'fa-facebook-f',
     'Twitter': 'fa-twitter',
     'Instagram': 'fa-instagram',
     'Youtube': 'fa-youtube',
@@ -18,7 +18,7 @@
     {% set socialUrl = attribute(social, 'get' ~ network|capitalize) %}
     {% if socialUrl is not empty %}
         <li>
-            <a href="{{ socialUrl }}" target="_blank" rel="noopener">
+            <a class="social-link" href="{{ socialUrl }}" target="_blank" rel="noopener">
                 <i class="fa-brands fa-2x {{ iconClass }}"></i>
             </a>
         </li>

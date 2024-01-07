@@ -51,8 +51,10 @@
                 <ul class="sub-menu">
                     {{ include('webpages/blocks/_navigation.html.twig', { pos: 1 }) }}
                 </ul>
-                <div class="social">
-                    {{ social }}
+                <div class="social-block">
+                    <ul>
+                        {{ include('webpages/blocks/_social-links.html.twig', { social: social }) }}
+                    </ul>
                 </div>
             </div>
         </nav>
@@ -65,7 +67,36 @@
                 <contact-form></contact-form>
             </div>
 
-            {{ include('webpages/blocks/footer.html.twig') }}
+            <footer>
+                <div class="row-no-marge">
+                    <div class="col-12-no-marge row-footer">
+                        <nav>
+                            <ul id="nav">
+                                {{ include('webpages/blocks/_navigation.html.twig', { pos: 2 }) }}
+                                <li><span onclick="tarteaucitron.userInterface.openPanel();">Cookies</span></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="col-12-no-marge separe">
+                        <hr class="margin-none" />
+                    </div>
+
+                    <div class="col-12-no-marge row-footer row-no-marge">
+                        <div id="sign" class="col-4-no-marge col-sm-12-no-marge">
+                            <p>Conception et développement : Creative Eye Studio</p>
+                        </div>
+                        <div id="social" class="col-4-no-marge col-sm-12-no-marge text-center">
+                            <ul>
+                                {{ include('webpages/blocks/_social-links.html.twig', { social: social }) }}
+                            </ul>
+                        </div>
+                        <div id="newsletter" class="col-4-no-marge col-sm-12-no-marge">
+
+                        </div>
+                    </div>
+                </div>
+            </footer>
         </div>
 
         {% block javascripts %}
