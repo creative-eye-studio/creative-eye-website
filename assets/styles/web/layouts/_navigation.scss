@@ -108,6 +108,7 @@
         }
     }
     .imgs-nav{
+        @extend .cover-img;
         background-color: darkgray;
         position: relative;
         top: 0;
