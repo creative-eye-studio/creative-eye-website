@@ -48,4 +48,16 @@
             }
         }
     }
+
+    // Bouton de la newsletter
+    &-news-submit {
+        width: 44px;
+        height: 43px;
+        font-size: 1.2em;
+        color: $colorWt;
+        background-color: rgba($color: $color-p, $alpha: 0);
+        border: none;
+        top: -1px;
+        right: 0;
+    }
 }

@@ -61,7 +61,7 @@ class ExtRealisationsType extends AbstractType
                 'choice_label' => 'titre[0]',
                 'multiple' => true,
                 'row_attr' => [
-                    'class' => "form-row float-left mr"
+                    'class' => "form-row"
                 ]
             ])
             ->add('partenaires', EntityType::class, [
@@ -69,6 +69,7 @@ class ExtRealisationsType extends AbstractType
                 'label' => "Partenaires du projet",
                 'choice_label' => 'societe',
                 'multiple' => true,
+                'expanded' => true,
                 'required' => false,
                 'row_attr' => [
                     'class' => "form-row"

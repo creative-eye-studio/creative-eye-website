@@ -30,7 +30,18 @@ input {
     &[type="text"],
     &[type="email"],
     &[type="tel"]{
-        @include form-design();    
+        @include form-design();
+        &.news-input {
+            margin: 0;
+            padding: 0.5rem;
+            border: .0625rem solid $colorWt;
+            color: white;
+            &::placeholder {
+                color: white;
+                opacity: 1;
+                letter-spacing: .04rem;
+            }
+        }
     }
     &[type="submit"] {
         @extend .btn-primary;

@@ -23,6 +23,7 @@ import LastReal from './vue/controllers/LastReal';
 import RealsList from './vue/controllers/RealsList';
 import SliderServices from './vue/controllers/SliderServices';
 import Partners from './vue/controllers/Partners';
+import NewsForm from './vue/controllers/NewsForm';
 
 
 // Variables
@@ -44,6 +45,7 @@ function initVueComponents() {
             LastPosts, 
             LastReal, 
             LastServicePosts, 
+            NewsForm,
             Partners, 
             RealsList, 
             SliderServices },
