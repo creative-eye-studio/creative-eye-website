@@ -20,6 +20,15 @@
     // Texte
     .text {
         margin: $marge-m 0;
+        &.post-text {
+            height: 9rem;
+            overflow: hidden;
+            p {
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }    
+        }
+        
     }
 
     // Lien

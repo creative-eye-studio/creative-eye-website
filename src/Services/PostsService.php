@@ -86,7 +86,9 @@ class PostsService extends AbstractController
             }
 
             // Création de l'auteur
-            $post->setAuthor($newPost ? $security->getUser() : null);
+            if ($newPost) {
+                $post->setAuthor($newPost ? $security->getUser() : null);
+            }
 
             // Création de l'image
             $imageFile = $form->get('post_thumb')->getData();

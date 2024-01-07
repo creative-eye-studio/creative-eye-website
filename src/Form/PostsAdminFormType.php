@@ -48,7 +48,7 @@ class PostsAdminFormType extends AbstractType
                 'required' => false,
                 'mapped' => false,
                 'attr' => [
-                    'maxlength' => 63,
+                    'maxlength' => 200,
                     'class' => 'metadesc_fr',
                 ]
             ])
