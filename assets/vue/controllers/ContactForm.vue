@@ -1,6 +1,6 @@
 <template>
-    <div class="contact-form margin-left padding-all">
-        <div class="row-no-marge">
+    <div class="contact-form margin-left padding-vertical-on-md">
+        <div class="row">
             <div class="col-12">
                 <h2>
                     <span class="small">Nous contacter</span>
@@ -10,7 +10,7 @@
             </div>    
         </div>
         
-        <form method="post" class="row-no-marge">
+        <form method="post" class="row">
             <div class="col-6 col-sm-12 input-group">
                 <input type="text" name="nom" id="nom" title="Veuillez entrer votre nom de famille" required>
                 <label for="nom">Nom *</label>
