@@ -7,9 +7,7 @@ header{
     justify-content: space-between;
     align-items: center;
     background: #1F1F1F;
-
     .logotype {
-        height: 100%;
         opacity: 1;
         transition: opacity .5s 2s;
         img {
@@ -45,15 +43,17 @@ header{
     }
 
     @media screen and (min-width: $lg) {
-        padding: calc(#{$marge-d-y} * .4) $marge-d-x;
+        padding: 0 $marge-d-x;
+        height: 8vw;
         background: inherit;
-        transition-duration: .5s;
         &::after{
             content: "";
             position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            height: 100%;
-            opacity: 0;
+            height: 0%;
+            transition-duration: .5s;
         }
     }
 }
@@ -61,21 +61,22 @@ header{
 .onScroll:not(.open-nav){
     header{
         @media screen and (min-width: $lg) {
-            background: #1F1F1F;
             &::after{
-                opacity: 1;
+                background: #1F1F1F;
+                height: 100%;
+                z-index: -1;
             }
         }
     }
 }
 
-.onScroll, .open-nav{
-    header{
-        @media screen and (min-width: $lg) {
-            padding: calc(#{$marge-d-y} * .2) $marge-d-x;
-        }
-    }
-}
+// .onScroll, .open-nav{
+//     header{
+//         @media screen and (min-width: $lg) {
+//             padding: calc(#{$marge-d-y} * .2) $marge-d-x;
+//         }
+//     }
+// }
 
 .open-nav {
     header {
