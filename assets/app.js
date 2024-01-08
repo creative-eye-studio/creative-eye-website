@@ -130,3 +130,11 @@ const openMorePanel = () => {
 
 document.addEventListener("DOMContentLoaded", openMorePanel);
 document.addEventListener("swup:contentReplaced", openMorePanel);
+
+
+
+// Loader
+// ---------------------------------------------------
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector('.loader-open').classList.add('open');
+});

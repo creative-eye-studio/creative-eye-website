@@ -30,6 +30,10 @@
         data-damping='{% block damping %}{% endblock %}'
         data-scrollimg='{% block scrollimg %}{% endblock %}'>
 
+        <div class="loader-open">
+            {{ include('webpages/blocks/loader-open.html.twig') }}
+        </div>
+
         <header class="position-fixed">
             <figure class="logotype">
                 <img src="{{ absolute_url(asset('uploads/images/logo/logotype.png')) }}" alt="Logo Creative Eye Studio">
