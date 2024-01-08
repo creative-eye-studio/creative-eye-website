@@ -2,7 +2,7 @@
     <swiper
         navigation
         :modules="modules"
-        :slides-per-view="'auto'"
+        :slides-per-view="3"
         :space-between="50"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
