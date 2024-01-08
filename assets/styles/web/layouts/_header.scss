@@ -44,7 +44,7 @@ header{
 
     @media screen and (min-width: $lg) {
         padding: 0 $marge-d-x;
-        height: 8vw;
+        height: $marge-d-y;
         background: inherit;
         &::after{
             content: "";
