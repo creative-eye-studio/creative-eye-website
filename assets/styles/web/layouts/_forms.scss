@@ -60,6 +60,12 @@ select{
     margin-top: 1rem;
     letter-spacing: 0.04rem;
     cursor: pointer;
+    optgroup, option {
+        font-family: 'calibri';
+    }
+    optgroup {
+        font-style: normal;
+    }
 }
 
 label {

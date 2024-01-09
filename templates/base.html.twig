@@ -10,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="robots" content="index, follow">
-        <link rel="icon" href="">
+        {{ include('webpages/blocks/favicon.html.twig') }}
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
@@ -23,20 +23,21 @@
             containers: ['#website'],
             animateHistoryBrowsing: true,
             animationSelector: '[class*="transition-"]',
-            cache: false,
+            cache: true,
             theme: 'fade',
             debug: false
         }) }}
         data-damping='{% block damping %}{% endblock %}'
         data-scrollimg='{% block scrollimg %}{% endblock %}'>
 
-        <div class="loader-open">
-            {{ include('webpages/blocks/loader-open.html.twig') }}
-        </div>
+        {{ include('webpages/blocks/loader-page.html.twig') }}
+        {{ include('webpages/blocks/loader-open.html.twig') }}
 
         <header class="position-fixed">
             <figure class="logotype">
-                <img src="{{ absolute_url(asset('uploads/images/logo/logotype.png')) }}" alt="Logo Creative Eye Studio">
+                <a href="{{ absolute_url(path('web_index')) }}">
+                    <img src="{{ absolute_url(asset('uploads/images/logo/logotype.png')) }}" alt="Logo Creative Eye Studio">
+                </a>
             </figure>
             <button class="toggle-nav nav-btn-desktop">
                 <i class="bar bar-1"></i>

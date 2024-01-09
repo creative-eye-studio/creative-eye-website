@@ -618,9 +618,9 @@
 /* #region Footer */
 @mixin footer-link() {
     color: white;
-    transition-duration: .5s;
+    transition-duration: 1s;
     &:hover {
-        opacity: .6;
+        opacity: .5;
     }
 }
 /* #endregion Footer */

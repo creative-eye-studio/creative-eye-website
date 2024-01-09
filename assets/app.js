@@ -138,3 +138,21 @@ document.addEventListener("swup:contentReplaced", openMorePanel);
 document.addEventListener("DOMContentLoaded", function() {
     document.querySelector('.loader-open').classList.add('open');
 });
+
+document.addEventListener("swup:transitionEnd", function() {
+    setTimeout(() => {
+        document.querySelector('.loader-page').classList.add('open');
+    }, 2000)
+});
+
+document.addEventListener("swup:clickLink", function() {
+    document.querySelector('.loader-page').classList.remove('open');
+});
+
+document.addEventListener("swup:samePage", function() {
+    document.querySelector('.loader-page').classList.add('open');
+});
+
+document.addEventListener("swup:samePageWithHash", function() {
+    document.querySelector('.loader-page').classList.add('open');
+});

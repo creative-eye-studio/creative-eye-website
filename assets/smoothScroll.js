@@ -64,7 +64,7 @@ export class ScrollWeb {
         });
 
         // Retour en haut de page
-        document.addEventListener('swup:contentReplaced', function() {
+        document.addEventListener('swup:transitionStart', function() {
             scrollbar.scrollTo(0, 0, 1000); 
         })
 
