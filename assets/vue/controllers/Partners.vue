@@ -8,11 +8,13 @@
                 <h3 class="margin-bottom-none">
                     <span v-html="item.nom"></span> - <span v-html="item.societe"></span>
                 </h3>
-                <div class="text-content" v-html="item.texte"></div> 
+
+                <div class="text-content" v-html="item.texte" ref="partnerIntroContainer"></div> 
+
                 <figure class="logo">
                     <img :src="'../../uploads/images/partners/logos/' + item.logo" :alt="item.societe">
                 </figure>
-                <p v-if="item.website != '' || item.website != null">
+                <p v-if="item.website">
                     <a :title='"Site internet de " + item.societe + " (Lien externe)"' class="btn-link" :href="item.website" v-html="'Voir le site de ' + item.societe" target="_blank" rel="noopener"></a>
                 </p> 
             </div>
@@ -27,8 +29,8 @@ export default {
             posts: null
         }
     },
-    mounted() {
-        this.fetchData();
+    async mounted() {
+        await this.fetchData();
     },
     methods: {
         async fetchData() {
@@ -38,7 +40,7 @@ export default {
             } catch (error) {
                 console.error('Erreur lors de la récupération des données:', error);
             }
-        }
+        },
     },
 }
 </script>

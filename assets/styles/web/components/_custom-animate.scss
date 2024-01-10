@@ -15,6 +15,16 @@
         [data-aos=reveal-right-reverse]{
             @include animate-image("right", "right");
         }
+
+        [data-aos=circle-left]{
+            transform-origin: right top;
+            opacity: 0;
+            transform: rotate(-5deg) translateY(5%);
+            &.aos-animate {
+                opacity: 1;
+                transform: rotate(0deg) translateY(0%);
+            }
+        }
     }
     
 }

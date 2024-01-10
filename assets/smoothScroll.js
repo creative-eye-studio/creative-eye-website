@@ -20,17 +20,13 @@ export class ScrollWeb {
         scrollbar.track.xAxis.element.remove();
 
         AOS.init({
-            duration: 1000,
-            delay: 200,
-            disable: window.innerWidth < 1200,
+            duration: 1000, // Durée de l'animation en millisecondes
+            delay: 200, // Délai avant le début de l'animation en millisecondes
+            disable: window.innerWidth < 1200, // Désactiver sur les écrans étroits
+            anchorPlacement: 'top-bottom', // Placement de l'ancre pour les animations
+            easing: 'ease-in-out', // Courbe d'accélération pour l'animation
         });
-
-        // Détection du Scroll
-        scrollbar.addListener(() => {
-            const scrollY = scrollbar.offset.y;
-            const htmlElement = document.querySelector('html');
-            htmlElement.classList.toggle('onScroll', scrollY > 50);
-        });
+          
       
         [].forEach.call(document.querySelectorAll('[data-aos]'), (el) => {
           scrollbar.addListener(() => {
@@ -40,6 +36,13 @@ export class ScrollWeb {
               el.classList.remove('aos-animate');
             }
           });
+        });
+
+        // Détection du Scroll
+        scrollbar.addListener(() => {
+            const scrollY = scrollbar.offset.y;
+            const htmlElement = document.querySelector('html');
+            htmlElement.classList.toggle('onScroll', scrollY > 50);
         });
 
         // Scroll au click d'une ancre

@@ -47,20 +47,20 @@
 
     <!-- Intro -->
     <section class="intro-page padding-vertical-on-md row">
-        <div class="text col-8 col-md-12">
+        <div class="service-intro text col-8 col-md-12">
             {{ contenu | raw }}
         </div>
         <div class="list col-4 col-md-12 border-left">
             <ul>
                 {% for service in services %}
-                <li>{{ service }}</li>
+                <li data-aos="fade-top">{{ service }}</li>
                 {% endfor %}
             </ul>
         </div>
     </section>
 
     <!-- Realisations -->
-    <section class="reals padding-vertical-on-md row">
+    <section class="reals padding-vertical-on-md row" data-aos="fade-left">
         {% for real in reals %}
             <div class="item col-6">
                 <a href="{{ path('web_real', { real_slug: real.url }) }}">
@@ -77,10 +77,10 @@
     <section class="last-actus padding-left-no-md border-top">
         <div class="border-left-no-md padding-all-on-md">
             <h2>
-                <span class="small">Nos actualités en {{ titre }}</span>
-                <span class="title">Soyez au courant de nos dernières actualités</span>
+                <span class="small" data-aos="fade-left">Nos actualités en {{ titre }}</span>
+                <span class="title" data-aos="fade-left" data-aos-delay="200">Soyez au courant de nos dernières actualités</span>
             </h2>
-            <last-service-posts :serv-id="{{ id }}"></last-service-posts>
+            <last-service-posts :serv-id="{{ id }}" data-aos="fade-left" data-aos-delay="400"></last-service-posts>
         </div>
     </section>
 {% endblock %}

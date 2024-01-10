@@ -11,7 +11,6 @@ import './styles/web/app.scss';
 // start the Stimulus application
 import './bootstrap';
 
-import AOS from 'aos';
 import { ScrollWeb } from './smoothScroll';
 import { Parallax } from './parallax';
 import { createApp } from 'vue';
@@ -48,7 +47,8 @@ function initVueComponents() {
             NewsForm,
             Partners, 
             RealsList, 
-            SliderServices },
+            SliderServices 
+        },
     });
 
     app.mount('#website');
@@ -56,15 +56,10 @@ function initVueComponents() {
 
 const commonCalls = () => {
     initVueComponents();
+    initServicePage();
     scrollWeb();
-    if (!commonCalls.isInitialized) {
-        AOS.init();
-        parallax();
-        commonCalls.isInitialized = true; // Marquez les fonctions comme étant appelées
-    }
+    parallax();
 };
-
-commonCalls.isInitialized = false;
 
 document.addEventListener('DOMContentLoaded', commonCalls);
 document.addEventListener('swup:contentReplaced', commonCalls);
@@ -169,4 +164,16 @@ function toggleLoader(selector, className, add = true) {
             element.classList.remove(className);
         }
     }
+}
+
+
+
+// Page Services
+// ---------------------------------------------------
+function initServicePage() {
+    // Animation du texte Intro
+    const introLines = document.querySelectorAll('.service-intro p');
+    introLines.forEach(line => {
+        line.setAttribute('data-aos', 'circle-left');
+    });
 }
