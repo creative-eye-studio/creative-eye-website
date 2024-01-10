@@ -49,7 +49,9 @@ function initVueComponents() {
             Partners, 
             RealsList, 
             SliderServices },
-    }).mount('#website');
+    });
+
+    app.mount('#website');
 }
 
 const commonCalls = () => {
@@ -135,24 +137,36 @@ document.addEventListener("swup:contentReplaced", openMorePanel);
 
 // Loader
 // ---------------------------------------------------
-document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector('.loader-open').classList.add('open');
+document.addEventListener("DOMContentLoaded", () => {
+    toggleLoader('.loader-open', 'open');
 });
 
-document.addEventListener("swup:transitionEnd", function() {
+document.addEventListener("swup:transitionEnd", () => {
     setTimeout(() => {
-        document.querySelector('.loader-page').classList.add('open');
-    }, 2000)
+        toggleLoader('.loader-page', 'open');
+    }, 2000);
 });
 
-document.addEventListener("swup:clickLink", function() {
-    document.querySelector('.loader-page').classList.remove('open');
+document.addEventListener("swup:clickLink", () => {
+    toggleLoader('.loader-page', 'open', false);
 });
 
-document.addEventListener("swup:samePage", function() {
-    document.querySelector('.loader-page').classList.add('open');
+document.addEventListener("swup:samePage", () => {
+    toggleLoader('.loader-page', 'open');
 });
 
-document.addEventListener("swup:samePageWithHash", function() {
-    document.querySelector('.loader-page').classList.add('open');
+document.addEventListener("swup:samePageWithHash", () => {
+    toggleLoader('.loader-page', 'open');
 });
+
+function toggleLoader(selector, className, add = true) {
+    const element = document.querySelector(selector);
+
+    if (element) {
+        if (add) {
+            element.classList.add(className);
+        } else {
+            element.classList.remove(className);
+        }
+    }
+}
