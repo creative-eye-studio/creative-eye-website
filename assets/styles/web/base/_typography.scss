@@ -46,6 +46,9 @@ h1, h2{
     margin-bottom: 1rem;
     display: block;
   }
+  .title {
+    @extend .d-block;
+  }
 }
 
 h1{
@@ -55,17 +58,15 @@ h1{
   }
   .title {
     @include font(700, 16, true, $ff-title);
+    font-size: 4vh;
+    line-height: 1.3em;
   }
 }
 
 h2 {
-  
   @include font(600, 36, true, $ff-title);
   .small {
     @include font(600, 8, true, $ff-title);
-  }
-  .title {
-    display: block;
   }
 }
 

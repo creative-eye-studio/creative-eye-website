@@ -69,7 +69,10 @@ export class ScrollWeb {
         // Retour en haut de page
         document.addEventListener('swup:transitionStart', function() {
             scrollbar.scrollTo(0, 0, 1000); 
-        })
+        });
+
+        // Désactivation de la scrollbar horizontale
+        scrollbar.track.xAxis.element.remove()
 
         return scrollbar;
     }

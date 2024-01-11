@@ -17,7 +17,7 @@
     // Bouton lien
     &-link {
         @extend .btn-primary;
-        display: inline-block;
+        @extend .d-inline-block;
         text-decoration: none;
         &-wt {
             @extend .btn-link;
@@ -38,7 +38,7 @@
         border-radius: 4rem;
         border: .0625rem solid $color-p;
         cursor: pointer;
-        transition-duration: .5s;
+        transition-duration: 1s;
         &-wt {
             @extend .btn-rounded;
             &:hover {

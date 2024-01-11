@@ -19,7 +19,7 @@ fieldset{
 }
 
 .input-group {
-    position: relative;
+    @extend .position-relative;
 }
 
 input, textarea, select, label {
@@ -70,9 +70,8 @@ select{
 
 label {
     &:not(.label-checkbox){
-        position: absolute;
+        @extend .position-absolute;
         pointer-events: none;
-        left: 70px;
         top: 1.5rem;
         transition: .5s ease all;
     }
@@ -90,8 +89,8 @@ select:valid ~ label:not(.label-checkbox),
 textarea:hover ~ label,
 textarea:focus ~ label,
 textarea:valid ~ label {
-  top: 0px;
   @include font(300, 12, false, $ff-body);
+  top: 0px;
 }
 
 .services-form{
