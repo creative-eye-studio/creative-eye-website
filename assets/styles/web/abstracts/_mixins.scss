@@ -639,7 +639,7 @@
 }
 
 @mixin media-aspect-ratio($size, $width, $height) {
-    @extend .cover-img;
+    @include cover-img;
     @media screen and (max-width: $size) {
         aspect-ratio: #{$width}/#{$height};
     }

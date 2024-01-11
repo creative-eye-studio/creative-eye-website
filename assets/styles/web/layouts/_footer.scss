@@ -26,4 +26,34 @@ footer{
             align-items: center;
         }
     }
+    @media screen and (max-width: $md) {
+        padding: $marge-m;
+        .separe{
+            margin: $marge-m 0;
+        }
+        #sign, #social {
+            margin-bottom: $marge-m;
+        }
+        #social {
+            ul{
+                justify-content: right;
+            }    
+        }
+        
+    }
+    @media screen and (max-width: $xs) {
+        #nav {
+            display: block;
+            li {
+                &:not(:last-child) {
+                    margin-bottom: 1rem;
+                }
+            }
+        }
+        #social {
+            ul{
+                justify-content: left;
+            }    
+        }
+    }
 }

@@ -68,6 +68,12 @@ h2 {
   .small {
     @include font(600, 8, true, $ff-title);
   }
+  @media screen and (max-width: $sm) {
+    .small {
+      @include font(600, 9, true, $ff-title);
+    }
+    @include font(600, 27, true, $ff-title);
+  }
 }
 
 h3 {

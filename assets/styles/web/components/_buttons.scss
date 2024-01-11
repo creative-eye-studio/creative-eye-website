@@ -6,7 +6,7 @@
         color: $colorWt;
         background-color: rgba($color: $color-p, $alpha: 1);
         border: .0625rem solid $color-p;
-        transition-duration: .5s;
+        transition-duration: 1s;
         &:hover {
             color: $colorBk;
             background-color: rgba($color: $color-p, $alpha: 0);

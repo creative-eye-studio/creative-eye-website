@@ -2,19 +2,17 @@
     @extend .position-relative;
     .content {
         @extend .wd-100;
+        @extend .position-absolute-no-md;
         background-color: rgba($color: #000000, $alpha: .7);
-    }
-
-    .image {
-        @extend .cover-img;
-        height: 100vh;
-    }
-
-    .content {
-        @extend .position-absolute;
         bottom: 0;
         left: 0;
         color: $colorWt;
+    }
+
+    .image {
+        @extend .cover-img-no-md-4-3;
+        height: 100vh;
+        object-position: center;
     }
 
     .more-btn-panel, .more-panel {
@@ -49,6 +47,20 @@
         transition-duration: 1.5s;
         &.open {
             max-height: 50rem;
+        }
+    }
+
+    @media screen and (max-width: $md) {
+        .content {
+            background-color: rgba($color: #1F1F1F, $alpha: 1);
+        }
+        .image {
+            height: inherit;
+        }
+        .more-panel-item {
+            &:not(:last-child) {
+                margin-bottom: $marge-m;
+            }
         }
     }
 }

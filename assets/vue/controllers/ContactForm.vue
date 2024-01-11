@@ -1,5 +1,5 @@
 <template>
-    <div class="contact-form margin-left padding-vertical-on-md">
+    <div class="contact-form margin-left-no-md padding-vertical-on-md">
         <div class="row">
             <div class="col-12">
                 <h2>
@@ -11,27 +11,27 @@
         </div>
         
         <form method="post" class="row">
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="text" name="nom" id="nom" title="Veuillez entrer votre nom de famille" required>
                 <label for="nom">Nom *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="text" name="prenom" id="prenom" title="Veuillez entrer votre prénom" required>
                 <label for="prenom">Prénom *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="text" name="societe" id="societe" title="Veuillez indiquer le nom de votre entreprise" required>
                 <label for="societe">Société *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="text" name="fonction" id="fonction" title="Veuillez indiquer votre fonction au sein de l'entreprise" required>
                 <label for="fonction">Fonction *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <select v-model="selectedOption" name="secteur" id="secteur" title="Quel est le secteur d'activité de votre entrprise ?" required>
                     <option value=""></option>
                     <template v-for="option in secteurs" :key="option.label">
@@ -43,34 +43,34 @@
                         </optgroup>
                     </template>
                 </select>
-                <label for="secteur" class="label-select">Choisissez votre secteur d'activité *</label>
+                <label for="secteur" class="label-select">Votre secteur d'activité *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <select name="profil" id="profil" title="Veuillez indiquer si vous êtes un particulier ou un professionnel" required>
                     <option value=""></option>
                     <option value="Particulier">Particulier</option>
                     <option value="Professionnel">Professionnel</option>
                 </select>
-                <label for="profil" class="label-select">Êtes vous un particulier ou un professionnel *</label>
+                <label for="profil" class="label-select">Particulier / Professionnel *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="text" name="codepostal" id="codepostal" title="Veuillez indiquer le code postal de votre entreprise" required>
                 <label for="codepostal">Code postal *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="text" name="ville" id="ville" title="Veuillez indiquer la ville de votre entreprise" required>
                 <label for="ville">Ville *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="tel" name="telephone" id="telephone" title="Veuillez indiquer votre numéro de teléphone pour être recontacté(e)" required>
                 <label for="telephone">Téléphone *</label>
             </div>
 
-            <div class="col-6 col-sm-12 input-group">
+            <div class="col-6 col-md-12 input-group">
                 <input type="email" name="mail" id="mail" title="Veuillez indiquer votre adresse e-mail pour être recontacté(e)" required>
                 <label for="mail">E-Mail *</label>
             </div>

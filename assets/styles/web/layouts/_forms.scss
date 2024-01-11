@@ -16,6 +16,9 @@ fieldset{
     form{
         margin: 1rem 0 0;
     }
+    @media screen and (max-width: $md) {
+        border-radius: 0;
+    }
 }
 
 .input-group {
@@ -99,6 +102,12 @@ textarea:valid ~ label {
 
 .services-list{
     columns: 3;
+    @media screen and (max-width: $md) {
+        columns: 2;
+    }
+    @media screen and (max-width: $xs) {
+        columns: 1;
+    }
 }
 
 .checkbox {
@@ -112,7 +121,7 @@ textarea:valid ~ label {
             margin-bottom: 1.25rem;
             user-select: none;
             cursor: pointer;
-            transition-duration: .5s;
+            transition-duration: 1s;
             &:last-child {
                 margin-bottom: 0;
             }

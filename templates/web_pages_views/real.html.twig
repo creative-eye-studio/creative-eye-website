@@ -33,7 +33,7 @@
         </figure>
         <!-- Présentation -->
         <div class="content row padding-vertical-on-md">
-            <div class="col-4">
+            <div class="col-4 col-md-12 margin-bottom-on-md">
                 <h1 class="margin-top-none">
                     <span class="small">Portfolio</span>
                     <span class="title">{{ titre }}</span>
@@ -42,44 +42,45 @@
                     <p><a class="btn-link-wt" href="{{ website }}" target="_blank" rel="noopener">Voir le site internet</a></p>
                 {% endif %}
             </div>
-            <div class="col-8 row-no-marge">
-                <div class="col-12-no-marge intro">
-                    {{ intro | raw }}
-                </div>
-                <div class="col-12-no-marge more-btn-panel">
-                    <button class="more-btn btn-rounded-wt"></button>
-                </div>
-                <div class="col-12-no-marge more-panel row-no-marge">
-                    <div class="col-4-no-marge">
-                        <p>
-                            <strong>Services réalisés</strong>
-                            <ul>
-                                {% for service in services %}
-                                    <li>{{ service.titre[0] }}</li>
-                                {% endfor %}
-                            </ul>
-                        </p>
+            <div class="col-8 col-md-12 row-no-marge">
+                <div class="row-no-marge">
+                    <div class="col-12-no-marge intro">
+                        {{ intro | raw }}
                     </div>
-                    <div class="col-4-no-marge">
-                        <p>
-                            <strong>Collaborateurs</strong>
-                            <ul>
-                                {% for partner in partners %}
-                                    <li>{{ partner.nom }}</li>
-                                {% endfor %}
-                            </ul>
-                        </p>
+                    <div class="col-12-no-marge col-md-12 more-btn-panel">
+                        <button class="more-btn btn-rounded-wt"></button>
                     </div>
-                    <div class="col-4-no-marge">
-                        <p>
-                            <strong>Année</strong>
-                        </p>
-                        <p>
-                            {{ annee }}
-                        </p>
+                    <div class="col-12-no-marge more-panel row-no-marge">
+                        <div class="more-panel-item col-4-no-marge col-sm-6-no-marge col-xs-12-no-marge">
+                            <p>
+                                <strong>Services réalisés</strong>
+                                <ul>
+                                    {% for service in services %}
+                                        <li>{{ service.titre[0] }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="more-panel-item col-4 col-sm-6-no-marge col-xs-12-no-marge">
+                            <p>
+                                <strong>Collaborateurs</strong>
+                                <ul>
+                                    {% for partner in partners %}
+                                        <li>{{ partner.nom }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </p>
+                        </div>
+                        <div class="more-panel-item col-4 col-sm-12-no-marge">
+                            <p>
+                                <strong>Année</strong>
+                            </p>
+                            <p>
+                                {{ annee }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-                
             </div>
         </div>
     </section>
@@ -101,19 +102,19 @@
     <!-- Demandes et approche -->
     <section id="details" class="border-bottom padding-vertical-on-md">
         <div class="row">
-            <div class="col-4">
+            <div class="col-4 col-xs-12">
                 <h2 class="margin-top-none">Demande</h2>
             </div>
-            <div class="col-8">
+            <div class="col-8 col-xs-12">
                 {{ demande | raw }}
             </div>
             <div class="col-12">
                 <hr>
             </div>
-            <div class="col-4">
+            <div class="col-4 col-xs-12">
                 <h2 class="margin-top-none">Approche</h2>
             </div>
-            <div class="col-8">
+            <div class="col-8 col-xs-12">
                 {{ approche | raw }}
             </div>
         </div>
