@@ -15,7 +15,7 @@
         object-position: center;
     }
 
-    .more-btn-panel, .more-panel {
+    .more-btn-panel, .more-panel.open {
         padding: $marge-m 0 0;
     }
 
@@ -45,6 +45,9 @@
         max-height: 0;
         overflow: hidden;
         transition-duration: 1.5s;
+        &:not(.open) {
+            transition: all 1.5s, padding 1.5s ease 1s;
+        }
         &.open {
             max-height: 50rem;
         }
