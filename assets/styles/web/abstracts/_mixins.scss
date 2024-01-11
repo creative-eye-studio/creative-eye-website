@@ -624,3 +624,23 @@
     }
 }
 /* #endregion Footer */
+
+
+@mixin cover-img {
+    @extend .margin-none;
+    @extend .position-relative;
+
+    img {
+        object-fit: cover;
+        @extend .position-absolute;
+        @extend .wd-100;
+        @extend .ht-100;
+    }
+}
+
+@mixin media-aspect-ratio($size, $width, $height) {
+    @extend .cover-img;
+    @media screen and (max-width: $size) {
+        aspect-ratio: #{$width}/#{$height};
+    }
+}

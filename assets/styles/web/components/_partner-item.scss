@@ -18,11 +18,22 @@
         }
         .logo {
             float: right;
-            width: 200px;
-            // margin: $marge-m 0 $marge-m;
+            max-width: 200px;
         }
         .text-content {
             padding: $marge-m 0;
+        }
+        @media screen and (max-width: $md) {
+            padding: $marge-m;
+            .logo {
+                float: inherit;
+                margin-bottom: $marge-m;
+            }
+        }
+    }
+    @media screen and (max-width: $lg) {
+        &:nth-child(even){
+            flex-direction: inherit;
         }
     }
 }

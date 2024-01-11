@@ -76,6 +76,12 @@
             li{
                 margin: 1rem 0;
             }
+            @media screen and (max-width: $xl) {
+                font: 300 1.5vw/200% "Montserrat";
+            }
+            @media screen and (max-width: $lg) {
+                font: 300 1.25rem/200% "Montserrat";
+            }
         }
     }
     .nav-2{
@@ -104,6 +110,12 @@
             }
             li{
                 margin: 1rem 0;
+            }
+            @media screen and (max-width: $xl) {
+                font: 300 1.25vw/200% "Montserrat";
+            }
+            @media screen and (max-width: $lg) {
+                font: 300 1.1rem/200% "Montserrat";
             }
         }
     }

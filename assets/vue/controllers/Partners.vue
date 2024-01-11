@@ -1,9 +1,9 @@
 <template>
     <article class="partner-item row-no-marge" v-for="item in posts" :key="item.id">
-        <figure class="image col-4-no-marge cover-img-no-md-4-3">
-            <img :src="'../../uploads/images/partners/photos/' + item.photo" :alt="item.nom + ' - ' + item.societe">
+        <figure class="image col-4-no-marge col-lg-12-no-marge cover-img-no-lg-16-9">
+            <img class="d-block-on-lg" :src="'../../uploads/images/partners/photos/' + item.photo" :alt="item.nom + ' - ' + item.societe">
         </figure>
-        <div class="text col-8-no-marge">
+        <div class="text col-8-no-marge col-lg-12-no-marge">
             <div class="text-block">
                 <h3 class="margin-bottom-none">
                     <span v-html="item.nom"></span> - <span v-html="item.societe"></span>

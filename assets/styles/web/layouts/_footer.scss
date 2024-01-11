@@ -21,4 +21,9 @@ footer{
         @include footer-link();
         cursor: pointer;
     }
+    @media screen and (max-width: $lg) {
+        .row-footer {
+            align-items: center;
+        }
+    }
 }

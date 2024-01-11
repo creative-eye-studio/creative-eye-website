@@ -73,79 +73,34 @@ ul{
 }
 
 .cover-img{
-    @extend .margin-none;
-    @extend .position-relative;
-    img{
-        object-fit: cover;
-        @extend .position-absolute;
-        @extend .wd-100;
-        @extend .ht-100;
-    }
-    &-no{
-        &-md{
-            &-32-9{
-                @extend .cover-img;
-                @media screen and (max-width: $md) {
-                    aspect-ratio: 32/9;
-                }
-            }
-            &-21-9{
-                @extend .cover-img;
-                @media screen and (max-width: $md) {
-                    aspect-ratio: 21/9;
-                }
-            }
-            &-16-9{
-                @extend .cover-img;
-                @media screen and (max-width: $md) {
-                    aspect-ratio: 16/9;
-                }
-            }
-            &-4-3{
-                @extend .cover-img;
-                @media screen and (max-width: $md) {
-                    aspect-ratio: 4/3;
-                }
-            }
-            &-3-4{
-                @extend .cover-img;
-                @media screen and (max-width: $md) {
-                    aspect-ratio: 3/4;
-                }
-            }        
+    @include cover-img;
+    &-no {
+        &-lg, &-md, &-sm {
+            @include cover-img;
         }
-        &-sm{
-            &-32-9{
-                @extend .cover-img;
-                @media screen and (max-width: $sm) {
-                    aspect-ratio: 32/9;
-                }
-            }
-            &-21-9{
-                @extend .cover-img;
-                @media screen and (max-width: $sm) {
-                    aspect-ratio: 21/9;
-                }
-            }
-            &-16-9{
-                @extend .cover-img;
-                @media screen and (max-width: $sm) {
-                    aspect-ratio: 16/9;
-                }
-            }
-            &-4-3{
-                @extend .cover-img;
-                @media screen and (max-width: $sm) {
-                    aspect-ratio: 4/3;
-                }
-            }
-            &-3-4{
-                @extend .cover-img;
-                @media screen and (max-width: $sm) {
-                    aspect-ratio: 3/4;
-                }
-            }        
+
+        &-lg {
+            &-32-9 { @include media-aspect-ratio($lg, 32, 9); }
+            &-21-9 { @include media-aspect-ratio($lg, 21, 9); }
+            &-16-9 { @include media-aspect-ratio($lg, 16, 9); }
+            &-4-3  { @include media-aspect-ratio($lg, 4, 3); }
+            &-3-4  { @include media-aspect-ratio($lg, 3, 4); }
+        }
+
+        &-md {
+            &-32-9 { @include media-aspect-ratio($md, 32, 9); }
+            &-21-9 { @include media-aspect-ratio($md, 21, 9); }
+            &-16-9 { @include media-aspect-ratio($md, 16, 9); }
+            &-4-3  { @include media-aspect-ratio($md, 4, 3); }
+            &-3-4  { @include media-aspect-ratio($md, 3, 4); }
+        }
+
+        &-sm {
+            &-32-9 { @include media-aspect-ratio($sm, 32, 9); }
+            &-21-9 { @include media-aspect-ratio($sm, 21, 9); }
+            &-16-9 { @include media-aspect-ratio($sm, 16, 9); }
+            &-4-3  { @include media-aspect-ratio($sm, 4, 3); }
+            &-3-4  { @include media-aspect-ratio($sm, 3, 4); }
         }
     }
-    
 }
