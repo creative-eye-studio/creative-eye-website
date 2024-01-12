@@ -42,6 +42,7 @@
     }
 
     @media screen and (max-width: $md) {
-        width: inherit;
+        width: 100%;
+        margin-bottom: $marge-m;
     }
 }

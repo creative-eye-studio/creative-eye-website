@@ -100,7 +100,7 @@ h3 {
   &.small-title{
     @include font(500, 32, true, $ff-title);
   }
-  @media screen and (max-width: $xs) {
+  @media screen and (max-width: $md) {
     font-size: 1.25em;
   }
 }

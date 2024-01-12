@@ -1,8 +1,10 @@
 <template>
     <section class="padding-vertical-on-md">
-        <h2 class="text-center margin-none">Soyez au courant de nos actualités</h2>
+        <div class="padding-horizontal-on-md">
+            <h2 class="text-center margin-none">Soyez au courant de nos actualités</h2>
+        </div>
         <div class="row margin-top-on-md">
-            <div class="col-4" v-for="post in posts" :key="post.id">
+            <div class="col-4 col-md-6 col-xs-12" v-for="post in posts" :key="post.id">
                 <article class="text-img-bloc">
                     <figure class="image">
                         <img :src="'../../../uploads/images/posts/' + post.thumb" :alt="post.name[0]">
