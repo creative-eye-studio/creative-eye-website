@@ -68,8 +68,18 @@ export class ScrollWeb {
 
         // Retour en haut de page
         document.addEventListener('swup:transitionStart', function() {
-            scrollbar.scrollTo(0, 0, 1000); 
+            if (window.innerWidth > 1200) {
+                scrollbar.scrollTo(0, 0, 1000); 
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
         });
+
+
 
         // Désactivation de la scrollbar horizontale
         scrollbar.track.xAxis.element.remove()

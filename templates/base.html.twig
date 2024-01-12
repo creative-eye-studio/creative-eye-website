@@ -34,7 +34,7 @@
         {{ include('webpages/blocks/loader-page.html.twig') }}
         {{ include('webpages/blocks/loader-open.html.twig') }}
 
-        <header class="position-fixed">
+        <header class="position-fixed-no-md position-sticky-on-md">
             <figure class="logotype">
                 <a href="{{ absolute_url(path('web_index')) }}">
                     <img src="{{ absolute_url(asset('uploads/images/logo/logotype.png')) }}" alt="Logo Creative Eye Studio">
