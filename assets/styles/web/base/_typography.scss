@@ -52,14 +52,34 @@ h1, h2{
 }
 
 h1{
+  @extend .margin-top-none;
   color: #F1F1F1;
   .small{
     @include font(500, 5, true, $ff-title);
   }
   .title {
     @include font(700, 16, true, $ff-title);
-    font-size: 4vh;
-    line-height: 1.3em;
+    font-size: 2vw;
+    line-height: 1.25em;
+  }
+  @media screen and (max-width: $md) {
+    margin-bottom: $marge-m;
+    .title {
+      font-size: 2rem;
+    }
+  }
+  @media screen and (max-width: $sm) {
+    .small, .title{
+      line-height: 1.3em;
+    }
+    .title {
+      font-size: 1.5rem;
+    }
+  }
+  @media screen and (max-width: $xs) {
+    .title {
+      font-size: 1.3rem;
+    }
   }
 }
 
@@ -79,6 +99,9 @@ h2 {
 h3 {
   &.small-title{
     @include font(500, 32, true, $ff-title);
+  }
+  @media screen and (max-width: $xs) {
+    font-size: 1.25em;
   }
 }
 

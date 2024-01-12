@@ -1,8 +1,11 @@
 <template>
-    <figure class="real-item position-relative cover-img border-all" v-if="real && real.services">
+    <figure class="real-item border-all position-relative" v-if="real && real.services">
         <a :href='"fr/realisation/" + real.url'>
-            <img :src='"../uploads/images/reals/main/" + real.thumb' alt="" class="image position-absolute">
-            <figcaption class="infos position-absolute w-100">
+            <figure class="cover-img-no-sm-16-9 ht-100">
+                <img :src='"../uploads/images/reals/main/" + real.thumb' alt="" class="image">
+            </figure>
+            
+            <figcaption class="infos position-absolute-no-sm w-100">
                 <h3>
                     <span class="title" v-html="real.nom"></span>
                 </h3>

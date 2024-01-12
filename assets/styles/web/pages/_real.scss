@@ -10,7 +10,8 @@
     }
 
     .image {
-        @extend .cover-img-no-md-4-3;
+        @extend .cover-img-no-md-16-9;
+        @extend .cover-img-no-sm-4-3;
         height: 100vh;
         object-position: center;
     }
@@ -46,7 +47,7 @@
         overflow: hidden;
         transition-duration: 1.5s;
         &:not(.open) {
-            transition: all 1.5s, padding 1.5s ease 1s;
+            transition: all 1.5s, padding 1s ease 1s;
         }
         &.open {
             max-height: 50rem;

@@ -46,16 +46,18 @@
     </section>
 
     <!-- Intro -->
-    <section class="intro-page padding-vertical-on-md row">
-        <div class="service-intro text col-8 col-md-12">
-            {{ contenu | raw }}
-        </div>
-        <div class="list col-4 col-md-12 border-left">
-            <ul>
-                {% for service in services %}
-                <li data-aos="fade-top">{{ service }}</li>
-                {% endfor %}
-            </ul>
+    <section class="service-intro intro-page padding-top-on-md">
+        <div class="row">
+            <div class="service-intro text col-8 col-sm-12 margin-bottom-on-md">
+                {{ contenu | raw }}
+            </div>
+            <div class="list col-4 col-sm-12 border-left-no-sm border-top-on-sm margin-bottom-on-md">
+                <ul>
+                    {% for service in services %}
+                    <li data-aos="fade-top">{{ service }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
         </div>
     </section>
 

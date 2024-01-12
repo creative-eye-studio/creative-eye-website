@@ -4,6 +4,16 @@
         :modules="modules"
         :slides-per-view="3"
         :space-between="50"
+        :breakpoints="{
+            '1024': {
+                slidesPerView: 2,
+                spaceBetween: 32
+            },
+            '320': {
+                slidesPerView: 1,
+                spaceBetween: 32
+            },
+        }"
         @swiper="onSwiper"
         @slideChange="onSlideChange"
     >

@@ -102,5 +102,13 @@ ul{
             &-4-3  { @include media-aspect-ratio($sm, 4, 3); }
             &-3-4  { @include media-aspect-ratio($sm, 3, 4); }
         }
+
+        &-xs {
+            &-32-9 { @include media-aspect-ratio($xs, 32, 9); }
+            &-21-9 { @include media-aspect-ratio($xs, 21, 9); }
+            &-16-9 { @include media-aspect-ratio($xs, 16, 9); }
+            &-4-3  { @include media-aspect-ratio($xs, 4, 3); }
+            &-3-4  { @include media-aspect-ratio($xs, 3, 4); }
+        }
     }
 }

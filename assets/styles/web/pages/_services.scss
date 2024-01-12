@@ -1,3 +1,14 @@
+.service-intro {
+	.list {
+		ul {
+			list-style-type: none;
+		}
+		@media screen and (max-width: $sm) {
+			padding-top: $marge-m;
+		}
+	}
+}
+
 .reals {
 	.item {
 		margin-bottom: $marge-m;
