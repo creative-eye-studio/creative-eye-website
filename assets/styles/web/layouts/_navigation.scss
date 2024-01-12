@@ -82,6 +82,9 @@
             @media screen and (max-width: $lg) {
                 font: 300 1.25rem/200% "Montserrat";
             }
+            @media screen and (max-width: $xs) {
+                font: 300 1em/200% "Montserrat";
+            }
         }
     }
     .nav-2{
@@ -117,6 +120,9 @@
             @media screen and (max-width: $lg) {
                 font: 300 1.1rem/200% "Montserrat";
             }
+            @media screen and (max-width: $xs) {
+                font: 300 1em/200% "Montserrat";
+            }
         }
     }
     .imgs-nav{
@@ -133,6 +139,38 @@
             margin-left: $marge-m;
             &:empty{
                 display: none;
+            }
+        }
+    }
+
+    @media screen and (max-width: $md) {
+        top: 6.2rem;
+        .nav-1, .nav-2 {
+            width: 50%;
+        }
+        .imgs-nav {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: $xs) {
+        top: 5rem;
+        display: block;
+        overflow-y: scroll;
+        &::after {
+            left: 100%;
+        }
+        .nav-1, .nav-2 {
+            width: 100%;
+            height: inherit;
+        }
+        .nav-2 {
+            li {
+                a{
+                    &.social-link, &::before, &::after {
+                        color: #000;
+                    }
+                }
             }
         }
     }
