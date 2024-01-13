@@ -112,3 +112,12 @@ ul{
         }
     }
 }
+
+.swiper-arrows {
+    justify-content: right;
+    gap: 1rem;
+    span {
+        font-size: 3.5em;
+        cursor: pointer;
+    }
+}

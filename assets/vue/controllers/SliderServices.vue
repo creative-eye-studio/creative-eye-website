@@ -1,6 +1,9 @@
 <template>
     <swiper 
-        navigation
+        :navigation="{
+            nextEl: '.slider-prev', 
+            prevEl: '.slider-next',
+        }"
         :modules="modules"
         :slides-per-view="'auto'"
         :space-between="50"
@@ -10,7 +13,7 @@
                 spaceBetween: 32
             },
             '1200': {
-                slidesPerView: auto,
+                slidesPerView: 'auto',
                 spaceBetween: 50
             },
         }"
@@ -30,6 +33,10 @@
                 </a>
             </div>
         </swiper-slide>
+        <div class="swiper-arrows margin-left-auto d-flex">
+            <span class="slider-next">&#8592;</span>
+            <span class="slider-prev">&#8594;</span>
+        </div>
 
     </swiper>
 </template>
