@@ -89,10 +89,13 @@ header{
         &::after {
             transition: all .5s 1s;
         }
-        .logotype {
-            opacity: 0;
-            margin-left: 10vw;
-            transition: all .5s 1s;
+        @media screen and (min-width: $lg) {
+            .logotype {
+                opacity: 0;
+                margin-left: 10vw;
+                transition: all .5s 1s;
+            }
         }
+        
     }
 }
