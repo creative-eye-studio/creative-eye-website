@@ -17,8 +17,6 @@
                 spaceBetween: 50
             },
         }"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
     >
         <swiper-slide v-for="service in services" :key="service.id">
             <div class="text-img-bloc">

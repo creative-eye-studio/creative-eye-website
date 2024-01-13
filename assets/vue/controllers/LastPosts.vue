@@ -16,8 +16,6 @@
                 spaceBetween: 32
             },
         }"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
     >
         <swiper-slide v-for="post in this.posts" :key="post.id">
             <article class="text-img-bloc">

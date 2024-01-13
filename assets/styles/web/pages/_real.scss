@@ -58,6 +58,9 @@
         .content {
             background-color: rgba($color: #1F1F1F, $alpha: 1);
         }
+        .title {
+            margin-bottom: $marge-m;
+        }
         .image {
             height: inherit;
         }

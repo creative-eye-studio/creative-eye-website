@@ -33,7 +33,6 @@
                     const response = await fetch('/api/last-real');
                     const data = await response.json();
                     this.real = data;
-                    console.log(this.real.services);
                 } catch (error) {
                     console.error('Erreur lors de la récupération des données:', error);
                 }
