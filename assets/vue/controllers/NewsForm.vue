@@ -25,7 +25,13 @@ export default {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(this.formData)
+                    body: JSON.stringify({
+                        listIds: [5],
+                        updateEnabled: false,
+                        attributes: {
+                            EMAIL: this.formData.email
+                        }
+                    })
                 };
 
                 fetch('https://api.brevo.com/v3/contacts', requestOptions)
