@@ -55,11 +55,18 @@ export class ScrollWeb {
                 const target = btn.getAttribute('href') || btn.getAttribute('data-link');
                 const anchor = document.querySelector(target);
                 const offset = container.getBoundingClientRect().top - anchor.getBoundingClientRect().top;
+                if (window.innerWidth > 1200) {
+                    scrollbar.scrollIntoView(anchor, { 
+                        offset, 
+                        offsetTop: margin
+                    });    
+                } else {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
                 
-                scrollbar.scrollIntoView(anchor, { 
-                    offset, 
-                    offsetTop: margin
-                });
         
                 // Supprimer l'ancre de l'URL sans ajouter une nouvelle entrée dans l'historique
                 history.replaceState(null, null, target);
@@ -76,7 +83,6 @@ export class ScrollWeb {
                     behavior: 'smooth'
                 });
             }
-            
         });
 
 

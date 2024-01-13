@@ -131,6 +131,21 @@ function getActiveLink() {
 
 
 
+// Bouton en haut de page
+// ---------------------------------------------------
+document.addEventListener('DOMContentLoaded', function() {
+    const btnMobTop = document.querySelector('#go-to-top');
+    btnMobTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth',
+            duration: 1000
+        });
+    });
+});
+
+
+
 
 // Bouton More panel
 // ---------------------------------------------------

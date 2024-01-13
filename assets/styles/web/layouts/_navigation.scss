@@ -169,20 +169,31 @@
 
     @media screen and (max-width: $xs) {
         top: 5rem;
+        bottom: $navbar-ht;
         display: block;
+        overflow-x: hidden;
         overflow-y: scroll;
+        width: 100%;
         &::after {
             left: 100%;
         }
         .nav-1, .nav-2 {
             width: 100%;
             height: inherit;
+            a {
+                span {
+                    height: 2.5rem;
+                }
+            }
         }
         .nav-2 {
             li {
                 a{
                     &.social-link, &::before, &::after {
                         color: #000;
+                    }
+                    span {
+                        height: 2.5rem;
                     }
                 }
             }

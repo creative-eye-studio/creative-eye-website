@@ -20,6 +20,7 @@
         {% endblock %}
     </head>
     <body
+        id="top"
         {{ stimulus_controller('symfony/ux-swup/swup', {
             containers: ['#website'],
             animateHistoryBrowsing: true,
@@ -45,6 +46,26 @@
                 <i class="bar bar-2"></i>
             </button>
         </header>
+
+        <nav class="navbar-mobile d-none-no-xs d-block-on-xs position-fixed wd-100">
+            <ul class="d-flex">
+                <li>
+                    <span id="go-to-top">
+                        <i class="fa-solid fa-arrow-up "></i>
+                    </span>
+                </li>
+                <li>
+                    <span class="toggle-nav">
+                        <i class="fa-solid fa-bars"></i>
+                    </span>
+                </li>
+                <li>
+                    <a href="tel:+33763623039">
+                        <i class="fa-solid fa-phone-flip"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
 
         <nav class="main-nav padding-vertical-on-md">
             <div class="nav-1">

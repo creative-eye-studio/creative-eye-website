@@ -1,0 +1,16 @@
+.navbar-mobile {
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+    background-color: #1F1F1F;
+    padding: 1rem;
+    height: $navbar-ht;
+    ul {
+        justify-content: space-around;
+        span, a {
+            color: $colorWt;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+    }
+}
