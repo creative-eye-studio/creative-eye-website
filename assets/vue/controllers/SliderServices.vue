@@ -9,6 +9,10 @@
                 slidesPerView: 2,
                 spaceBetween: 32
             },
+            '1200': {
+                slidesPerView: auto,
+                spaceBetween: 50
+            },
         }"
         @swiper="onSwiper"
         @slideChange="onSlideChange"

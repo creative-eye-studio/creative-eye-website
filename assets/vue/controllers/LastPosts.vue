@@ -2,9 +2,11 @@
     <swiper
         navigation
         :modules="modules"
-        :slides-per-view="3"
-        :space-between="50"
         :breakpoints="{
+            '1200': {
+                slidesPerView: 3,
+                spaceBetween: 50
+            },
             '1024': {
                 slidesPerView: 2,
                 spaceBetween: 32
