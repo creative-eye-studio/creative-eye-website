@@ -8,19 +8,19 @@
 <li>
     {% if item.page %}
         <a href="{{ path('web_page', {page_slug: pageUrl}) }}" {{ targetAttr }} data-val="{{ cusname ?? item.page.pagename[lang] }}">
-            {{ cusname ?? item.page.pagename[lang] }}
+            <span>{{ cusname ?? item.page.pagename[lang] }}</span>
         </a>
     {% elseif item.post %}
         <a href="{{ path('web_post', {post_slug: postUrl}) }}" {{ targetAttr }} data-val="{{ cusname ?? item.post.postname[lang] }}">
-            {{ cusname ?? item.post.postname[lang] }}
+            <span>{{ cusname ?? item.post.postname[lang] }}</span>
         </a>
     {% elseif item.extservice %}
         <a href="{{ path('web_service', {service_slug: servUrl}) }}" {{ targetAttr }} data-val="{{ cusname ?? item.extservice.titre[lang] }}">
-            {{ cusname ?? item.extservice.titre[lang] }}
+            <span>{{ cusname ?? item.extservice.titre[lang] }}</span>
         </a>
     {% else %}
         <a href="{{ cuslink }}" {{ targetAttr }} data-val="{{ cusname ?? cuslink }}">
-            {{ cusname ?? cuslink }}
+            <span>{{ cusname ?? cuslink }}</span>
         </a>
     {% endif %}
     {% if item.menulinks and item.menulinks|length > 0  %}

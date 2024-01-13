@@ -57,6 +57,7 @@ function initVueComponents() {
 const commonCalls = () => {
     initVueComponents();
     initServicePage();
+    getActiveLink();
     scrollWeb();
     parallax();
 };
@@ -108,6 +109,26 @@ document.addEventListener("DOMContentLoaded", function() {
         link.addEventListener('click', toggleNavClass);
     });
 });
+
+
+
+// lien actif
+// ---------------------------------------------------
+function getActiveLink() {
+    const actualHref = window.location.href;
+    const allNavLinks = document.querySelectorAll('.main-nav a');
+    
+    allNavLinks.forEach(link => link.classList.remove('active-link'));
+
+    const targetLink = Array.from(allNavLinks).find(link => link.href === actualHref);
+
+    if (targetLink) {
+        targetLink.classList.add('active-link');
+    } else if (window.location.pathname === '/fr') {
+        allNavLinks[0].classList.add('active-link');
+    }
+}
+
 
 
 

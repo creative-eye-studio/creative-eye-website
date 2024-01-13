@@ -39,6 +39,21 @@
             height: 1rem;
             color: transparent;
             display: ruby;
+            span {
+                width: max-content;
+                height: 4rem;
+                display: inline-block;
+                position: relative;
+            }
+            &.active-link {
+                &::before {
+                    color: #187FA5;
+                    font-style: italic;
+                }
+                &::after {
+                    content: '';
+                }
+            }
             &::before, &::after{
                 content: attr(data-val);
                 position: absolute;
@@ -57,7 +72,7 @@
                 top: -100%;
                 opacity: 0;
             }
-            &:hover{
+            &:not(.active-link):hover{
                 &::before{
                     top: 100%;
                     opacity: 0;
@@ -72,9 +87,8 @@
     .nav-1{
         li{
             font: 300 1.5rem/200% "Montserrat";
-            margin: 0 0 1rem;
             li{
-                margin: 1rem 0;
+                margin: 1rem 0 0;
             }
             @media screen and (max-width: $xl) {
                 font: 300 1.5vw/200% "Montserrat";
@@ -99,7 +113,7 @@
         }
         li{
             font: 300 1.25rem/200% "Montserrat";
-            margin: 0 0 1rem;
+            // margin: 0 0 1rem;
             a{
                 &.social-link, &::before, &::after {
                     color: #fff;
