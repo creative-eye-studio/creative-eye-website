@@ -1,6 +1,9 @@
 <template>
     <swiper
-        navigation
+        :navigation="{
+            nextEl: '.slider-prev', 
+            prevEl: '.slider-next',
+        }"
         :modules="modules"
         :breakpoints="{
             '1200': {
@@ -16,8 +19,6 @@
                 spaceBetween: 32
             },
         }"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
     >
         <swiper-slide v-for="post in this.posts" :key="post.id">
             <article class="text-img-bloc">
@@ -31,6 +32,10 @@
                 </div>    
             </article>
         </swiper-slide>
+        <div class="swiper-arrows margin-left-auto d-flex">
+            <span class="slider-next">&#8592;</span>
+            <span class="slider-prev">&#8594;</span>
+        </div>
     </swiper>
 </template>
 

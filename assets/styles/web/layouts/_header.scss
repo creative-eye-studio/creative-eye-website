@@ -49,8 +49,6 @@ header{
     }
 
     @media screen and (min-width: $lg) {
-        padding: 0 $marge-d-x;
-        height: $marge-d-y;
         background: inherit;
         &::after{
             content: "";
@@ -62,6 +60,11 @@ header{
             height: 0%;
             transition-duration: .5s;
         }
+    }
+
+    @media screen and (min-width: $md) {
+        height: $marge-d-y;
+        padding: 0 $marge-d-x;
     }
 
     @media screen and (max-width: $md) {

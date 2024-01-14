@@ -1,13 +1,16 @@
 <template>
     <swiper
-        navigation
+        :navigation="{
+            nextEl: '.slider-prev', 
+            prevEl: '.slider-next',
+        }"
         :modules="modules"
         :breakpoints="{
             '1200': {
                 slidesPerView: 3,
                 spaceBetween: 50
             },
-            '1024': {
+            '768': {
                 slidesPerView: 2,
                 spaceBetween: 32
             },
@@ -29,6 +32,10 @@
                 </div>    
             </article>
         </swiper-slide>
+        <div class="swiper-arrows margin-left-auto d-flex">
+            <span class="slider-next">&#8592;</span>
+            <span class="slider-prev">&#8594;</span>
+        </div>
     </swiper>
 </template>
 
