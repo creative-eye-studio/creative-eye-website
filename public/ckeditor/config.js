@@ -23,7 +23,7 @@ CKEDITOR.editorConfig = function( config ) {
 	config.extraAllowedContent = 'i';
 	config.extraPlugins = 'codemirror,templates,video,widget';
 	config.height = 300;
-	config.startupMode = 'source'
+	// config.startupMode = 'source'
 };
 
 CKEDITOR.on( 'dialogDefinition', function( ev ) {
