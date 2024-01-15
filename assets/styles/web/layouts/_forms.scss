@@ -36,7 +36,7 @@ input {
         @include form-design();
         &.news-input {
             margin: 0;
-            padding: 0.5rem;
+            padding: 0.6rem;
             border: .0625rem solid $colorWt;
             color: white;
             &::placeholder {
