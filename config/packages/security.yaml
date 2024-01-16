@@ -10,8 +10,6 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
-        securited_area:
-            requires_channel: https
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
