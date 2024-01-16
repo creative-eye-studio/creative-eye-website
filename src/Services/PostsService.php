@@ -117,7 +117,7 @@ class PostsService extends AbstractController
     #region Affichage des posts
     public function getAllPosts()
     {
-        $posts = $this->posts_repo->findBy([], ['date' => 'DESC']);
+        $posts = $this->posts_repo->findAll();
 
         return array_map(function ($post) {
             return [
@@ -160,7 +160,7 @@ class PostsService extends AbstractController
             throw $this->createNotFoundException('Catégorie non trouvée pour l\'ID ' . $servId);
         }
 
-        $postsArray = array_map(function ($post) {
+        return array_map(function ($post) {
             return [
                 'id' => $post->getId(),
                 'thumb' => $post->getPostThumb(),
@@ -171,10 +171,6 @@ class PostsService extends AbstractController
                 'online' => $post->isOnline(),
             ];
         }, $category->getPostsLists()->toArray());
-
-        usort($postsArray, function ($a, $b) {
-            return strtotime($b['date']) - strtotime($a['date']);
-        });
     }
     #endregion
 
