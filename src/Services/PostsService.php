@@ -117,7 +117,7 @@ class PostsService extends AbstractController
     #region Affichage des posts
     public function getAllPosts()
     {
-        $posts = $this->posts_repo->findAll();
+        $posts = $this->posts_repo->findBy([], ['date' => 'DESC']);
 
         return array_map(function ($post) {
             return [
@@ -137,8 +137,6 @@ class PostsService extends AbstractController
     #region Affichage des derniers posts
     public function getLastPosts()
     {
-        $lastPosts = $this->posts_repo->findBy([], ['created_at' => 'DESC'], 4);
-
         return array_map(function ($post) {
             return [
                 'id' => $post->getId(),
@@ -149,7 +147,7 @@ class PostsService extends AbstractController
                 'date' => $post->getCreatedAt()->format("d/m/Y"),
                 'online' => $post->isOnline(),
             ];
-        }, $lastPosts);
+        }, $this->posts_repo->findBy([], ['created_at' => 'DESC'], 4));
     }
     #endregion
 
@@ -162,7 +160,7 @@ class PostsService extends AbstractController
             throw $this->createNotFoundException('Catégorie non trouvée pour l\'ID ' . $servId);
         }
 
-        return array_map(function ($post) {
+        $postsArray = array_map(function ($post) {
             return [
                 'id' => $post->getId(),
                 'thumb' => $post->getPostThumb(),
@@ -173,6 +171,10 @@ class PostsService extends AbstractController
                 'online' => $post->isOnline(),
             ];
         }, $category->getPostsLists()->toArray());
+
+        usort($postsArray, function ($a, $b) {
+            return strtotime($b['date']) - strtotime($a['date']);
+        });
     }
     #endregion
 
