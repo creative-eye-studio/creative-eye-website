@@ -23,10 +23,10 @@ DirectoryIndex index.php
     Options +FollowSymlinks
 
     RewriteEngine On
-    
+
     # Ajoutez ces lignes pour rediriger de www vers non-www
     RewriteCond %{HTTP_HOST} ^www\. [NC]
-    RewriteRule ^(.*)$ http://%{HTTP_HOST}/$1 [R=301,L]
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
 
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
