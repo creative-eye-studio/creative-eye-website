@@ -12,7 +12,7 @@
         "amphp/http-client": "4.4.0",
         "artgris/filemanager-bundle": "^2.8",
         "cocur/slugify": "^4.5.1",
-        "doctrine/annotations": "^2.0.1",
+        "doctrine/annotations": "^2.0",
         "doctrine/collections": "^2.1",
         "doctrine/dbal": "^3.7",
         "doctrine/doctrine-bundle": "^2.11",
