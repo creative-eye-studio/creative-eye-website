@@ -117,7 +117,7 @@ class PostsService extends AbstractController
     #region Affichage des posts
     public function getAllPosts()
     {
-        $posts = $this->posts_repo->findAll();
+        $posts = $this->posts_repo->findBy([], ['created_at' => 'DESC']);
 
         return array_map(function ($post) {
             return [
