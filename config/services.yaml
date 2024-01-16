@@ -13,6 +13,8 @@ parameters:
     googleClientId: '%env(CLIENT_ID)%'
     googleClientSecret: '%env(CLIENT_SECRET)%'
     site_name: '%env(SITE_NAME)%'
+    router.request_context.scheme: 'https'
+    asset.request_context.secure: true
 
 services:
     # default configuration for services in *this* file
