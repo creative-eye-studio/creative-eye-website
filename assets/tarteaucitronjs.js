@@ -11,8 +11,8 @@ tarteaucitron.init({
     "showIcon": false, /* Show cookie icon to manage cookies */
     "iconPosition": "BottomRight", /* BottomRight, BottomLeft, TopRight and TopLeft */
     "adblocker": false, /* Show a Warning if an adblocker is detected */
-    "DenyAllCta" : true, /* Show the deny all button */
-    "AcceptAllCta" : true, /* Show the accept all button when highPrivacy on */
+    "DenyAllCta": true, /* Show the deny all button */
+    "AcceptAllCta": true, /* Show the accept all button when highPrivacy on */
     "highPrivacy": true, /* HIGHLY RECOMMANDED Disable auto consent */
     "handleBrowserDNTRequest": false, /* If Do Not Track == 1, disallow all */
     "removeCredit": false, /* Remove credit link */
@@ -22,11 +22,20 @@ tarteaucitron.init({
     "mandatoryCta": true /* Show the disabled accept button when mandatory on */
 });
 
-function cookiesInit(){
+function cookiesInit() {
     // Google Analytics
     tarteaucitron.user.gtagUa = 'G-7K9B4GH89P';
-    tarteaucitron.user.gtagMore = function () { /* add here your optionnal gtag() */ };
+    tarteaucitron.user.gtagMore = function () {
+        document.addEventListener('swup:contentReplaced', function () {
+            window.gtag('event', 'page_view', {
+                'page_title': document.title,
+                'page_location': window.location.href,
+                'page_path': window.location.pathname
+            });
+        });
+    };
     (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
+
 
     // Matomo
     // tarteaucitron.user.matomoId = '';
@@ -40,7 +49,7 @@ function cookiesInit(){
     // Google Tag Manager
     // tarteaucitron.user.googletagmanagerId = '';
     // (tarteaucitron.job = tarteaucitron.job || []).push('googletagmanager');
-    
+
     // Google Recaptcha
     // tarteaucitron.user.recaptchaapi = '';
     // (tarteaucitron.job = tarteaucitron.job || []).push('recaptcha');
@@ -49,7 +58,7 @@ function cookiesInit(){
     // tarteaucitron.user.facebookpixelId = 'YOUR-ID'; 
     // tarteaucitron.user.facebookpixelMore = function () { /* add here your optionnal facebook pixel function */ };
     // (tarteaucitron.job = tarteaucitron.job || []).push('facebookpixel');
-    
+
     // Google Ads
     // tarteaucitron.user.googleadsId = '';
     // (tarteaucitron.job = tarteaucitron.job || []).push('googleads');
@@ -62,13 +71,13 @@ function cookiesInit(){
 
     // Youtube
     (tarteaucitron.job = tarteaucitron.job || []).push('youtube');
-    
+
     // Rechargement après AJAX
     tarteaucitron.triggerJobsAfterAjaxCall();
 }
 
 cookiesInit();
 
-document.addEventListener('swup:contentReplaced', function(){
+document.addEventListener('swup:contentReplaced', function () {
     cookiesInit();
 });
