@@ -28,13 +28,16 @@
 			margin-bottom: 0;
 		}
 
+		&:last-child {
+			margin-bottom: 0;
+		}
+
 		&:nth-child(even) {
 			position: relative;
 			top: $marge-d-y;
-		}
-
-		&:last-child {
-			margin-bottom: 0;
+			&:last-child {
+				margin-bottom: $marge-d-y;
+			}
 		}
 
 		a {
@@ -50,6 +53,9 @@
 		.item {
 			&:nth-child(even) {
 				top: 0;
+				&:last-child {
+					margin-bottom: 0;
+				}
 			}
 		}
 	}
