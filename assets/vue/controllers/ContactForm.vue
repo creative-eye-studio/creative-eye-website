@@ -112,6 +112,9 @@
                 <button class="btn-link">Envoyer</button>
             </div>
 
+            <div class="col-12">
+                <p class="send-status"></p>
+            </div>
         </form>
     </div>
 </template>
@@ -214,11 +217,13 @@ export default {
     methods: {
         submitForm() {
             try {
+                var status = document.querySelector(".send-status");
                 document.querySelectorAll("input[name='besoin']:checked").forEach(besoin => {
                     this.FormData.besoins.push(besoin.value);
                 });
                 axios.post('/contact-form', this.FormData).then((response) => {
                     console.log(response.data);
+                    status.textContent = "Votre message a bien été envoyé";
                 });
             } catch (error) {
                 console.error("Erreur lors de l'envoi de l'Email : " + error);
