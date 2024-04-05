@@ -11,7 +11,7 @@
 
 .reals {
 	.item {
-		margin-bottom: $marge-m;
+		margin-bottom: $marge-d-y;
 
 		figure {
 			@extend .cover-img;
@@ -36,7 +36,7 @@
 			position: relative;
 			top: $marge-d-y;
 			&:last-child {
-				margin-bottom: $marge-d-y;
+				margin-bottom: calc$marge-d-y;
 			}
 		}
 
@@ -51,6 +51,7 @@
 	}
 	@media screen and (max-width: $md) {
 		.item {
+			margin-bottom: $marge-m;
 			&:nth-child(even) {
 				top: 0;
 				&:last-child {
