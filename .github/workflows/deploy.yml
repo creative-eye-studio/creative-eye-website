@@ -12,6 +12,7 @@ jobs:
     env:
       APP_ENV: prod
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      MAILER_DSN: ${{ secrets.MAILER_DSN }}
       
 
     steps:
