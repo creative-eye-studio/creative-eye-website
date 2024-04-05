@@ -42,7 +42,7 @@
     },
     "dependencies": {
         "aos": "^2.3.4",
-        "axios": "^1.6.2",
+        "axios": "^1.6.8",
         "codemirror": "^6.0.1",
         "custom-code-editor": "^3.4.0",
         "dropzone": "^6.0.0-beta.2",

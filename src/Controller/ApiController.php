@@ -6,8 +6,10 @@ use App\Services\PostsService;
 use App\Services\ExtPartenairesService;
 use App\Services\ExtRealisationsService;
 use App\Services\ExtServService;
+use App\Services\FormsService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
@@ -16,13 +18,23 @@ class ApiController extends AbstractController
     private $partnersService;
     private $realsService;
     private $servService;
+    private $formService;
+    private $request;
 
-    function __construct(PostsService $postsService, ExtPartenairesService $partnersService, ExtRealisationsService $realsService, ExtServService $servService)
+    function __construct(
+        PostsService $postsService, 
+        ExtPartenairesService $partnersService, 
+        ExtRealisationsService $realsService, 
+        FormsService $formService,
+        ExtServService $servService,
+    )
     {
         $this->postsService = $postsService;
         $this->partnersService = $partnersService;
         $this->realsService = $realsService;
         $this->servService = $servService;
+        $this->formService = $formService;
+        $this->request = new Request();
     }
 
     #[Route('/api/posts', name: 'api_posts')]
@@ -65,5 +77,36 @@ class ApiController extends AbstractController
     public function services(): JsonResponse
     {
         return $this->json($this->servService->getServices(), 200);
+    }
+
+    #[Route(path: '/contact-form', name: 'contact_form', methods: ['POST'])]
+    public function contactForm(): JsonResponse
+    {
+        $data = json_decode($this->request->getContent());
+
+        $contactDatas = [
+            'nom' => $data->nom,
+            'prenom' => $data->prenom,
+            'societe' => $data->societe,
+            'fonction' => $data->fonction,
+            'secteur' => $data->secteur,
+            'particulier' => $data->particulier,
+            'codepostal' => $data->codepostal,
+            'ville' => $data->ville,
+            'telephone' => $data->telephone,
+            'mail' => $data->mail,
+            'besoins' => $data->besoins,
+            'message' => $data->message,
+        ];
+
+        $this->formService->send(
+            $data->mail,
+            'contact@creative-eye.fr',
+            "Demande de devis en ligne",
+            'contact',
+            $contactDatas
+        );
+
+        return $this->json($contactDatas);
     }
 }

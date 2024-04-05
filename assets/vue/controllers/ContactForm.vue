@@ -7,32 +7,37 @@
                     <span class="title">Vous avez un projet ? Nous avons les solutions !</span>
                 </h2>
                 <p><em>Tous les champs sont obligatoires</em></p>
-            </div>    
+            </div>
         </div>
-        
-        <form method="post" class="row">
+
+        <form class="row" @submit.prevent="submitForm()">
             <div class="col-6 col-md-12 input-group">
-                <input type="text" name="nom" id="nom" title="Veuillez entrer votre nom de famille" required>
+                <input type="text" name="nom" id="nom" v-model="this.FormData.nom"
+                    title="Veuillez entrer votre nom de famille" required>
                 <label for="nom">Nom *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="text" name="prenom" id="prenom" title="Veuillez entrer votre prénom" required>
+                <input type="text" name="prenom" id="prenom" v-model="this.FormData.prenom"
+                    title="Veuillez entrer votre prénom" required>
                 <label for="prenom">Prénom *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="text" name="societe" id="societe" title="Veuillez indiquer le nom de votre entreprise" required>
+                <input type="text" name="societe" id="societe" v-model="this.FormData.societe"
+                    title="Veuillez indiquer le nom de votre entreprise" required>
                 <label for="societe">Société *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="text" name="fonction" id="fonction" title="Veuillez indiquer votre fonction au sein de l'entreprise" required>
+                <input type="text" name="fonction" id="fonction" v-model="this.FormData.fonction"
+                    title="Veuillez indiquer votre fonction au sein de l'entreprise" required>
                 <label for="fonction">Fonction *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <select v-model="selectedOption" name="secteur" id="secteur" title="Quel est le secteur d'activité de votre entrprise ?" required>
+                <select name="secteur" id="secteur" v-model="this.FormData.secteur"
+                    title="Quel est le secteur d'activité de votre entrprise ?" required>
                     <option value=""></option>
                     <template v-for="option in secteurs" :key="option.label">
                         <option v-if="!option.options.length" :value="option.label">{{ option.label }}</option>
@@ -47,7 +52,8 @@
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <select name="profil" id="profil" title="Veuillez indiquer si vous êtes un particulier ou un professionnel" required>
+                <select name="profil" id="profil" v-model="this.FormData.particulier"
+                    title="Veuillez indiquer si vous êtes un particulier ou un professionnel" required>
                     <option value=""></option>
                     <option value="Particulier">Particulier</option>
                     <option value="Professionnel">Professionnel</option>
@@ -56,122 +62,168 @@
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="text" name="codepostal" id="codepostal" title="Veuillez indiquer le code postal de votre entreprise" required>
+                <input type="text" name="codepostal" id="codepostal" v-model="this.FormData.codepostal"
+                    title="Veuillez indiquer le code postal de votre entreprise" required>
                 <label for="codepostal">Code postal *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="text" name="ville" id="ville" title="Veuillez indiquer la ville de votre entreprise" required>
+                <input type="text" name="ville" id="ville" v-model="this.FormData.ville"
+                    title="Veuillez indiquer la ville de votre entreprise" required>
                 <label for="ville">Ville *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="tel" name="telephone" id="telephone" title="Veuillez indiquer votre numéro de teléphone pour être recontacté(e)" required>
+                <input type="tel" name="telephone" id="telephone" v-model="this.FormData.telephone"
+                    title="Veuillez indiquer votre numéro de teléphone pour être recontacté(e)" required>
                 <label for="telephone">Téléphone *</label>
             </div>
 
             <div class="col-6 col-md-12 input-group">
-                <input type="email" name="mail" id="mail" title="Veuillez indiquer votre adresse e-mail pour être recontacté(e)" required>
+                <input type="email" name="mail" id="mail" v-model="this.FormData.mail"
+                    title="Veuillez indiquer votre adresse e-mail pour être recontacté(e)" required>
                 <label for="mail">E-Mail *</label>
             </div>
 
             <div class="col-12 services-form">
                 <p class="small">Je suis intéressé par :</p>
-                    <div class="services-list">
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="identite-visuelle" value="Conception d'identité visuelle">
-                            <label class="label-checkbox" for="identite-visuelle">Conception d'identité visuelle</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="signature-marque" value="Signature de marque">
-                            <label class="label-checkbox" for="signature-marque">Signature de marque</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="support-print" value="Support print">
-                            <label class="label-checkbox" for="support-print">Support print</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="reportage-photo" value="Reportage photo">
-                            <label class="label-checkbox" for="reportage-photo">Reportage photo</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="site-internet" value="Création de site internet">
-                            <label class="label-checkbox" for="site-internet">Création de site internet</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="application-mobile" value="Création d'application mobile">
-                            <label class="label-checkbox" for="application-mobile">Création d'application mobile</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="ecommerce" value="Boutique E-commerce">
-                            <label class="label-checkbox" for="ecommerce">Boutique E-commerce</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="emailing" value="Campagne d'emailing">
-                            <label class="label-checkbox" for="emailing">Campagne d'emailing</label>    
-                        </p>
-                        <p class="checkbox">
-                            <input type="checkbox" name="besoin" id="seo" value="Référencement naturel SEO">
-                            <label class="label-checkbox" for="seo">Référencement naturel SEO</label>    
-                        </p>
-                    </div>
+                <div class="services-list">
+                    <p class="checkbox" v-for="item in interests">
+                        <input type="checkbox" name="besoin" :id="item.id" :value="item.label">
+                        <label class="label-checkbox" :for="item.id" v-html="item.label"></label>
+                    </p>
+                </div>
             </div>
 
             <div class="col-12 input-group">
-                <textarea name="message" id="message" class="wd-100" title="Veuillez décrire précisément votre projet" required></textarea>
+                <textarea name="message" id="message" v-model="FormData.message" class="wd-100"
+                    title="Veuillez décrire précisément votre projet" required></textarea>
                 <label for="message">Message *</label>
             </div>
 
-            <div class="col-12">
-                <input type="submit" value="Envoyer" />
+            <div class="col-12 services-form">
+                <p class="checkbox">
+                    <input type="checkbox" name="rgpd" id="rgpd" value="Consentement légitime au RGPD" required>
+                    <label class="label-checkbox" for="rgpd">En soumettant ce formulaire, j'accepte de transmettre mes données à des fins de relation client.</label>
+                </p>    
             </div>
-            
+
+            <div class="col-12">
+                <button class="btn-link">Envoyer</button>
+            </div>
 
         </form>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                secteurs: [
-                    { 
-                        label: 'Commerce de gros', 
-                        options: [
-                            { label: 'Revendeurs' },
-                            { label: 'Grossistes' },
-                        ] 
-                    },
-                    {
-                        label: 'Communication',
-                        options: [
-                            { label: 'Agence de publicité' },
-                            { label: 'Imprimerie' },
-                            { label: 'Signalétique' },
-                        ],
-                    },
-                    {
-                        label: 'Évenementiel',
-                        options: [
-                            { label: 'Organisateur d\'événements' },
-                            { label: 'Régisseur' },
-                            { label: 'Disc Jockey' },
-                        ],
-                    },
-                    {
-                        label: 'Artisanat',
-                        options: [
-                            { label: 'Hotellerie / Restauration' },
-                            { label: 'Métiers de bouche' },
-                            { label: 'Métiers de la construction' },
-                            { label: 'Art floral' },
-                            { label: 'Viticulteurs' },
-                        ],
-                    },
-                    { label: 'Autre', options: [] },
-                ],
+import axios from "axios";
+export default {
+    data() {
+        return {
+            FormData: {
+                nom: '',
+                prenom: '',
+                societe: '',
+                fonction: '',
+                secteur: '',
+                particulier: '',
+                codepostal: '',
+                ville: '',
+                telephone: '',
+                mail: '',
+                besoins: [],
+                message: ''
+            },
+            interests: [
+                {
+                    id: 'identite-visuelle',
+                    label: "Identité visuelle"
+                },
+                {
+                    id: 'signature-marque',
+                    label: "Signature de marque"
+                },
+                {
+                    id: 'support-print',
+                    label: "Support print"
+                },
+                {
+                    id: 'reportage-photo',
+                    label: "Reportage photo"
+                },
+                {
+                    id: 'site-internet',
+                    label: "Création de site internet"
+                },
+                {
+                    id: 'application-mobile',
+                    label: "Création d'application mobile"
+                },
+                {
+                    id: 'ecommerce',
+                    label: "Boutique E-Commerce"
+                },
+                {
+                    id: 'emailing',
+                    label: "Campagne d'emailing"
+                },
+                {
+                    id: 'seo',
+                    label: "Référencement naturel SEO"
+                },
+            ],
+            secteurs: [
+                {
+                    label: 'Commerce de gros',
+                    options: [
+                        { label: 'Revendeurs' },
+                        { label: 'Grossistes' },
+                    ]
+                },
+                {
+                    label: 'Communication',
+                    options: [
+                        { label: 'Agence de publicité' },
+                        { label: 'Imprimerie' },
+                        { label: 'Signalétique' },
+                    ],
+                },
+                {
+                    label: 'Évenementiel',
+                    options: [
+                        { label: 'Organisateur d\'événements' },
+                        { label: 'Régisseur' },
+                        { label: 'Disc Jockey' },
+                    ],
+                },
+                {
+                    label: 'Artisanat',
+                    options: [
+                        { label: 'Hotellerie / Restauration' },
+                        { label: 'Métiers de bouche' },
+                        { label: 'Métiers de la construction' },
+                        { label: 'Art floral' },
+                        { label: 'Viticulteurs' },
+                    ],
+                },
+                { label: 'Autre', options: [] },
+            ],
+        }
+    },
+    methods: {
+        submitForm() {
+            try {
+                document.querySelectorAll("input[name='besoin']:checked").forEach(besoin => {
+                    this.FormData.besoins.push(besoin.value);
+                });
+                axios.post('/contact-form', this.FormData).then((response) => {
+                    console.log(response.data);
+                });
+            } catch (error) {
+                console.error("Erreur lors de l'envoi de l'Email : " + error);
             }
-        },
-    }
+        }
+    },
+}
 </script>
