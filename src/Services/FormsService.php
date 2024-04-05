@@ -22,7 +22,7 @@ class FormsService
         }
 
         $email = (new TemplatedEmail())
-            ->from('hello@creative-eye.fr')
+            ->from('contact@creative-eye.fr')
             ->to(new Address($to))
             ->replyTo($from)
             ->subject($subject)
