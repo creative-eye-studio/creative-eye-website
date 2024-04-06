@@ -16,8 +16,8 @@ class MailjetController extends AbstractController
         $data = json_decode($req->getContent());
 
         // Initialisation de Mailjet
-        $apiKey = getenv('MJ_APIKEY_PUBLIC');
-        $apiSecret = getenv('MJ_APIKEY_PRIVATE');
+        $apiKey = $this->getParameter('mailjet_public');
+        $apiSecret = $this->getParameter('mailjet_private');
 
         $mj = new \Mailjet\Client($apiKey, $apiSecret);
         $email = $data->email;
@@ -39,6 +39,8 @@ class MailjetController extends AbstractController
                 'success' => false,
                 'email' => $email,
                 'message' => 'Erreur lors de l\'ajout de l\'adresse e-mail à Mailjet : ' . $response->getReasonPhrase(),
+                'public' => $apiKey,
+                'private' => $apiSecret,
             ]);
         }
     }
