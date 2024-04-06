@@ -13,8 +13,8 @@ jobs:
       APP_ENV: prod
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       MAILER_DSN: ${{ secrets.MAILER_DSN }}
-      MJ_APIKEY_PUBLIC: ${{ secrets.MAILJET_PUBLIC }}
-      MJ_APIKEY_PRIVATE: ${{ secrets.MAILJET_PRIVATE }}
+      MJ_APIKEY_PUBLIC: ${{ secrets.MJ_APIKEY_PUBLIC }}
+      MJ_APIKEY_PRIVATE: ${{ secrets.MJ_APIKEY_PRIVATE }}
       
 
     steps:
