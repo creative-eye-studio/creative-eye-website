@@ -30,6 +30,7 @@ class MailjetController extends AbstractController
         $response->success();
         
         return $this->json([
+            'email' => $email,
             'message' => $response->getData(),
         ]);
     }
