@@ -13,6 +13,8 @@ jobs:
       APP_ENV: prod
       DATABASE_URL: ${{ secrets.DATABASE_URL }}
       MAILER_DSN: ${{ secrets.MAILER_DSN }}
+      MJ_APIKEY_PUBLIC: ${{ secrets.MAILJET_PUBLIC }}
+      MJ_APIKEY_PRIVATE: ${{ secrets.MAILJET_PRIVATE }}
       
 
     steps:
@@ -33,6 +35,12 @@ jobs:
         run: |
           # Remplacer la valeur de MAILER_DSN dans le fichier .env
           grep -v '^MAILER_DSN=' .env > .env.tmp && echo "MAILER_DSN='${MAILER_DSN}'" >> .env.tmp && mv .env.tmp .env
+      
+      - name: Configure Mailjet
+        run: |
+          # Remplacer la valeur de MAILER_DSN dans le fichier .env
+          grep -v '^MJ_APIKEY_PUBLIC=' .env > .env.tmp && echo "MJ_APIKEY_PUBLIC='${MJ_APIKEY_PUBLIC}'" >> .env.tmp && mv .env.tmp .env
+          grep -v '^MJ_APIKEY_PRIVATE=' .env > .env.tmp && echo "MJ_APIKEY_PRIVATE='${MJ_APIKEY_PRIVATE}'" >> .env.tmp && mv .env.tmp .env
 
       - name: Install Node.js and Yarn
         uses: actions/setup-node@v4
