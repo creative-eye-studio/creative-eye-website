@@ -27,11 +27,19 @@ class MailjetController extends AbstractController
         ];
 
         $response = $mj->post(Resources::$Contact, ['body' => $body]);
-        $response->success();
         
-        return $this->json([
-            'email' => $email,
-            'message' => $response->getData(),
-        ]);
+        if ($response->success()) {
+            return $this->json([
+                'success' => true,
+                'email' => $email,
+                'message' => 'Adresse e-mail ajoutée avec succès à Mailjet.',
+            ]);
+        } else {
+            return $this->json([
+                'success' => false,
+                'email' => $email,
+                'message' => 'Erreur lors de l\'ajout de l\'adresse e-mail à Mailjet : ' . $response->getReasonPhrase(),
+            ]);
+        }
     }
 }
