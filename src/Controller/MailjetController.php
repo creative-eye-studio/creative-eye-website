@@ -19,32 +19,18 @@ class MailjetController extends AbstractController
         $apiKey = getenv('MJ_APIKEY_PUBLIC');
         $apiSecret = getenv('MJ_APIKEY_PRIVATE');
 
-        $mj = new \Mailjet\Client($apiKey, $apiSecret, true, ['version' => 'v3.1']);
+        $mj = new \Mailjet\Client($apiKey, $apiSecret);
         $email = $data->email;
-        $listId = '10046985';
 
         $body = [
-            'IsUnsubscribed' => false,
             'Email' => $email
         ];
 
         $response = $mj->post(Resources::$Contact, ['body' => $body]);
-
-        if ($response->success()) {
-            $contactId = $response->getData()['0']['ID'];
-            $response = $mj->post(Resources::$Listrecipient, ['body' => ['ContactID' => $contactId, 'ListID' => $listId]]);
-
-            if ($response->success()) {
-                $status = "Adresse e-mail ajoutée avec succès à la liste Mailjet.";
-            } else {
-                $status = "Une erreur est survenue lors de l'ajout de l'adresse E-Mail : " . $response->getReasonPhrase();
-            }
-        } else {
-            $status = "Une erreur est survenue lors de la création du contact : " . $response->getReasonPhrase();
-        }
+        $response->success() && var_dump($response->getData());
         
         return $this->json([
-            'message' => $status,
+            'message' => $response->getData(),
         ]);
     }
 }
