@@ -29,6 +29,10 @@ fieldset{
     }
 }
 
+form {
+    position: relative;
+}
+
 .input-group {
     @extend .position-relative;
 }
@@ -176,4 +180,15 @@ textarea:valid ~ label {
             }
         }
     }
+}
+
+.tac_activate_recaptcha {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba($color: #000000, $alpha: .85) !important;
+}
+
+.grecaptcha-badge {
+    display: none;
 }

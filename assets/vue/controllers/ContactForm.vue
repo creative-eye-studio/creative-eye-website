@@ -104,9 +104,11 @@
             <div class="col-12 services-form">
                 <p class="checkbox">
                     <input type="checkbox" name="rgpd" id="rgpd" value="Consentement légitime au RGPD" required>
-                    <label class="label-checkbox" for="rgpd">En soumettant ce formulaire, j'accepte de transmettre mes données à des fins de relation client.</label>
+                    <label class="label-checkbox" for="rgpd">En soumettant ce formulaire, j'accepte de transmettre mes données à des fins de relation client. Le formulaire est protégé par Google ReCaptcha</label>
                 </p>    
             </div>
+
+            <div class="g-recaptcha" data-sitekey="6Lc3ArIpAAAAAOARqNO6I5Uz0CY5XFvRFuxDcMgW" data-size="invisible"></div>
 
             <div class="col-12">
                 <button class="btn-link">Envoyer</button>
