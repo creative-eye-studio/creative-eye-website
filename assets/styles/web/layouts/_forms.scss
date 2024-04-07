@@ -16,6 +16,12 @@ fieldset{
         padding: .25rem;
         border: .0625rem solid black;
     }
+    &_white {
+        @extend .send-status;
+        &:not(:empty) {
+            border: .0625rem solid white;
+        }
+    }
 }
 
 .contact-form{
@@ -47,7 +53,7 @@ input {
     &[type="tel"]{
         @include form-design();
         &.news-input {
-            margin: 0;
+            margin: 0 0 .7rem;
             padding: 0.6rem;
             border: .0625rem solid $colorWt;
             color: white;
@@ -148,6 +154,11 @@ textarea:valid ~ label {
                 top: .25rem;
                 opacity: .6;
                 transition: all .12s, border-radius .5s;
+            }
+            &.checkbox-white {
+                &::before {
+                    border: .125rem solid #fff;
+                }
             }
         }
         &:not(:checked) {
