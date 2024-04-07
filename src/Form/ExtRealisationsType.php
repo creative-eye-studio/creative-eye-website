@@ -60,6 +60,7 @@ class ExtRealisationsType extends AbstractType
                 'label' => "Services proposés",
                 'choice_label' => 'titre[0]',
                 'multiple' => true,
+                'expanded' => true,
                 'row_attr' => [
                     'class' => "form-row"
                 ]
