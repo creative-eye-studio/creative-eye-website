@@ -21,12 +21,13 @@ class MailjetController extends AbstractController
 
         $mj = new \Mailjet\Client($apiKey, $apiSecret);
         $email = $data->email;
+        $id = "10046985";
 
         $body = [
             'Email' => $email
         ];
 
-        $response = $mj->post(Resources::$Contact, ['body' => $body]);
+        $response = $mj->post(Resources::$ContactManagecontactslists, ['id' => $id, 'body' => $body]);
         
         if ($response->success()) {
             return $this->json([
