@@ -1,0 +1,16 @@
+{% extends 'admin.html.twig' %}
+
+{% block title %}Gestion des adresses Emailing{% endblock %}
+
+{% block body %}
+    <section>
+        <h1>Liste des inscrits à l'Emailing</h1>
+        {% for item in list %}
+            <div class="line">
+                <span>{{ item.Adress }}</span>
+                <ul>
+                </ul>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock %}
