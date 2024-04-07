@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Categories;
 use App\Entity\PostsList;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
@@ -54,6 +56,16 @@ class PostsAdminFormType extends AbstractType
             ])
 
             // GLOBAL
+            ->add('categories', EntityType::class, [
+                'class' => Categories::class,
+                'choice_label' => 'nom',
+                'multiple' => true,
+                'expanded' => true,
+                'row_attr' => [
+                    'class' => "form-row"
+                ]
+            ])
+
             ->add('post_thumb', DropzoneType::class, [
                 'label' => "Image de l'article",
                 'required' => false,

@@ -48,10 +48,11 @@
             <fieldset>
                 <legend>Autres informations</legend>
                 <div class="form-row">
-                    {{ form_label(form.online) }}<br />
+                    {{ form_label(form.online) }}
                     {{ form_widget(form.online) }}
                 </div>
                 {{ form_row(form.post_thumb) }}
+                {{ form_row(form.categories) }}
                 {{ form_row(form.post_url) }}
             </fieldset>
             {{ form_row(form.submit) }}
