@@ -19,16 +19,24 @@ class MailjetController extends AbstractController
         $apiKey = $this->getParameter('mailjet_public');
         $apiSecret = $this->getParameter('mailjet_private');
 
+        // Création du contact
         $mj = new \Mailjet\Client($apiKey, $apiSecret);
         $email = $data->email;
-        $id = "10046985";
-
         $body = [
-            'Email' => $email
+            'Email' => $email,
         ];
 
         $response = $mj->post(Resources::$Contact, ['body' => $body]);
-        
+
+        // Placement du contact dans la liste
+        $listId = "10046985";
+        $body = [
+            'ContactAlt' => $email,
+            'ListID' => $listId
+        ];
+
+        $response = $mj->post(Resources::$Listrecipient, ['body' => $body]);
+
         if ($response->success()) {
             return $this->json([
                 'success' => true,
