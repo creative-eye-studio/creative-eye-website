@@ -41,10 +41,16 @@
                     <img src="{{ absolute_url(asset('uploads/images/logo/logotype.png')) }}" alt="Logo Creative Eye Studio">
                 </a>
             </figure>
-            <button class="toggle-nav nav-btn-desktop d-none-on-xs">
-                <i class="bar bar-1"></i>
-                <i class="bar bar-2"></i>
-            </button>
+
+            <div class="d-flex d-none-on-xs">
+                <a href="#contact-form" title="Faire une demande de devis en ligne">
+                    <i class="fa-solid fa-envelope fa-xl devis-icon" style="color: #ffffff;"></i>
+                </a>
+                <button class="toggle-nav nav-btn-desktop">
+                    <i class="bar bar-1"></i>
+                    <i class="bar bar-2"></i>
+                </button>
+            </div>
         </header>
 
         <nav class="navbar-mobile d-none-no-xs d-block-on-xs position-fixed wd-100">
