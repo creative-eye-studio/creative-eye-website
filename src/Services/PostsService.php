@@ -160,6 +160,10 @@ class PostsService extends AbstractController
             throw $this->createNotFoundException('Catégorie non trouvée pour l\'ID ' . $servId);
         }
 
+        $list = $category->getPostsLists()->toArray();
+        $listReversed = array_reverse($list);
+        $result = array_slice($listReversed, 0, 5);
+
         return array_map(function ($post) {
             return [
                 'id' => $post->getId(),
@@ -170,7 +174,7 @@ class PostsService extends AbstractController
                 'date' => $post->getCreatedAt()->format("d/m/Y"),
                 'online' => $post->isOnline(),
             ];
-        }, $category->getPostsLists()->toArray());
+        }, $result);
     }
     #endregion
 

@@ -63,7 +63,7 @@
 
     <!-- Realisations -->
     <section class="reals padding-vertical-on-md row" data-aos="fade-left">
-        {% for real in reals %}
+        {% for real in reals|reverse|slice(0, 5) %}
             <div class="item col-6 col-xs-12">
                 <a href="{{ path('web_real', { real_slug: real.url }) }}">
                     <figure class="image wd-100">
