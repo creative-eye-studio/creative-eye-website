@@ -1,5 +1,5 @@
 <template>
-    <div id="contact-form" class="contact-form margin-left-no-md padding-vertical-on-md">
+    <div class="contact-form margin-left-no-md padding-vertical-on-md">
         <div class="row">
             <div class="col-12">
                 <h2>
