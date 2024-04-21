@@ -49,8 +49,9 @@ class PostsAdminFormType extends AbstractType
                 'label' => "Meta Description de l'article (FR)",
                 'required' => false,
                 'mapped' => false,
+                'help' => 'Max 150 caractères',
                 'attr' => [
-                    'maxlength' => 200,
+                    'maxlength' => 150,
                     'class' => 'metadesc_fr',
                 ]
             ])
