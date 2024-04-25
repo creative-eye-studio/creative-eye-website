@@ -2,7 +2,7 @@
     <figure class="real-item border-all position-relative margin-top-on-md" v-for="real in reals">
         <a :href='"/fr/realisation/" + real.url'>
             <figure class="cover-img-no-sm-16-9 ht-100">
-                <img :src='"../uploads/images/reals/main/" + real.thumb' :alt="real.nom" class="image">
+                <img :src='"../uploads/images/reals/main/" + real.thumb' :alt="real.nom" class="image" loading="lazy">
             </figure>
             
             <figcaption class="infos position-absolute-no-sm w-100">

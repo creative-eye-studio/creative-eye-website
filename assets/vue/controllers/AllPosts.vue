@@ -7,7 +7,7 @@
             <div class="col-4 col-md-6 col-xs-12" v-for="post in posts" :key="post.id">
                 <article class="text-img-bloc">
                     <figure class="image">
-                        <img :src="'../../../uploads/images/posts/' + post.thumb" :alt="post.name[0]">
+                        <img :src="'../../../uploads/images/posts/' + post.thumb" :alt="post.name[0]" loading="lazy">
                     </figure>
                     <div class="text-content">
                         <h3 v-html="post.name[0]"></h3>

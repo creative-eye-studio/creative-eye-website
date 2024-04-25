@@ -1,7 +1,7 @@
 <template>
     <article class="partner-item row-no-marge" v-for="item in posts" :key="item.id">
         <figure class="image col-4-no-marge col-lg-12-no-marge cover-img-no-lg-16-9">
-            <img class="d-block-on-lg" :src="'../../uploads/images/partners/photos/' + item.photo" :alt="item.nom + ' - ' + item.societe">
+            <img class="d-block-on-lg" :src="'../../uploads/images/partners/photos/' + item.photo" :alt="item.nom + ' - ' + item.societe" loading="lazy">
         </figure>
         <div class="text col-8-no-marge col-lg-12-no-marge">
             <div class="text-block">
