@@ -30,6 +30,9 @@
 		width: 10rem;
 		margin: auto;
 		animation: rotate 2s linear infinite;
+		img {
+			aspect-ratio: 1/1;
+		}
 	}
 
 	&.open {
