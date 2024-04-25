@@ -85,3 +85,4 @@ AddOutputFilterByType DEFLATE text/html
     AddOutputFilterByType DEFLATE application/javascript
     AddOutputFilterByType DEFLATE application/x-javascript
 </IfModule> 
+
