@@ -22,7 +22,7 @@
             <div class="text-img-bloc">
                 <a :href='"fr/expertise/" + service.url'>
                     <figure class="image">
-                        <img :src='"../uploads/images/services/" + service.thumb' :alt="service.titre[0]" loading="lazy">
+                        <img :src='"../uploads/images/services/min/" + service.thumb' :alt="service.titre[0]" loading="lazy">
                     </figure>
                     <div class="text">
                         <h3 v-html='service.titre[0]'></h3>

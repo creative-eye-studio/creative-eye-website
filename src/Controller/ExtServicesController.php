@@ -6,6 +6,8 @@ use App\Entity\ExtServices;
 use App\Form\ExtServicesType;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
+use Intervention\Image\Drivers\Gd\Driver;
+use Intervention\Image\ImageManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -61,18 +63,32 @@ class ExtServicesController extends AbstractController
             // Thumb
             $thumb = $form->get('thumb')->getData();
             if ($thumb != null) {
+
                 $originalFileName = pathinfo($thumb->getClientOriginalName(), PATHINFO_FILENAME);
                 $safeFileName = $slugify->slugify($originalFileName);
                 $newFileName = $safeFileName . '.' . $thumb->guessExtension();
                 try {
+                    // Sauvegarde de l'image de base
                     $thumb->move(
                         'uploads/images/services',
                         $newFileName
                     );
+
+                    // Sauvegarde du thumb
+                    $manager = new ImageManager(new Driver);
+                    $thumb = $manager->read('uploads/images/services/' . $newFileName);
+                    $thumb->scale(640);
+                    $encoded = $thumb->toAvif();
+                    $encoded->save('uploads/images/services/min/' . $newFileName);
+
+                    // Sauvegarde du nom du fichier
                     $service->setThumb($newFileName);
+
                 } catch (\Throwable $th) {
                     throw $th;
                 }
+
+
             } else {
                 $file = $service->getThumb();
                 $service->setThumb($file);
