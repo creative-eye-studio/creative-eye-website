@@ -78,7 +78,7 @@ class ExtServicesController extends AbstractController
                     $manager = new ImageManager(new Driver);
                     $thumb = $manager->read('uploads/images/services/' . $newFileName);
                     $thumb->scale(640);
-                    $encoded = $thumb->toAvif();
+                    // $encoded = $thumb->toAvif();
                     $encoded->save('uploads/images/services/min/' . $newFileName);
 
                     // Sauvegarde du nom du fichier
