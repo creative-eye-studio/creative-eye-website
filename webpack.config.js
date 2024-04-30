@@ -89,6 +89,7 @@ Encore
 
     .addPlugin(new CompressionPlugin({
         test: /\.js(\?.*)?$/i,
+        algorithm: "gzip",
     }))
 ;
 
