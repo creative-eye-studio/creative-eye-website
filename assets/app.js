@@ -169,37 +169,36 @@ document.addEventListener("swup:contentReplaced", openMorePanel);
 // Loader
 // ---------------------------------------------------
 document.addEventListener("DOMContentLoaded", () => {
-    toggleLoader('.loader-open', 'open');
+    toggleLoader('.loader-open');
+});
+
+document.addEventListener("swup:samePage", () => {
+    toggleLoader('.loader-page');
+});
+
+document.addEventListener("swup:transitionStart", () => {
+    toggleLoader('.loader-page', false);
+});
+
+document.addEventListener("swup:samePageWithHash", () => {
+    toggleLoader('.loader-page');
+});
+
+document.addEventListener("swup:clickLink", () => {
+    toggleLoader('.loader-page', false);
 });
 
 document.addEventListener("swup:transitionEnd", () => {
     setTimeout(() => {
-        toggleLoader('.loader-page', 'open');
+        toggleLoader('.loader-page');
     }, 2000);
 });
 
-document.addEventListener("swup:clickLink", () => {
-    toggleLoader('.loader-page', 'open', false);
-});
-
-document.addEventListener("swup:samePage", () => {
-    toggleLoader('.loader-page', 'open');
-});
-
-document.addEventListener("swup:samePageWithHash", () => {
-    toggleLoader('.loader-page', 'open');
-});
-
-function toggleLoader(selector, className, add = true) {
+function toggleLoader(selector, add = true) {
     const element = document.querySelector(selector);
-
-    if (element) {
-        if (add) {
-            element.classList.add(className);
-        } else {
-            element.classList.remove(className);
-        }
-    }
+    element && add 
+        ? element.classList.add('open') 
+        : element.classList.remove('open');
 }
 
 
@@ -208,8 +207,7 @@ function toggleLoader(selector, className, add = true) {
 // ---------------------------------------------------
 function initServicePage() {
     // Animation du texte Intro
-    const introLines = document.querySelectorAll('.service-intro p');
-    introLines.forEach(line => {
+    document.querySelectorAll('.service-intro p').forEach(line => {
         line.setAttribute('data-aos', 'circle-left');
     });
 }
