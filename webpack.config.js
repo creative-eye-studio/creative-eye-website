@@ -88,8 +88,9 @@ Encore
     //.autoProvidejQuery()
 
     .addPlugin(new CompressionPlugin({
-        test: /\.js(\?.*)?$/i,
-        algorithm: "gzip",
+        deleteOriginalAssets: false,
+        algorithm: 'gzip',
+        test: /\.(js|css|html)$/,
     }))
 ;
 
