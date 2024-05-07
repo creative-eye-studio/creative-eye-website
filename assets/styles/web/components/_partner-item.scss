@@ -23,6 +23,9 @@
         .text-content {
             padding: $marge-m 0;
         }
+        a:not(.btn-link) {
+            @extend .link;
+        }
         @media screen and (max-width: $md) {
             padding: $marge-m;
             .logo {
