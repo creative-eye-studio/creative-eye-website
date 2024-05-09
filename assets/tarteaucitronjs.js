@@ -38,9 +38,9 @@ function cookiesInit() {
 
 
     // Matomo
-    // tarteaucitron.user.matomoId = '';
-    // tarteaucitron.user.matomoHost = '';
-    // (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
+    tarteaucitron.user.matomoId = '1';
+    tarteaucitron.user.matomoHost = 'matomo.creative-eye.fr';
+    (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
 
     // Google Maps
     // tarteaucitron.user.googlemapsKey = '';
