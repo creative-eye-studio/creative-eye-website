@@ -22,14 +22,6 @@ tarteaucitron.init({
     "mandatoryCta": true /* Show the disabled accept button when mandatory on */
 });
 
-function handlePageChange() {
-    swupChangePage()
-}
-
-function swupChangePage() {
-    console.log(document.title);
-}
-
 function cookiesInit() {
     // Google Analytics
     tarteaucitron.user.gtagUa = 'G-7K9B4GH89P';
@@ -74,16 +66,15 @@ function cookiesInit() {
 
     // Rechargement après AJAX
     tarteaucitron.triggerJobsAfterAjaxCall();
-
-    return;
 }
 
 cookiesInit();
 
 document.addEventListener('swup:contentReplaced', function () {
-    cookiesInit();
+    // cookiesInit();
     
     try {
+        console.log("Changé");
         _paq.push(['setCustomUrl', window.location.href]);
         _paq.push(['setDocumentTitle', document.title]);
         _paq.push(['trackPageView']);    
@@ -94,6 +85,4 @@ document.addEventListener('swup:contentReplaced', function () {
         'page_location': window.location.href,
         'page_path': window.location.pathname
     });
-    
-    return false;
 });
