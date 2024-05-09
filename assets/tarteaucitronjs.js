@@ -39,7 +39,7 @@ function cookiesInit() {
 
     // Matomo
     tarteaucitron.user.matomoId = '1';
-    tarteaucitron.user.matomoHost = 'matomo.creative-eye.fr';
+    tarteaucitron.user.matomoHost = 'https://matomo.creative-eye.fr/';
     (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
 
     // Google Maps
