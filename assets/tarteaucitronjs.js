@@ -22,18 +22,18 @@ tarteaucitron.init({
     "mandatoryCta": true /* Show the disabled accept button when mandatory on */
 });
 
+function handlePageChange() {
+    swupChangePage()
+}
+
+function swupChangePage() {
+    console.log(document.title);
+}
+
 function cookiesInit() {
     // Google Analytics
     tarteaucitron.user.gtagUa = 'G-7K9B4GH89P';
-    tarteaucitron.user.gtagMore = function () {
-        document.addEventListener('swup:contentReplaced', function () {
-            window.gtag('event', 'page_view', {
-                'page_title': document.title,
-                'page_location': window.location.href,
-                'page_path': window.location.pathname
-            });
-        });
-    };
+    tarteaucitron.user.gtagMore = function () { };
     (tarteaucitron.job = tarteaucitron.job || []).push('gtag');
 
 
@@ -41,11 +41,6 @@ function cookiesInit() {
     tarteaucitron.user.matomoId = '1';
     tarteaucitron.user.matomoHost = 'https://matomo.creative-eye.fr/';
     (tarteaucitron.job = tarteaucitron.job || []).push('matomo');
-    document.addEventListener('swup:contentReplaced', function(event){
-        _paq.push(['setCustomUrl', window.location.href]);
-        _paq.push(['setDocumentTitle', document.title]);
-        _paq.push(['trackPageView']);
-    });
 
     // Google Maps
     // tarteaucitron.user.googlemapsKey = '';
@@ -79,10 +74,26 @@ function cookiesInit() {
 
     // Rechargement après AJAX
     tarteaucitron.triggerJobsAfterAjaxCall();
+
+    return;
 }
 
 cookiesInit();
 
 document.addEventListener('swup:contentReplaced', function () {
     cookiesInit();
+    
+    try {
+        _paq.push(['setCustomUrl', window.location.href]);
+        _paq.push(['setDocumentTitle', document.title]);
+        _paq.push(['trackPageView']);    
+    } catch (error) { }
+
+    window.gtag('event', 'page_view', {
+        'page_title': document.title,
+        'page_location': window.location.href,
+        'page_path': window.location.pathname
+    });
+    
+    return false;
 });
