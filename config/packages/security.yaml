@@ -40,6 +40,7 @@ security:
         - { path: '^/admin/emails', roles: ROLE_EDITOR }
         - { path: '^/admin/settings', roles: ROLE_ADMIN }
         - { path: '^/admin/codeweave', roles: ROLE_ADMIN }
+        - { path: '^/', roles: PUBLIC_ACCESS, requires_channel: https }
     role_hierarchy:
         ROLE_CONTRIBUTOR: ROLE_USER
         ROLE_EDITOR: ROLE_CONTRIBUTOR
